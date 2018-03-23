@@ -142,6 +142,7 @@ public:
     static GDW*   getInstance();
     qint64 write(QString);
     void quit();
+    void startBlockChain(QStringList &params);
     QString read();
     QProcess* proc;
     int lockMinutes;   // 自动锁定时间

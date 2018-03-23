@@ -97,10 +97,10 @@ void WorkerThread::run()
 {
     socket = new QTcpSocket(this);
     socket->connectToHost(QHostAddress("127.0.0.1"),GDW::getInstance()->currentPort);
-    if (!socket->waitForConnected()) {
-        qDebug() << "could not connect to server: " << m_id << socket->errorString();
-        return;
-    }
+//    if (!socket->waitForConnected()) {
+//        qDebug() << "could not connect to server: " << m_id << socket->errorString();
+//        return;
+//    }
 
     QString loginRpc = "{\"jsonrpc\":\"2.0\",\"id\":\"id_login\",\"method\":\"login\",\"params\":[\"" + QString( LOGIN_USER) + "\",\"" + QString( LOGIN_PWD) + "\"]}";
     socket->write(loginRpc.toUtf8());

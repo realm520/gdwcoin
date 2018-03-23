@@ -166,7 +166,7 @@ Frame::Frame(): timer(NULL),
 
             QStringList strList;
             strList << "--data-dir" << GDW::getInstance()->configFile->value("/settings/chainPath").toString()
-                    << "--rpcuser" << "a" << "--rpcpassword" << "b" << "--rpcport" << QString::number( RPC_PORT) << "--server" << "--testnet";
+                    << "--rpcuser" << "a" << "--rpcpassword" << "b" << "--rpcport" << QString::number(RPC_PORT) << "--server";
             if( GDW::getInstance()->configFile->value("/settings/resyncNextTime",false).toBool())
             {
                 strList << "--resync-blockchain";
@@ -176,20 +176,20 @@ Frame::Frame(): timer(NULL),
             }
             GDW::getInstance()->configFile->setValue("settings/resyncNextTime",false);
 #ifdef WIN32
-            GDW::getInstance()->proc->start("hcash.exe",strList );
+            GDW::getInstance()->startBlockChain(strList );
 
             if( GDW::getInstance()->proc->waitForStarted())
             {
-                qDebug() << "launch hcash.exe succeeded";
+                qDebug() << "launch gdw.exe succeeded";
             }
             else
             {
-                qDebug() << "launch hcash.exe failed";
+                qDebug() << "launch gdw.exe failed";
             }
 #else
-			Hcash::getInstance()->proc->start("./hcash",strList );
+            GDW::getInstance()->proc->start("./gdw",strList );
 
-            if( Hcash::getInstance()->proc->waitForStarted())
+            if( GDW::getInstance()->proc->waitForStarted())
             {
                 qDebug() << "laungh hcash succeeded";
             }

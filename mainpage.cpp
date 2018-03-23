@@ -183,9 +183,6 @@ void MainPage::addAccount()
 
 void MainPage::updateAccountList()
 {
-    
-
-
     mutexForConfigFile.lock();
     GDW::getInstance()->configFile->beginGroup("/accountInfo");
     QStringList keys = GDW::getInstance()->configFile->childKeys();
@@ -403,7 +400,7 @@ void MainPage::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     painter.setPen(QPen(QColor(228,228,228),Qt::SolidLine));
-    painter.setBrush(QBrush(QColor(247,246,242),Qt::SolidPattern));
+    painter.setBrush(QBrush(QColor(220,195,145),Qt::SolidPattern));
     painter.drawRect(-1,-1,858,68);
 
 }

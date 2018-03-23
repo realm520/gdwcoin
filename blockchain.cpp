@@ -750,6 +750,12 @@ void GDW::quit()
     }
 }
 
+void GDW::startBlockChain(QStringList &params)
+{
+    qDebug() << "gdw.exe " << params.join(" ");
+    this->proc->start("gdw.exe", params);
+}
+
 void GDW::updateJsonDataMap(QString id, QString data)
 {
     mutexForJsonData.lock();

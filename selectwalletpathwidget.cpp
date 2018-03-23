@@ -54,12 +54,12 @@ void SelectWalletPathWidget::on_selectPathBtn_clicked()
 void SelectWalletPathWidget::on_okBtn_clicked()
 {
     qDebug() << "wallet data path " << ui->pathLineEdit->text();
-#ifdef WIN32	
-    GDW::getInstance()->proc->start("hcash.exe", QStringList() << "--data-dir" << ui->pathLineEdit->text()
-                                       << "--rpcuser" << "a" << "--rpcpassword" << "b" << "--rpcport" << QString::number( RPC_PORT) << "--server"  << "--testnet");
+#ifdef WIN32
+    GDW::getInstance()->startBlockChain(QStringList() << "--data-dir" << ui->pathLineEdit->text()
+                                        << "--rpcuser" << "a" << "--rpcpassword" << "b" << "--rpcport" << QString::number(RPC_PORT) << "--server");
 #else
-    Hcash::getInstance()->proc->start("./hcash",QStringList() << "--data-dir" << ui->pathLineEdit->text()
-                                       << "--rpcuser" << "a" << "--rpcpassword" << "b" << "--rpcport" << QString::number( RPC_PORT) << "--server"  << "--testnet");
+    GDW::getInstance()->proc->start("./hcash",QStringList() << "--data-dir" << ui->pathLineEdit->text()
+                                       << "--rpcuser" << "a" << "--rpcpassword" << "b" << "--rpcport" << QString::number( RPC_PORT) << "--server");
 #endif
     if( GDW::getInstance()->proc->waitForStarted())
     {

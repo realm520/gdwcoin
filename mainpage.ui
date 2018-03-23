@@ -119,8 +119,9 @@ color: rgb(40, 40, 40);</string>
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:white;border:1px solid  rgb(105,67,155);border-radius:21px;
-background-color: rgb(105,67,155);</string>
+    <string notr="true">QToolButton{background-color:rgb(125,85,40);color:#ffffff;border:none;border-radius:16px;}
+QToolButton:hover{background-color:rgb(185,150,85);}
+QToolButton:disabled{background-color:#cecece;}</string>
    </property>
    <property name="text">
     <string>创建账户</string>

@@ -7,8 +7,8 @@
 #include <QPainter>
 #include <QDebug>
 
-#define FUNCTIONPAGE_BTN_SELECTED       "background-color: rgb(125,87,180);color: rgb(255, 255, 255);border:none;"
-#define FUNCTIONPAGE_BTN_UNSELECTED     "background-color: rgb(95,57,140);color: rgb(255, 255, 255);border:none;"
+#define FUNCTIONPAGE_BTN_SELECTED       "background-color: rgb(125,85,40);color: rgb(255, 255, 255);border:none;"   // #7d5528
+#define FUNCTIONPAGE_BTN_UNSELECTED     "background-color: rgb(185,150,85);color: rgb(255, 255, 255);border:none;"
 
 FunctionBar::FunctionBar(QWidget *parent) :
     QWidget(parent),
@@ -19,7 +19,7 @@ FunctionBar::FunctionBar(QWidget *parent) :
 
     setAutoFillBackground(true);
     QPalette palette;
-    palette.setColor(QPalette::Background, QColor(105,67,155));
+    palette.setColor(QPalette::Background, QColor(220,195,145));
     setPalette(palette);
 
     ui->multiSigBtn->hide();        // 多重签名 TODOTOMORROW

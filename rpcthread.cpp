@@ -23,10 +23,10 @@ void RpcThread::run()
     {     
         QTcpSocket socket;
         socket.connectToHost(QHostAddress("127.0.0.1"), GDW::getInstance()->currentPort);
-        if (!socket.waitForConnected()) {
-            qDebug() << "could not connect to server: " << socket.errorString();
-            return;
-        }
+//        if (!socket.waitForConnected()) {
+//            qDebug() << "could not connect to server: " << socket.errorString();
+//            return;
+//        }
 
         if( loginOrNot)
         {

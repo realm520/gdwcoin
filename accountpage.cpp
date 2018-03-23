@@ -74,8 +74,8 @@ AccountPage::AccountPage(QString name, QWidget *parent) :
     currentPageIndex = 1;
     ui->pageLineEdit->setText( QString::number(currentPageIndex));
 
-    ui->prePageBtn->setStyleSheet("QToolButton:!hover{border:0px;color:#999999;} QToolButton:hover{border:0px;color:#469cfc;}");
-    ui->nextPageBtn->setStyleSheet("QToolButton:!hover{border:0px;color:#999999;} QToolButton:hover{border:0px;color:#469cfc;}");
+    ui->prePageBtn->setStyleSheet("QToolButton:!hover{border:0px;color:#999999;} QToolButton:hover{border:0px;color:#7d5528;}");
+    ui->nextPageBtn->setStyleSheet("QToolButton:!hover{border:0px;color:#999999;} QToolButton:hover{border:0px;color:#7d5528;}");
 
 #ifdef WIN32
     ui->accountComboBox->setStyleSheet("QComboBox{border: 1px solid gray;border-radius: 3px;padding: 1px 2px 1px 8px;}"
@@ -260,7 +260,7 @@ void AccountPage::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     painter.setPen(QPen(QColor(228,228,228),Qt::SolidLine));
-    painter.setBrush(QBrush(QColor(247,246,242),Qt::SolidPattern));
+    painter.setBrush(QBrush(QColor(220,195,145),Qt::SolidPattern));
     painter.drawRect(-1,-1,858,68);
 }
 
