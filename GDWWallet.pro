@@ -8,7 +8,7 @@ QT       += core gui xml network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = HSRWallet
+TARGET = GDWWallet
 TEMPLATE = app
 
 win32{
@@ -20,7 +20,7 @@ win32{
 }
 
 macx{
-    ICON = hsr.icns
+    ICON = logo.icns
 QMAKE_MAC_SDK = macosx10.12
 }
 
