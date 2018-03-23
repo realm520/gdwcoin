@@ -270,7 +270,7 @@ QString GDW::getBalance(QString name)
         QString str = result.mid( pos, result.indexOf( "]", pos) - pos);
         str.remove("\"");
 
-        double amount = str.toDouble() / 100000000;
+        double amount = str.toDouble() / GDW::getInstance()->assetInfoMap.value(0).precision;
 
         return doubleTo5Decimals( amount) + " " + QString(ASSET_NAME);
     }
@@ -1108,7 +1108,7 @@ bool checkAddress(QString address)
 {
     if( address.size() == 33 || address.size() == 34)
     {
-        if( address.startsWith("H"))
+        if( address.startsWith("G"))
         {
             return true;
         }

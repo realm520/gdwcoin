@@ -1419,7 +1419,7 @@ void Frame::jsonDataUpdated(QString id)
             QString amount = result.mid(pos, result.indexOf(",", pos) - pos);
             amount.remove("\"");
 
-            GDW::getInstance()->transactionFee = amount.toULongLong();
+            GDW::getInstance()->transactionFee = amount.toFloat() / GDW::getInstance()->assetInfoMap.value(0).precision;
 
             if( currentPageNum == 3 && transferPage != NULL)
             {

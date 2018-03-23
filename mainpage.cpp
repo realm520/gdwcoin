@@ -204,7 +204,6 @@ void MainPage::updateAccountList()
         ui->loadingWidget->show();
     }
 
-
     int assetIndex = ui->assetComboBox->currentIndex();
     if( assetIndex <= 0)
     {
@@ -295,16 +294,11 @@ void MainPage::updateAccountList()
 
 void MainPage::on_addAccountBtn_clicked()
 {
-    
-
     ChooseAddAccountDialog* chooseAddAccountDialog = new ChooseAddAccountDialog(this);
     chooseAddAccountDialog->move( ui->addAccountBtn->mapToGlobal( QPoint(10,-79) ) );
     connect( chooseAddAccountDialog, SIGNAL(newAccount()), this, SLOT( addAccount()));
     connect( chooseAddAccountDialog, SIGNAL(importAccount()), this, SLOT( importAccount()));
     chooseAddAccountDialog->exec();
-
-
-	
 }
 
 void MainPage::on_accountTableWidget_cellClicked(int row, int column)
@@ -428,7 +422,7 @@ void MainPage::jsonDataUpdated(QString id)
         int pos = result.indexOf("\"pay_balance\":") + 14;
         QString payBal = result.mid( pos, result.indexOf("}", pos) - pos );
         payBal.remove("\"");
-        GDW::getInstance()->delegateSalaryMap.insert(id.mid(37), payBal.toInt() / 100000000.0);
+        GDW::getInstance()->delegateSalaryMap.insert(id.mid(37), payBal.toInt() / 10000.0);
         return;
     }
 
@@ -486,7 +480,11 @@ void MainPage::updateTotalBalance()
             AssetBalanceMap map = GDW::getInstance()->accountBalanceMap.value(key);
             totalBalance += map.value(assetIndex);
         }
-        ui->totalBalanceLabel->setText( "<body><font style=\"font-size:18px\" color=#ff0000>" + getBigNumberString(totalBalance,info.precision) + "</font><font style=\"font-size:12px\" color=#000000> " + info.symbol +"</font></body>" );
+        qDebug() << totalBalance << ", " << info.precision;
+        ui->totalBalanceLabel->setText("<body><font style=\"font-size:18px\" color=#ff0000>" +
+                                       getBigNumberString(totalBalance,info.precision) +
+                                       "</font><font style=\"font-size:12px\" color=#000000> " +
+                                       info.symbol +"</font></body>" );
         ui->totalBalanceLabel->adjustSize();
         ui->scanBtn->move(ui->totalBalanceLabel->x() + ui->totalBalanceLabel->width() + 10,ui->totalBalanceLabel->y() + 7);
         ui->scanLabel->move(ui->totalBalanceLabel->x() + ui->totalBalanceLabel->width() + 9,ui->totalBalanceLabel->y() + 5);

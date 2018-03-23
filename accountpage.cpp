@@ -406,7 +406,7 @@ void AccountPage::showNormalTransactions()
         }
 
         // 手续费
-        ui->accountTransactionsTableWidget->setItem(i,5,new QTableWidgetItem( getBigNumberString(transactionInfo.fee,100000000)));
+        ui->accountTransactionsTableWidget->setItem(i, 5, new QTableWidgetItem(getBigNumberString(transactionInfo.fee, assetInfo.precision)));
 
         // 备注
         ui->accountTransactionsTableWidget->setItem(i,6,new QTableWidgetItem( detail.memo));
@@ -616,24 +616,24 @@ void AccountPage::showContractTransactions()
             type = 1;
         }
 
-        ui->accountTransactionsTableWidget->setItem(i,3,new QTableWidgetItem( GDW::getInstance()->addressToName(opposite)));
+        ui->accountTransactionsTableWidget->setItem(i,3,new QTableWidgetItem(GDW::getInstance()->addressToName(opposite)));
 
         // 金额
         if( type == 0)
         {
-            ui->accountTransactionsTableWidget->setItem(i,4,new QTableWidgetItem( "-" + getBigNumberString(transaction.amount,info.precision) + " "
+            ui->accountTransactionsTableWidget->setItem(i,4,new QTableWidgetItem("-" + getBigNumberString(transaction.amount, info.precision) + " "
                                                                                   + info.symbol));
             ui->accountTransactionsTableWidget->item(i,4)->setTextColor(QColor(239,104,60));
         }
         else if( type == 1)
         {
-            ui->accountTransactionsTableWidget->setItem(i,4,new QTableWidgetItem( "+" + getBigNumberString(transaction.amount,info.precision) + " "
+            ui->accountTransactionsTableWidget->setItem(i,4,new QTableWidgetItem("+" + getBigNumberString(transaction.amount, info.precision) + " "
                                                                                   + info.symbol));
             ui->accountTransactionsTableWidget->item(i,4)->setTextColor(QColor(113,203,90));
         }
         else
         {
-            ui->accountTransactionsTableWidget->setItem(i,4,new QTableWidgetItem( getBigNumberString(transaction.amount,info.precision) + " "
+            ui->accountTransactionsTableWidget->setItem(i,4,new QTableWidgetItem(getBigNumberString(transaction.amount, info.precision) + " "
                                                                                   + info.symbol));
         }
 
@@ -641,11 +641,11 @@ void AccountPage::showContractTransactions()
         // 手续费
         if( type == 1)
         {
-            ui->accountTransactionsTableWidget->setItem(i,5,new QTableWidgetItem( QString::number(0)));
+            ui->accountTransactionsTableWidget->setItem(i,5,new QTableWidgetItem(QString::number(0)));
         }
         else
         {
-            ui->accountTransactionsTableWidget->setItem(i,5,new QTableWidgetItem( getBigNumberString(transaction.fee,100000000)));
+            ui->accountTransactionsTableWidget->setItem(i,5,new QTableWidgetItem(getBigNumberString(transaction.fee, info.precision)));
         }
 
 

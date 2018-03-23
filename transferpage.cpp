@@ -526,7 +526,8 @@ void TransferPage::getBalance()
 
 void TransferPage::updateTransactionFee()
 {
-    ui->feeLineEdit->setText( getBigNumberString(GDW::getInstance()->transactionFee,100000000));
+    ui->feeLineEdit->setText(getBigNumberString(GDW::getInstance()->transactionFee,
+                                                GDW::getInstance()->assetInfoMap.value(0).precision));
 }
 
 void TransferPage::jsonDataUpdated(QString id)

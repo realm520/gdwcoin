@@ -11,23 +11,19 @@
 #include "commondialog.h"
 
 
-#define SETDIALOG_GENERALBTN_SELECTED_STYLE     "QToolButton{background-color:rgb(105,67,155);color:white;border:1px solid rgb(105,67,155);border-top-left-radius: 3px;border-bottom-left-radius: 3px;}"
-#define SETDIALOG_GENERALBTN_UNSELECTED_STYLE   "QToolButton{background-color:white;color:rgb(105,67,155);border:1px solid rgb(105,67,155);border-top-left-radius: 3px;border-bottom-left-radius: 3px;}"
-#define SETDIALOG_SAVEBTN_SELECTED_STYLE        "QToolButton{background-color:rgb(105,67,155);color:white;border:1px solid rgb(105,67,155);border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"
-#define SETDIALOG_SAVEBTN_UNSELECTED_STYLE      "QToolButton{background-color:white;color:rgb(105,67,155);border:1px solid rgb(105,67,155);border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"
+#define SETDIALOG_GENERALBTN_SELECTED_STYLE     "QToolButton{background-color:rgb(125,85,40);color:white;border:1px solid rgb(125,85,40);border-top-left-radius: 3px;border-bottom-left-radius: 3px;}"
+#define SETDIALOG_GENERALBTN_UNSELECTED_STYLE   "QToolButton{background-color:white;color:rgb(125,85,40);border:1px solid rgb(125,85,40);border-top-left-radius: 3px;border-bottom-left-radius: 3px;}"
+#define SETDIALOG_SAVEBTN_SELECTED_STYLE        "QToolButton{background-color:rgb(125,85,40);color:white;border:1px solid rgb(125,85,40);border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"
+#define SETDIALOG_SAVEBTN_UNSELECTED_STYLE      "QToolButton{background-color:white;color:rgb(125,85,40);border:1px solid rgb(125,85,40);border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"
 
 
 SetDialog::SetDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SetDialog)
 {
-	
-
     ui->setupUi(this);
 
-//    Hcash::getInstance()->appendCurrentDialogVector(this);
     setParent(GDW::getInstance()->mainFrame);
-
     setAttribute(Qt::WA_TranslucentBackground, true);
     setWindowFlags(Qt::FramelessWindowHint);
 
@@ -77,9 +73,11 @@ SetDialog::SetDialog(QWidget *parent) :
     ui->feeLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
     ui->feeLineEdit->setTextMargins(8,0,0,0);
     ui->feeLineEdit->setAttribute(Qt::WA_InputMethodEnabled, false);
-    ui->feeLineEdit->setText( getBigNumberString(GDW::getInstance()->transactionFee,100000000));
+    qDebug() << "transactionFee: " << GDW::getInstance()->transactionFee;
+    ui->feeLineEdit->setText(getBigNumberString(GDW::getInstance()->transactionFee,
+                                                GDW::getInstance()->assetInfoMap.value(0).precision));
 
-    QRegExp rx("^([0])(?:\\.\\d{1,8})?$|(^\\t?$)");
+    QRegExp rx("^([0])(?:\\.\\d{0,4})?$|(^\\t?$)");
     QRegExpValidator *pReg = new QRegExpValidator(rx, this);
     ui->feeLineEdit->setValidator(pReg);
 
@@ -173,8 +171,6 @@ void SetDialog::on_closeBtn_clicked()
 
 void SetDialog::on_saveBtn_clicked()
 {
-	
-
     mutexForConfigFile.lock();
     GDW::getInstance()->lockMinutes = ui->lockTimeSpinBox->value();
     GDW::getInstance()->configFile->setValue("/settings/lockMinutes", GDW::getInstance()->lockMinutes);
@@ -212,7 +208,13 @@ void SetDialog::on_saveBtn_clicked()
 
     mutexForConfigFile.unlock();
 
-    GDW::getInstance()->postRPC( toJsonFormat( "id_wallet_set_transaction_fee", "wallet_set_transaction_fee", QStringList() << ui->feeLineEdit->text() ));
+    qDebug() << "fee: " << ui->feeLineEdit->text().toFloat() * GDW::getInstance()->assetInfoMap.value(0).precision;
+    GDW::getInstance()->postRPC(
+                toJsonFormat(
+                    "id_wallet_set_transaction_fee",
+                    "wallet_set_transaction_fee",
+                    QStringList() << QString::number(
+                        ui->feeLineEdit->text().toFloat() * GDW::getInstance()->assetInfoMap.value(0).precision)));
 
     emit settingSaved();
 
