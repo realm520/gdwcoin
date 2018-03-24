@@ -1181,18 +1181,11 @@ void Frame::jsonDataUpdated(QString id)
         return;
     }
 
-    if( id.startsWith( "id_call_contract_offline_state+") )
+    if( id.startsWith( "id_contract_call_offline_state+") )
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
-
-
-        if( result.startsWith( "\"error\":"))
-        {
-        }
-        else if( result == "\"result\":\"NOT_INITED\"")
-        {
-        }
-        else
+        qDebug() << result;
+        if( !result.startsWith( "\"error\":") && result != "\"result\":\"NOT_INITED\"")
         {
             QString contractAddress = id.mid(31);
             GDW::getInstance()->ERC20TokenInfoMap[contractAddress].contractAddress = contractAddress;

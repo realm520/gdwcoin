@@ -756,19 +756,7 @@ void MainPage::on_scanBtn_clicked()
 
 void MainPage::getAssets()
 {
-
     assetUpdating = true;
-
-//    int index = ui->assetComboBox->currentIndex();
-//    ui->assetComboBox->clear();
-//    foreach (int key, Hcash::getInstance()->assetInfoMap.keys())
-//    {
-//        ui->assetComboBox->addItem( Hcash::getInstance()->assetInfoMap.value(key).symbol);
-//    }
-
-//    if( index < 0 )   index = 0;
-//    ui->assetComboBox->setCurrentIndex(index);
-
     ui->assetComboBox->clear();
     ui->assetComboBox->addItem(ASSET_NAME);
     ui->assetComboBox->addItem("GDC");

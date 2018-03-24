@@ -30,17 +30,12 @@ TransferConfirmDialog::TransferConfirmDialog(QString address, QString amount, QS
 
     connect( GDW::getInstance(), SIGNAL(jsonDataUpdated(QString)), this, SLOT(jsonDataUpdated(QString)));
 
-
-
     ui->addressLabel->setText( address);
     ui->amountLabel->setText( "<body><B>" + amount + "</B> " + assetSymbol + "</body>");
     ui->feeLabel->setText( "<body><font color=#409AFF>" + fee + "</font> " + ASSET_NAME +"</body>");
     ui->remarkLabel->setText( remark);
-
-
     ui->okBtn->setText(tr("Ok"));
     ui->cancelBtn->setText(tr("Cancel"));
-
     ui->pwdLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
     ui->pwdLineEdit->setPlaceholderText( tr("Enter login password"));
     ui->pwdLineEdit->setTextMargins(8,0,0,0);
@@ -56,15 +51,8 @@ TransferConfirmDialog::~TransferConfirmDialog()
 bool TransferConfirmDialog::pop()
 {
     ui->pwdLineEdit->grabKeyboard();
-
-    //    QEventLoop loop;
-    //    show();
-    //    connect(this,SIGNAL(accepted()),&loop,SLOT(quit()));
-    //    loop.exec();  //进入事件 循环处理，阻塞
-
     move(0,0);
     exec();
-
     return yesOrNo;
 }
 
@@ -87,7 +75,6 @@ void TransferConfirmDialog::jsonDataUpdated(QString id)
         {
             int pos = result.indexOf("\"message\":\"") + 11;
             QString errorMessage = result.mid(pos, result.indexOf("\"", pos) - pos);
-
             if( errorMessage == "password too short")
             {
                 ui->tipLabel2->setText("<body><font style=\"font-size:12px\" color=#FF8880>" + tr("At least 8 letters!") + "</font></body>" );
@@ -97,7 +84,6 @@ void TransferConfirmDialog::jsonDataUpdated(QString id)
                 ui->tipLabel2->setText("<body><font style=\"font-size:12px\" color=#FF8880>" + errorMessage + "</font></body>" );
             }
         }
-
         return;
     }
 }
@@ -110,9 +96,11 @@ void TransferConfirmDialog::on_okBtn_clicked()
         return;
     }
 
-    GDW::getInstance()->postRPC( toJsonFormat( "id_wallet_check_passphrase", "wallet_check_passphrase", QStringList() << ui->pwdLineEdit->text()
-                                               ));
-
+    GDW::getInstance()->postRPC( toJsonFormat(
+                                     "id_wallet_check_passphrase",
+                                     "wallet_check_passphrase",
+                                     QStringList() << QString::number(ui->pwdLineEdit->text().toFloat() * GDW::getInstance()->assetInfoMap.value(0).precision)
+                                     ));
 }
 
 void TransferConfirmDialog::on_cancelBtn_clicked()

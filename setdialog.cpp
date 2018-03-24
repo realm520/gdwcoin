@@ -76,7 +76,7 @@ SetDialog::SetDialog(QWidget *parent) :
     qDebug() << "transactionFee: " << GDW::getInstance()->transactionFee;
     ui->feeLineEdit->setText(QString::number(float_t(GDW::getInstance()->transactionFee) / GDW::getInstance()->assetInfoMap.value(0).precision));
 
-    QRegExp rx("^([0])(?:\\.\\d{0,4})?$|(^\\t?$)");
+    QRegExp rx("^([1-9]\\d*)(?:\\.\\d{0,4})?$|(^\\t?$)");
     QRegExpValidator *pReg = new QRegExpValidator(rx, this);
     ui->feeLineEdit->setValidator(pReg);
 
@@ -127,9 +127,7 @@ SetDialog::SetDialog(QWidget *parent) :
 SetDialog::~SetDialog()
 {
     qDebug() << "setdialog delete";
-//    Hcash::getInstance()->currentDialog = NULL;
     delete ui;
-//    Hcash::getInstance()->removeCurrentDialogVector(this);
 }
 
 void SetDialog::pop()
@@ -206,7 +204,7 @@ void SetDialog::on_saveBtn_clicked()
                 toJsonFormat(
                     "id_wallet_set_transaction_fee",
                     "wallet_set_transaction_fee",
-                    QStringList() << QString::number(ui->feeLineEdit->text().toFloat())));
+                    QStringList() << ui->feeLineEdit->text()));
 
     emit settingSaved();
 
@@ -272,7 +270,6 @@ void SetDialog::on_newPwdLineEdit_textChanged(const QString &arg1)
 
     if( ui->newPwdLineEdit->text().length() < 8)
     {
-//        ui->tipLabel->setText(QString::fromLocal8Bit("密码最少为8位"));
         ui->tipLabel->setText(tr("at least 8 letters"));
         ui->confirmBtn->setEnabled(false);
 
@@ -280,7 +277,6 @@ void SetDialog::on_newPwdLineEdit_textChanged(const QString &arg1)
     }
     else if( ui->newPwdLineEdit->text() == ui->oldPwdLineEdit->text())
     {
-//        ui->tipLabel->setText(QString::fromLocal8Bit("不能和旧密码相同"));
         ui->tipLabel->setText(tr("same password"));
         ui->confirmBtn->setEnabled(false);
 
@@ -307,7 +303,6 @@ void SetDialog::on_newPwdLineEdit_textChanged(const QString &arg1)
     }
     else
     {
-//        ui->tipLabel2->setText(QString::fromLocal8Bit("两次密码不一致"));
         ui->tipLabel2->setText(tr("not consistent"));
         ui->confirmBtn->setEnabled(false);
 
@@ -348,10 +343,7 @@ void SetDialog::on_confirmPwdLineEdit_textChanged(const QString &arg1)
 
         if( ui->newPwdLineEdit->text() == ui->oldPwdLineEdit->text())
         {
-            //ui->tipLabel2->setText(QString::fromLocal8Bit("不能和旧密码相同"));
-            //        ui->tipLabel2->setText(tr("same password"));
             ui->confirmBtn->setEnabled(false);
-
         }
         else
         {
@@ -360,10 +352,8 @@ void SetDialog::on_confirmPwdLineEdit_textChanged(const QString &arg1)
     }
     else
     {
-//        ui->tipLabel2->setText(QString::fromLocal8Bit("两次密码不一致"));
         ui->tipLabel2->setText(tr("not consistent"));
         ui->confirmBtn->setEnabled(false);
-
     }
 }
 

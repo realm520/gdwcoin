@@ -691,10 +691,9 @@ void GDW::updateAllContractBalance()
 void GDW::updateERC20TokenInfo(QString contractAddress)
 {
     if( addressMap.keys().size() < 1) return;
-    postRPC( toJsonFormat( "id_call_contract_offline_state+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
+    postRPC( toJsonFormat( "id_contract_call_offline_state+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
                            << addressMap.keys().at(0) << "state" << ""
                            ));
-
 }
 
 void GDW::updateAllToken()

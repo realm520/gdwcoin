@@ -29,7 +29,6 @@ AddTokenDialog::AddTokenDialog(QWidget *parent) :
     ui->contractAddressLineEdit->setFocus();
 
     connect( GDW::getInstance(), SIGNAL(jsonDataUpdated(QString)), this, SLOT(jsonDataUpdated(QString)));
-
 }
 
 AddTokenDialog::~AddTokenDialog()
@@ -48,16 +47,15 @@ void AddTokenDialog::on_okBtn_clicked()
     if( GDW::getInstance()->addressMap.keys().size() < 1) return;
     QString contractAddress = ui->contractAddressLineEdit->text().simplified();
     if(contractAddress.isEmpty())   return;
-    GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_state_addtokendialog+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
+    GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_state_addtokendialog+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
                                                << GDW::getInstance()->addressMap.keys().at(0) << "state" << ""
                                                ));
-
+    qDebug() << "contract_call_offline " + contractAddress + " " + GDW::getInstance()->addressMap.keys().at(0) + " state \"\"";
 }
 
 void AddTokenDialog::on_cancelBtn_clicked()
 {
     close();
-
 }
 
 void AddTokenDialog::jsonDataUpdated(QString id)
@@ -65,19 +63,17 @@ void AddTokenDialog::jsonDataUpdated(QString id)
     if( id.startsWith( "id_call_contract_offline_state_addtokendialog+") )
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
-
+        qDebug() << result;
 
         if( result.startsWith( "\"error\":"))
         {
             CommonDialog commonDialog(CommonDialog::OkOnly);
-//            commonDialog.setText(QString::fromLocal8Bit("错误的合约地址!"));
             commonDialog.setText(tr("Wrong contract address!"));
             commonDialog.pop();
         }
         else if( result == "\"result\":\"NOT_INITED\"")
         {
             CommonDialog commonDialog(CommonDialog::OkOnly);
-//            commonDialog.setText(QString::fromLocal8Bit("合约未初始化!"));
             commonDialog.setText(tr("Contract uninitialized!"));
             commonDialog.pop();
         }

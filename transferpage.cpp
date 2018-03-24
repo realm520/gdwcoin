@@ -144,13 +144,8 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
 
 TransferPage::~TransferPage()
 {
-	
     delete ui;
-
-	
 }
-
-
 
 void TransferPage::on_accountComboBox_currentIndexChanged(const QString &arg1)
 {
@@ -185,14 +180,13 @@ void TransferPage::on_sendBtn_clicked()
         return;
     }
 
-    if( ui->feeLineEdit->text().toDouble() <= 0)
+    if( ui->feeLineEdit->text().toDouble() <= 1)
     {
         CommonDialog tipDialog(CommonDialog::OkOnly);
-        tipDialog.setText( tr("The fee can not be 0"));
+        tipDialog.setText( tr("The fee can not be 1"));
         tipDialog.pop();
         return;
     }
-
 
     QString remark = ui->messageLineEdit->text();
     if( remark.size() == 0)    // 转地址如果没有备注 会自动添加 TO ...   所以添加空格
@@ -483,7 +477,7 @@ void TransferPage::getBalance()
 
 void TransferPage::updateTransactionFee()
 {
-    ui->feeLineEdit->setText(QString::number(GDW::getInstance()->transactionFee));
+    ui->feeLineEdit->setText(QString::number(float_t(GDW::getInstance()->transactionFee) / GDW::getInstance()->assetInfoMap.value(0).precision));
 }
 
 void TransferPage::jsonDataUpdated(QString id)
@@ -732,21 +726,11 @@ void TransferPage::on_sendtoLineEdit_textEdited(const QString &arg1)
         ui->sendtoLineEdit->setText( ui->sendtoLineEdit->text().simplified().remove(" "));
     }
 
-//    ui->sendtoLineEdit->setText( ui->sendtoLineEdit->text().remove("\n"));
     if( ui->sendtoLineEdit->text().isEmpty() || checkAddress(ui->sendtoLineEdit->text()))
     {
         ui->tipLabel4->hide();
         return;
     }
-
-//    if( ui->sendtoLineEdit->text().toInt() == 0)   // 不能是纯数字
-//    {
-//        Hcash::getInstance()->postRPC( toJsonFormat( "id_blockchain_get_account_" + ui->sendtoLineEdit->text(), "blockchain_get_account", QStringList() << ui->sendtoLineEdit->text() ));
-//    }
-//    else
-//    {
-        ui->tipLabel4->setText(tr("Invalid add."));
-        ui->tipLabel4->show();
-//    }
-
+    ui->tipLabel4->setText(tr("Invalid add."));
+    ui->tipLabel4->show();
 }
