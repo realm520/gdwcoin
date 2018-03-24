@@ -49,24 +49,6 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
                                          "QToolButton:hover{background-image:url(:/pic/pic2/contactBtn2_hover_En.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
     }
 
-
-//    if( name.isEmpty())
-//    {
-//        Hcash::getInstance()->configFile->beginGroup("/accountInfo");
-//        accountName = Hcash::getInstance()->configFile->value( Hcash::getInstance()->configFile->childKeys().at(0)).toString();
-//        Hcash::getInstance()->configFile->endGroup();
-//    }
-
-//    Hcash::getInstance()->configFile->beginGroup("/accountInfo");
-//    QStringList keys = Hcash::getInstance()->configFile->childKeys();
-
-//    for( int i = 0; i < keys.size(); i++)
-//    {
-//        ui->accountComboBox->addItem( Hcash::getInstance()->configFile->value( keys.at(i)).toString());
-//    }
-//    Hcash::getInstance()->configFile->endGroup();
-//    ui->accountComboBox->setCurrentText(name);
-
     if( accountName.isEmpty())  // 如果是点击账单跳转
     {
         if( GDW::getInstance()->addressMap.size() > 0)
@@ -172,21 +154,7 @@ TransferPage::~TransferPage()
 
 void TransferPage::on_accountComboBox_currentIndexChanged(const QString &arg1)
 {
-	
-
     if( !inited)  return;
-
-
-//    QString balance = Hcash::getInstance()->balanceMapValue( accountName);
-//    balance = balance.mid(0,balance.indexOf(' '));
-//    balance.remove(',');
-//    ui->balanceLabel->setText( "<body><font style=\"font-size:26px\" color=#000000>" + balance + "</font><font style=\"font-size:12px\" color=#000000> HSR</font></body>" );
-//    ui->balanceLabel->adjustSize();
-//    ui->balanceLabel->move( 773 - ui->balanceLabel->width(),25);
-//    ui->balanceLabel->setGeometry( ui->balanceLabel->x(), ui->balanceLabel->y(), ui->balanceLabel->width(), 30);
-//    ui->balanceLabel2->move( 700 - ui->balanceLabel->width(),33);
-//    ui->balanceLabel2->setGeometry( ui->balanceLabel2->x(), ui->balanceLabel2->y(), ui->balanceLabel2->width(), 24);
-
 
     getBalance();
 
@@ -196,19 +164,14 @@ void TransferPage::on_accountComboBox_currentIndexChanged(const QString &arg1)
     ui->addressLabel->setText(showName);
 
     on_amountLineEdit_textChanged(ui->amountLineEdit->text());
-
-	
 }
 
 
 void TransferPage::on_sendBtn_clicked()
 {
-	    
-
     if(ui->amountLineEdit->text().size() == 0 || ui->sendtoLineEdit->text().size() == 0)
     {      
         CommonDialog tipDialog(CommonDialog::OkOnly);
-//        tipDialog.setText( QString::fromLocal8Bit("请输入转账金额和地址"));
         tipDialog.setText( tr("Please enter the amount and address."));
         tipDialog.pop();
         return;
@@ -217,7 +180,6 @@ void TransferPage::on_sendBtn_clicked()
     if( ui->amountLineEdit->text().toDouble()  <= 0)
     {    
         CommonDialog tipDialog(CommonDialog::OkOnly);
-//        tipDialog.setText( QString::fromLocal8Bit("金额不能为0"));
         tipDialog.setText( tr("The amount can not be 0"));
         tipDialog.pop();
         return;
@@ -233,7 +195,6 @@ void TransferPage::on_sendBtn_clicked()
 
 
     QString remark = ui->messageLineEdit->text();
-//    remark.remove(' ');
     if( remark.size() == 0)    // 转地址如果没有备注 会自动添加 TO ...   所以添加空格
     {
         remark = " ";
@@ -255,10 +216,6 @@ void TransferPage::on_sendBtn_clicked()
     bool yOrN = transferConfirmDialog.pop();
     if( yOrN)
     {
-//        QString str = "wallet_set_transaction_fee " + ui->feeLineEdit->text() + '\n';
-//        Hcash::getInstance()->write(str);
-//        QString result = Hcash::getInstance()->read();
-
         if( !ui->sendtoLineEdit->text().isEmpty())
         {
             int assetIndex = ui->assetComboBox->currentIndex();
@@ -526,8 +483,7 @@ void TransferPage::getBalance()
 
 void TransferPage::updateTransactionFee()
 {
-    ui->feeLineEdit->setText(getBigNumberString(GDW::getInstance()->transactionFee,
-                                                GDW::getInstance()->assetInfoMap.value(0).precision));
+    ui->feeLineEdit->setText(QString::number(GDW::getInstance()->transactionFee));
 }
 
 void TransferPage::jsonDataUpdated(QString id)

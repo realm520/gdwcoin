@@ -88,8 +88,8 @@ void ContactDialog::on_contactsTableWidget_cellEntered(int row, int column)
     ui->contactsTableWidget->item(previousColorRow,1)->setTextColor(QColor(0,0,0));
     ui->contactsTableWidget->item(previousColorRow,1)->setBackgroundColor(QColor(255,255,255));
 
-    ui->contactsTableWidget->item(row,0)->setBackgroundColor(QColor(125,87,180));
+    ui->contactsTableWidget->item(row,0)->setBackgroundColor(QColor(125,85,40));
     ui->contactsTableWidget->item(row,1)->setTextColor(QColor(255,255,255));
-    ui->contactsTableWidget->item(row,1)->setBackgroundColor(QColor(125,87,180));
+    ui->contactsTableWidget->item(row,1)->setBackgroundColor(QColor(125,85,40));
     previousColorRow = row;
 }

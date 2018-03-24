@@ -24,9 +24,6 @@ TitleBar::TitleBar(QWidget *parent) :
     palette.setBrush(QPalette::Background, QBrush(QPixmap(":/pic/cplpic/titleBg.png")));
     setPalette(palette);
 
-//    ui->transferBtn->setStyleSheet("QToolButton{background-image:url(pic2/transfer.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
-//    ui->newsBtn2->setStyleSheet( "QToolButton{background-image:url(pic2/newsNum.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;color:white;}");
-//    ui->newsBtn->setStyleSheet("QToolButton{background-image:url(pic2/news.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
     ui->newsBtn->hide();
     ui->newsBtn2->hide();
 
@@ -34,17 +31,10 @@ TitleBar::TitleBar(QWidget *parent) :
                               "QToolButton:hover{background-image:url(:/pic/pic2/minimize_hover.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
     ui->closeBtn->setStyleSheet("QToolButton{background-image:url(:/pic/pic2/close2.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}"
                                 "QToolButton:hover{background-image:url(:/pic/pic2/close_hover.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
-
     ui->menuBtn->setStyleSheet("QToolButton{background-image:url(:/pic/pic2/set.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
-
     ui->lockBtn->setStyleSheet("QToolButton{background-image:url(:/pic/pic2/lockBtn.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
 
-//    ui->divLineLabel->setPixmap(QPixmap("pic2/divLine.png"));
-//    ui->divLineLabel->setScaledContents(true);
-
-
     connect( GDW::getInstance(), SIGNAL(jsonDataUpdated(QString)), this, SLOT(jsonDataUpdated(QString)));
-
     timer = new QTimer(this);
     connect( timer, SIGNAL(timeout()), this, SLOT(onTimeOut()));
     timer->setInterval(10000);

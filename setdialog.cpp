@@ -74,8 +74,7 @@ SetDialog::SetDialog(QWidget *parent) :
     ui->feeLineEdit->setTextMargins(8,0,0,0);
     ui->feeLineEdit->setAttribute(Qt::WA_InputMethodEnabled, false);
     qDebug() << "transactionFee: " << GDW::getInstance()->transactionFee;
-    ui->feeLineEdit->setText(getBigNumberString(GDW::getInstance()->transactionFee,
-                                                GDW::getInstance()->assetInfoMap.value(0).precision));
+    ui->feeLineEdit->setText(QString::number(float_t(GDW::getInstance()->transactionFee) / GDW::getInstance()->assetInfoMap.value(0).precision));
 
     QRegExp rx("^([0])(?:\\.\\d{0,4})?$|(^\\t?$)");
     QRegExpValidator *pReg = new QRegExpValidator(rx, this);
@@ -135,11 +134,6 @@ SetDialog::~SetDialog()
 
 void SetDialog::pop()
 {
-//    QEventLoop loop;
-//    show();
-//    connect(this,SIGNAL(accepted()),&loop,SLOT(quit()));
-//    loop.exec();  //进入事件 循环处理，阻塞
-
     move(0,0);
     exec();
 }
@@ -166,7 +160,6 @@ bool SetDialog::eventFilter(QObject *watched, QEvent *e)
 void SetDialog::on_closeBtn_clicked()
 {
     close();
-//    emit accepted();
 }
 
 void SetDialog::on_saveBtn_clicked()
@@ -208,50 +201,16 @@ void SetDialog::on_saveBtn_clicked()
 
     mutexForConfigFile.unlock();
 
-    qDebug() << "fee: " << ui->feeLineEdit->text().toFloat() * GDW::getInstance()->assetInfoMap.value(0).precision;
+    qDebug() << "fee: " << QString::number(ui->feeLineEdit->text().toFloat() * GDW::getInstance()->assetInfoMap.value(0).precision);
     GDW::getInstance()->postRPC(
                 toJsonFormat(
                     "id_wallet_set_transaction_fee",
                     "wallet_set_transaction_fee",
-                    QStringList() << QString::number(
-                        ui->feeLineEdit->text().toFloat() * GDW::getInstance()->assetInfoMap.value(0).precision)));
+                    QStringList() << QString::number(ui->feeLineEdit->text().toFloat())));
 
     emit settingSaved();
 
-//    close();
-//    emit accepted();
-
-	
 }
-
-
-//void SetDialog::mousePressEvent(QMouseEvent *event)
-//{
-//    if(event->button() == Qt::LeftButton)
-//     {
-//          mouse_press = true;
-//          //鼠标相对于窗体的位置（或者使用event->globalPos() - this->pos()）
-//          move_point = event->pos();;
-//     }
-//}
-
-//void SetDialog::mouseMoveEvent(QMouseEvent *event)
-//{
-//    //若鼠标左键被按下
-//    if(mouse_press)
-//    {
-//        //鼠标相对于屏幕的位置
-//        QPoint move_pos = event->globalPos();
-
-//        //移动主窗体位置
-//        this->move(move_pos - move_point);
-//    }
-//}
-
-//void SetDialog::mouseReleaseEvent(QMouseEvent *)
-//{
-//    mouse_press = false;
-//}
 
 void SetDialog::on_nolockCheckBox_clicked()
 {
@@ -466,7 +425,6 @@ void SetDialog::jsonDataUpdated(QString id)
         if( result.startsWith("\"result\":"))
         {
             GDW::getInstance()->postRPC( toJsonFormat( "id_wallet_get_transaction_fee", "wallet_get_transaction_fee", QStringList() << "" ));
-
             close();
         }
         else
@@ -477,7 +435,6 @@ void SetDialog::jsonDataUpdated(QString id)
             if( errorMessage == "invalid fee")
             {
                 CommonDialog commonDialog(CommonDialog::OkOnly);
-//                commonDialog.setText( QString::fromLocal8Bit("手续费不能为0!"));
                 commonDialog.setText( tr("The fee should not be 0!"));
                 commonDialog.pop();
             }
@@ -492,15 +449,6 @@ void SetDialog::jsonDataUpdated(QString id)
         return;
     }
 }
-
-
-//void SetDialog::setVisible(bool visiable)
-//{
-//    // 这样调用的是qwidget的setvisible 而不是qdialog的setvisible
-//    // 即使调用hide 也不会结束exec(delete)
-////    qDebug() << "setvisible " << visiable;
-//    QWidget::setVisible(visiable);
-//}
 
 void SetDialog::on_languageComboBox_currentIndexChanged(const QString &arg1)
 {

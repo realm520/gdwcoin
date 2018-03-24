@@ -1418,8 +1418,8 @@ void Frame::jsonDataUpdated(QString id)
             int pos = result.indexOf("\"amount\":") + 9;
             QString amount = result.mid(pos, result.indexOf(",", pos) - pos);
             amount.remove("\"");
-
-            GDW::getInstance()->transactionFee = amount.toFloat() / GDW::getInstance()->assetInfoMap.value(0).precision;
+            qDebug() << "wallet_get_transaction_fee: " << amount;
+            GDW::getInstance()->transactionFee = amount.toLongLong();
 
             if( currentPageNum == 3 && transferPage != NULL)
             {
@@ -1498,15 +1498,7 @@ void Frame::init()
 
     GDW::getInstance()->postRPC(  toJsonFormat( "id_wallet_set_transaction_scanning", "wallet_set_transaction_scanning", QStringList() << "true" ) );
 
-//    UBChain::getInstance()->postRPC(  toJsonFormat( "id_delegate_set_network_min_connection_count", "delegate_set_network_min_connection_count", QStringList() << "0" ) );
-
-//    UBChain::getInstance()->postRPC(  toJsonFormat( "id_wallet_delegate_set_block_production", "wallet_delegate_set_block_production", QStringList() << "ALL" << "true" ) );
-
     GDW::getInstance()->postRPC( toJsonFormat( "id_blockchain_list_assets", "blockchain_list_assets", QStringList() << ""));
-
-//    Hcash::getInstance()->postRPC( toJsonFormat( "id_delegate_set_transaction_min_fee", "delegate_set_transaction_min_fee", QStringList() << "10"));
-
-//    Hcash::getInstance()->postRPC( toJsonFormat( "id_set_generate", "set_generate", QStringList() << "true" << "1"));
 
     GDW::getInstance()->postRPC( toJsonFormat( "id_wallet_get_transaction_fee", "wallet_get_transaction_fee", QStringList() << "" ));
 
@@ -1520,19 +1512,11 @@ void Frame::scan()
 
 void Frame::newAccount(QString name)
 {
-//    Hcash::getInstance()->postRPC( toJsonFormat( "id_wallet_get_account_public_address-" + name, "wallet_get_account_public_address", QStringList() << name));
-
     getAccountInfo();
 }
 
 void Frame::updateAssets()
 {
-//    if( mainPage != NULL)
-//    {
-//        mainPage->getAssets();
-//        return;
-//    }
-
     if( assetPage != NULL)
     {
         assetPage->updateAssetInfo();
