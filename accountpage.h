@@ -21,9 +21,9 @@ public:
 
     void updateTransactionsList();
 
-    void getAssets();
-
     void updateBalance();
+
+    void updateAssetList();
 
 public slots:
     void refresh();

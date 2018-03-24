@@ -759,9 +759,10 @@ void MainPage::getAssets()
     assetUpdating = true;
     ui->assetComboBox->clear();
     ui->assetComboBox->addItem(ASSET_NAME);
-    ui->assetComboBox->addItem("GDC");
+    qDebug() << GDW::getInstance()->ERC20TokenInfoMap.size();
     foreach (QString key, GDW::getInstance()->ERC20TokenInfoMap.keys())
     {
+        qDebug() << key;
         ui->assetComboBox->addItem( GDW::getInstance()->ERC20TokenInfoMap.value(key).symbol);
     }
     assetUpdating = false;

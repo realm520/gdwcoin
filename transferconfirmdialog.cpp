@@ -92,15 +92,15 @@ void TransferConfirmDialog::on_okBtn_clicked()
 {
     if( ui->pwdLineEdit->text().isEmpty())
     {
-        ui->tipLabel2->setText("<body><font style=\"font-size:12px\" color=#FF8880>" + tr("Please enter the password!") + "</font></body>" );
+        ui->tipLabel2->setText("<body><font style=\"font-size:12px\" color=#FF8880>" +
+                               tr("Please enter the password!") + "</font></body>" );
         return;
     }
 
-    GDW::getInstance()->postRPC( toJsonFormat(
+    GDW::getInstance()->postRPC(toJsonFormat(
                                      "id_wallet_check_passphrase",
                                      "wallet_check_passphrase",
-                                     QStringList() << QString::number(ui->pwdLineEdit->text().toFloat() * GDW::getInstance()->assetInfoMap.value(0).precision)
-                                     ));
+                                     QStringList() << ui->pwdLineEdit->text()));
 }
 
 void TransferConfirmDialog::on_cancelBtn_clicked()

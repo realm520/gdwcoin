@@ -1184,29 +1184,28 @@ void Frame::jsonDataUpdated(QString id)
     if( id.startsWith( "id_contract_call_offline_state+") )
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
-        qDebug() << result;
         if( !result.startsWith( "\"error\":") && result != "\"result\":\"NOT_INITED\"")
         {
             QString contractAddress = id.mid(31);
             GDW::getInstance()->ERC20TokenInfoMap[contractAddress].contractAddress = contractAddress;
             GDW::getInstance()->configFile->setValue("/AddedContractToken/" + contractAddress,1);
-            GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_+tokenName+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
+            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_+tokenName+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
                                                        << GDW::getInstance()->addressMap.keys().at(0) << "tokenName" << ""
                                                        ));
 
-            GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_+precision+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
+            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_+precision+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
                                                        << GDW::getInstance()->addressMap.keys().at(0) << "precision" << ""
                                                        ));
 
-            GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_+admin+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
+            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_+admin+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
                                                        << GDW::getInstance()->addressMap.keys().at(0) << "admin" << ""
                                                        ));
 
-            GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_+tokenSymbol+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
+            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_+tokenSymbol+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
                                                        << GDW::getInstance()->addressMap.keys().at(0) << "tokenSymbol" << ""
                                                        ));
 
-            GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_+totalSupply+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
+            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_+totalSupply+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
                                                        << GDW::getInstance()->addressMap.keys().at(0) << "totalSupply" << ""
                                                        ));
         }
@@ -1214,7 +1213,7 @@ void Frame::jsonDataUpdated(QString id)
         return;
     }
 
-    if( id.startsWith( "id_call_contract_offline_+") )
+    if( id.startsWith( "id_contract_call_offline_+") )
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
 
@@ -1254,17 +1253,16 @@ void Frame::jsonDataUpdated(QString id)
                 totalSupply.remove('\"');
                 GDW::getInstance()->ERC20TokenInfoMap[contractAddress].totalSupply = totalSupply.toDouble();
             }
-
         }
 
         return;
     }
 
-    if( id.startsWith( "id_call_contract_offline_balanceOf+") )
+    if( id.startsWith( "id_contract_call_offline_balanceOf+") )
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
 
-        int pos = QString("id_call_contract_offline_balanceOf+").size();
+        int pos = QString("id_contract_call_offline_balanceOf+").size();
         QString contractAddress = id.mid( pos, id.indexOf("+" , pos) - pos);
         QString accountAddress = id.mid(id.indexOf("+" , pos) + 1);
 

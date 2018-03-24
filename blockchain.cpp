@@ -670,7 +670,7 @@ void GDW::scanLater()
 void GDW::updateAccountContractBalance(QString accountAddress, QString contractAddress)
 {
     if( addressMap.keys().size() < 1) return;
-    postRPC( toJsonFormat( "id_call_contract_offline_balanceOf+" + contractAddress + "+" + accountAddress, "call_contract_offline",
+    postRPC( toJsonFormat( "id_contract_call_offline_balanceOf+" + contractAddress + "+" + accountAddress, "contract_call_offline",
                            QStringList() << contractAddress << addressMap.keys().at(0) << "balanceOf" << accountAddress
                            ));
 }
@@ -714,12 +714,12 @@ void GDW::collectContractTransactions(QString contractAddress)
         int fromBlockHeight = ERC20TokenInfoMap.value(contractAddress).collectedBlockHeight + 1;
         int toBlockHeight = currentBlockHeight;
 
+        qDebug() << contractAddress << ", " << fromBlockHeight << ", " << toBlockHeight;
         if( fromBlockHeight > toBlockHeight)    return;
         postRPC( toJsonFormat( "id_blockchain_list_contract_transaction_history+" + contractAddress + "+" + QString::number(toBlockHeight),
                                "blockchain_list_contract_transaction_history",
                                QStringList() << QString::number(fromBlockHeight) << QString::number(toBlockHeight)
                                << contractAddress << "14"));
-
     }
 }
 

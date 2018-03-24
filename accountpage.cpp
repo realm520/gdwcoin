@@ -100,7 +100,6 @@ AccountPage::AccountPage(QString name, QWidget *parent) :
 
     ui->accountTransactionsTableWidget->setSelectionMode(QAbstractItemView::NoSelection);
     ui->accountTransactionsTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-//    ui->accountTransactionsTableWidget->setFocusPolicy(Qt::NoFocus);
     ui->accountTransactionsTableWidget->setColumnWidth(0,100);
     ui->accountTransactionsTableWidget->setColumnWidth(1,100);
     ui->accountTransactionsTableWidget->setColumnWidth(2,130);
@@ -112,10 +111,9 @@ AccountPage::AccountPage(QString name, QWidget *parent) :
     ui->accountTransactionsTableWidget->setFrameShape(QFrame::NoFrame);
     ui->accountTransactionsTableWidget->setMouseTracking(true);
     ui->accountTransactionsTableWidget->horizontalHeader()->setVisible(true);
-
     ui->initLabel->hide();
 
-    getAssets();
+    updateAssetList();
 
     if( !GDW::getInstance()->currentTokenAddress.isEmpty())
     {
@@ -126,7 +124,6 @@ AccountPage::AccountPage(QString name, QWidget *parent) :
     updateTransactionsList();
 
     inited = true;
-
 
     DLOG_QT_WALLET_FUNCTION_END;
 }
@@ -164,12 +161,6 @@ void AccountPage::init()
     ui->addressLabel->setGeometry(ui->addressLabel->x(),ui->addressLabel->y(),ui->addressLabel->width(),24);
     ui->copyBtn->move(ui->addressLabel->x() + ui->addressLabel->width() + 9, 39);
     ui->qrcodeBtn->move(ui->addressLabel->x() + ui->addressLabel->width() + 30, 39);
-
-//    ui->accountComboBox->setCurrentText(accountName);
-
-//    jsonDataUpdated("id_balance");
-
-
 }
 
 void AccountPage::updateTransactionsList()
@@ -184,7 +175,7 @@ void AccountPage::updateTransactionsList()
     DLOG_QT_WALLET_FUNCTION_END;
 }
 
-void AccountPage::getAssets()
+void AccountPage::updateAssetList()
 {
     assetUpdating = true;
 
@@ -192,6 +183,7 @@ void AccountPage::getAssets()
     ui->assetComboBox->addItem(ASSET_NAME);
     foreach (QString key, GDW::getInstance()->ERC20TokenInfoMap.keys())
     {
+        qDebug() << "AccountPage::updateAssetList: " << key << ", " << GDW::getInstance()->ERC20TokenInfoMap.value(key).symbol;
         ui->assetComboBox->addItem( GDW::getInstance()->ERC20TokenInfoMap.value(key).symbol);
     }
 
@@ -287,7 +279,6 @@ void AccountPage::jsonDataUpdated(QString id)
         QString result = GDW::getInstance()->jsonDataValue(id);
         GDW::getInstance()->parseTransactions(result,accountName + "_" + ui->assetComboBox->currentText());
 
-//        showTransactions();
         return;
     }
 }

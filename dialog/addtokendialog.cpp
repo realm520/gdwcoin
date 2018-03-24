@@ -47,10 +47,9 @@ void AddTokenDialog::on_okBtn_clicked()
     if( GDW::getInstance()->addressMap.keys().size() < 1) return;
     QString contractAddress = ui->contractAddressLineEdit->text().simplified();
     if(contractAddress.isEmpty())   return;
-    GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_state_addtokendialog+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
+    GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_state_addtokendialog+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
                                                << GDW::getInstance()->addressMap.keys().at(0) << "state" << ""
                                                ));
-    qDebug() << "contract_call_offline " + contractAddress + " " + GDW::getInstance()->addressMap.keys().at(0) + " state \"\"";
 }
 
 void AddTokenDialog::on_cancelBtn_clicked()
@@ -60,11 +59,9 @@ void AddTokenDialog::on_cancelBtn_clicked()
 
 void AddTokenDialog::jsonDataUpdated(QString id)
 {
-    if( id.startsWith( "id_call_contract_offline_state_addtokendialog+") )
+    if( id.startsWith( "id_contract_call_offline_state_addtokendialog+") )
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
-        qDebug() << result;
-
         if( result.startsWith( "\"error\":"))
         {
             CommonDialog commonDialog(CommonDialog::OkOnly);
@@ -86,28 +83,37 @@ void AddTokenDialog::jsonDataUpdated(QString id)
             }
             GDW::getInstance()->ERC20TokenInfoMap[contractAddress].contractAddress = contractAddress;
             GDW::getInstance()->configFile->setValue("/AddedContractToken/" + contractAddress,1);
-            GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_addtokendialog+tokenName+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
-                                                       << GDW::getInstance()->addressMap.keys().at(0) << "tokenName" << ""
+            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_addtokendialog+tokenName+" + contractAddress,
+                                                       "contract_call_offline",
+                                                       QStringList() << contractAddress
+                                                                     << GDW::getInstance()->addressMap.keys().at(0) << "tokenName" << ""
                                                        ));
 
-            GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_addtokendialog+precision+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
-                                                       << GDW::getInstance()->addressMap.keys().at(0) << "precision" << ""
+            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_addtokendialog+precision+" + contractAddress,
+                                                       "contract_call_offline",
+                                                       QStringList() << contractAddress
+                                                                     << GDW::getInstance()->addressMap.keys().at(0) << "precision" << ""
                                                        ));
 
-            GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_addtokendialog+admin+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
-                                                       << GDW::getInstance()->addressMap.keys().at(0) << "admin" << ""
+            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_addtokendialog+admin+" + contractAddress,
+                                                       "contract_call_offline",
+                                                       QStringList() << contractAddress
+                                                                     << GDW::getInstance()->addressMap.keys().at(0) << "admin" << ""
                                                        ));
 
-            GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_addtokendialog+tokenSymbol+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
-                                                       << GDW::getInstance()->addressMap.keys().at(0) << "tokenSymbol" << ""
+            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_addtokendialog+tokenSymbol+" + contractAddress,
+                                                       "contract_call_offline",
+                                                       QStringList() << contractAddress
+                                                                     << GDW::getInstance()->addressMap.keys().at(0) << "tokenSymbol" << ""
                                                        ));
 
-            GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_offline_addtokendialog+totalSupply+" + contractAddress, "call_contract_offline", QStringList() << contractAddress
-                                                       << GDW::getInstance()->addressMap.keys().at(0) << "totalSupply" << ""
+            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_addtokendialog+totalSupply+" + contractAddress,
+                                                       "contract_call_offline",
+                                                       QStringList() << contractAddress
+                                                                     << GDW::getInstance()->addressMap.keys().at(0) << "totalSupply" << ""
                                                        ));
 
             CommonDialog commonDialog(CommonDialog::OkOnly);
-//            commonDialog.setText(QString::fromLocal8Bit("合约资产添加成功!"));
             commonDialog.setText(tr("Token added!"));
             commonDialog.pop();
 
@@ -117,7 +123,7 @@ void AddTokenDialog::jsonDataUpdated(QString id)
         return;
     }
 
-    if( id.startsWith( "id_call_contract_offline_addtokendialog+") )
+    if( id.startsWith( "id_contract_call_offline_addtokendialog+") )
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
 

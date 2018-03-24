@@ -231,11 +231,10 @@ void TransferPage::on_sendBtn_clicked()
                 ERC20TokenInfo info = GDW::getInstance()->ERC20TokenInfoMap.value(contractAddress);
                 QString accountAddress = ui->sendtoLineEdit->text();
 
-                GDW::getInstance()->postRPC( toJsonFormat( "id_call_contract_transfer+" + contractAddress + "+" + accountAddress, "call_contract",
+                GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_transfer+" + contractAddress + "+" + accountAddress, "contract_call",
                                                              QStringList() << contractAddress << ui->accountComboBox->currentText()<< "transfer" << accountAddress + "," + QString::number( ui->amountLineEdit->text().toDouble() * info.precision,'f',0)
                                                              << ASSET_NAME << "0.001"
                                                              ));
-
             }
         }
 
@@ -616,7 +615,7 @@ qDebug() << id << result;
         return;
     }
 
-    if( id.startsWith("id_call_contract_transfer+"))
+    if( id.startsWith("id_contract_call_transfer+"))
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
 
