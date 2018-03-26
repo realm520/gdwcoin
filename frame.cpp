@@ -205,9 +205,11 @@ Frame::Frame(): timer(NULL),
     }
     mutexForConfigFile.unlock();
 
+
+    this->setWindowIcon(QIcon(":/pic/cplpic/logo.png"));
     trayIcon = new QSystemTrayIcon(this);
     //放在托盘提示信息、托盘图标
-    trayIcon ->setToolTip(QString("HSRWallet ") + WALLET_VERSION);
+    trayIcon ->setToolTip(QString(ASSET_NAME"Wallet ") + WALLET_VERSION);
     trayIcon ->setIcon(QIcon(":/pic/cplpic/logo.png"));
     //点击托盘执行的事件
     connect(trayIcon , SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
@@ -283,7 +285,7 @@ void Frame::alreadyLogin()
     titleBar = new TitleBar(this);
     titleBar->setGeometry(0,0,960,53);
     connect(titleBar,SIGNAL(minimum()),this,SLOT(showMinimized()));
-    connect(titleBar,SIGNAL(closeWallet()),this,SLOT(quit()));
+    connect(titleBar,SIGNAL(closeWallet()),qApp,SLOT(quit()));
     connect(titleBar,SIGNAL(tray()),this,SLOT(hide()));
     connect(titleBar,SIGNAL(settingSaved()),this,SLOT(settingSaved()));
     connect(titleBar,SIGNAL(showShadowWidget()),this,SLOT(shadowWidgetShow()));
@@ -616,6 +618,7 @@ void Frame::quit()
 
 void Frame::checkAlreadyQuit()
 {
+
     if( GDW::getInstance()->proc->state() == QProcess::NotRunning)
     {
         qApp->quit();
