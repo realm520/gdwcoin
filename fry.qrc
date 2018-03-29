@@ -41,10 +41,8 @@
         <file>cplpic/marketBtn.png</file>
         <file>cplpic/marketBtn_unselected.png</file>
         <file>cplpic/info.png</file>
-        <file>cplpic/bg.png</file>
         <file>cplpic/titleBg2.png</file>
         <file>cplpic/titleBg3.png</file>
-        <file>cplpic/titleBg.png</file>
         <file>pic2/contactBtn2_En.png</file>
         <file>pic2/contactBtn2_hover_En.png</file>
         <file>pic2/send.png</file>
@@ -52,6 +50,8 @@
         <file>cplpic/refresh2.png</file>
         <file>pic2/qrcode.png</file>
         <file>cplpic/logo.png</file>
+        <file>cplpic/bg.jpg</file>
+        <file>cplpic/titleBg.jpg</file>
     </qresource>
     <qresource prefix="/language">
         <file>wallet_English.qm</file>

@@ -19,7 +19,7 @@ SelectWalletPathWidget::SelectWalletPathWidget(QWidget *parent) :
 
     setAutoFillBackground(true);
     QPalette palette;
-    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/pic/cplpic/bg.png")));
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/pic/cplpic/bg.jpg")));
     setPalette(palette);
 
     ui->pathLineEdit->setText( GDW::getInstance()->appDataPath);
