@@ -609,7 +609,7 @@ void Frame::syncFinished()
 
 void Frame::quit()
 {
-    GDW::getInstance()->write("stop\n");
+//    GDW::getInstance()->write("stop\n");
 
     QTimer* timerForSafeQuit = new QTimer(this);
     timerForSafeQuit->start(50);
@@ -967,7 +967,7 @@ void Frame::showWaittingForSyncWidget()
     connect( waitingForSync,SIGNAL(sync()), this, SLOT(syncFinished()));
     connect( waitingForSync,SIGNAL(minimum()),this,SLOT(showMinimized()));
     connect( waitingForSync,SIGNAL(tray()),this,SLOT(hide()));
-    connect( waitingForSync,SIGNAL(closeWallet()),this,SLOT(quit()));
+    connect( waitingForSync,SIGNAL(closeWallet()), qApp,SLOT(quit()));
     connect( waitingForSync,SIGNAL(showShadowWidget()),this,SLOT(shadowWidgetShow()));
     connect( waitingForSync,SIGNAL(hideShadowWidget()),this,SLOT(shadowWidgetHide()));
 
@@ -994,7 +994,7 @@ void Frame::jsonDataUpdated(QString id)
             normalLogin->show();
             connect( normalLogin,SIGNAL(login()), this, SLOT(alreadyLogin()));
             connect( normalLogin,SIGNAL(minimum()),this,SLOT(showMinimized()));
-            connect( normalLogin,SIGNAL(closeWallet()),this,SLOT(quit()));
+            connect( normalLogin,SIGNAL(closeWallet()), qApp,SLOT(quit()));
             connect( normalLogin,SIGNAL(tray()),this,SLOT(hide()));
             connect( normalLogin,SIGNAL(showShadowWidget()), this, SLOT(shadowWidgetShow()));
             connect( normalLogin,SIGNAL(hideShadowWidget()), this,SLOT(shadowWidgetHide()));
@@ -1007,7 +1007,7 @@ void Frame::jsonDataUpdated(QString id)
             firstLogin->show();
             connect( firstLogin,SIGNAL(login()), this, SLOT(alreadyLogin()));
             connect( firstLogin,SIGNAL(minimum()),this,SLOT(showMinimized()));
-            connect( firstLogin,SIGNAL(closeWallet()),this,SLOT(quit()));
+            connect( firstLogin,SIGNAL(closeWallet()), qApp,SLOT(quit()));
             connect( firstLogin,SIGNAL(tray()),this,SLOT(hide()));
             connect( firstLogin,SIGNAL(showShadowWidget()), this, SLOT(shadowWidgetShow()));
             connect( firstLogin,SIGNAL(hideShadowWidget()), this,SLOT(shadowWidgetHide()));
@@ -1132,7 +1132,7 @@ void Frame::jsonDataUpdated(QString id)
             lockPage->setGeometry(0,0,960,580);
             connect( lockPage,SIGNAL(unlock()),this,SLOT(unlock()));
             connect( lockPage,SIGNAL(minimum()),this,SLOT(showMinimized()));
-            connect( lockPage,SIGNAL(closeWallet()),this,SLOT(quit()));
+            connect( lockPage,SIGNAL(closeWallet()), qApp,SLOT(quit()));
             connect( lockPage,SIGNAL(tray()),this,SLOT(hide()));
             connect( lockPage,SIGNAL(showShadowWidget()),this,SLOT(shadowWidgetShow()));
             connect( lockPage,SIGNAL(hideShadowWidget()),this,SLOT(shadowWidgetHide()));
@@ -1457,7 +1457,7 @@ void Frame::createTrayIconActions()
      connect(restoreAction, SIGNAL(triggered()), this, SLOT(showNormalAndActive()));
 
      quitAction = new QAction(tr("Quit"), this);
-     connect(quitAction, SIGNAL(triggered()), this, SLOT(quit()));
+     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
 }
 
 void Frame::createTrayIcon()

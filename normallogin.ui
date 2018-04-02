@@ -22,7 +22,7 @@
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>210</y>
+     <y>270</y>
      <width>120</width>
      <height>28</height>
     </rect>
@@ -47,7 +47,7 @@
    <property name="geometry">
     <rect>
      <x>390</x>
-     <y>280</y>
+     <y>340</y>
      <width>180</width>
      <height>20</height>
     </rect>
@@ -74,7 +74,7 @@
    <property name="geometry">
     <rect>
      <x>578</x>
-     <y>287</y>
+     <y>347</y>
      <width>18</width>
      <height>7</height>
     </rect>
@@ -93,7 +93,7 @@
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>330</y>
+     <y>390</y>
      <width>360</width>
      <height>20</height>
     </rect>
@@ -155,7 +155,7 @@
    <property name="geometry">
     <rect>
      <x>350</x>
-     <y>263</y>
+     <y>323</y>
      <width>260</width>
      <height>54</height>
     </rect>

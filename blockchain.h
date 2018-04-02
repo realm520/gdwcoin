@@ -21,8 +21,8 @@
          佛祖保佑       永无BUG
 */
 
-#ifndef HSR_H
-#define HSR_H
+#ifndef BLOCKCHAIN_H
+#define BLOCKCHAIN_H
 #include <QObject>
 #include <QMap>
 #include <QSettings>
@@ -297,5 +297,5 @@ QString removeLastZeros(QString number);        // qstring::number() 对小数�
 QString getBigNumberString(unsigned long long number,unsigned long long precision);
 bool   checkAddress(QString address);
 bool isExistInWallet(QString);
-#endif // HSR_H
+#endif // BLOCKCHAIN_H
 
