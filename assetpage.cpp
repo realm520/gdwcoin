@@ -10,10 +10,10 @@
 #include "dialog/addtokendialog.h"
 #include "showcontentdialog.h"
 
-#define ASSETPAGE_ALLASSETBTN_SELECTED_STYLE     "QToolButton{background-color:rgb(105,67,155);color:white;border:1px solid rgb(105,67,155);border-top-left-radius: 3px;border-bottom-left-radius: 3px;}"
-#define ASSETPAGE_ALLASSETBTN_UNSELECTED_STYLE   "QToolButton{background-color:white;color:rgb(105,67,155);border:1px solid rgb(105,67,155);border-top-left-radius: 3px;border-bottom-left-radius: 3px;}"
-#define ASSETPAGE_MYASSETBTN_SELECTED_STYLE        "QToolButton{background-color:rgb(105,67,155);color:white;border:1px solid rgb(105,67,155);border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"
-#define ASSETPAGE_MYASSETBTN_UNSELECTED_STYLE      "QToolButton{background-color:white;color:rgb(105,67,155);border:1px solid rgb(105,67,155);border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"
+#define ASSETPAGE_ALLASSETBTN_SELECTED_STYLE     "QToolButton{background-color:rgb(125,85,40);color:white;border:1px solid rgb(125,85,40);border-top-left-radius: 3px;border-bottom-left-radius: 3px;}"
+#define ASSETPAGE_ALLASSETBTN_UNSELECTED_STYLE   "QToolButton{background-color:white;color:rgb(125,85,40);border:1px solid rgb(125,85,40);border-top-left-radius: 3px;border-bottom-left-radius: 3px;}"
+#define ASSETPAGE_MYASSETBTN_SELECTED_STYLE        "QToolButton{background-color:rgb(125,85,40);color:white;border:1px solid rgb(125,85,40);border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"
+#define ASSETPAGE_MYASSETBTN_UNSELECTED_STYLE      "QToolButton{background-color:white;color:rgb(125,85,40);border:1px solid rgb(125,85,40);border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"
 
 
 AssetPage::AssetPage(QWidget *parent) :

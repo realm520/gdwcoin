@@ -7,7 +7,6 @@
 #include "control/shadowwidget.h"
 #include "dialog/importenterpwddialog.h"
 #include "AES/aesencryptor.h"
-#include "dialog/importoldpkdialog.h"
 
 #include <QDir>
 #include <QFileDialog>
@@ -156,21 +155,6 @@ void ImportDialog::on_importBtn_clicked()
                 commonDialog.pop();
                 return;
             }
-        }
-        else
-        {
-            return;
-        }
-
-    }
-    else if( ui->privateKeyLineEdit->text().endsWith(".dat") )      // 如果是旧钱包导出的私钥文件
-    {
-        ImportOldPkDialog importOldPkDialog;
-        if(importOldPkDialog.pop())
-        {
-
-
-
         }
         else
         {
