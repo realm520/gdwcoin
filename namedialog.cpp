@@ -13,9 +13,7 @@ NameDialog::NameDialog(QWidget *parent) :
     DLOG_QT_WALLET_FUNCTION_BEGIN;
     ui->setupUi(this);
 
-//    Hcash::getInstance()->appendCurrentDialogVector(this);
     setParent(GDW::getInstance()->mainFrame);
-
     setAttribute(Qt::WA_TranslucentBackground, true);
     setWindowFlags(Qt::FramelessWindowHint);
 
@@ -58,7 +56,6 @@ NameDialog::NameDialog(QWidget *parent) :
 NameDialog::~NameDialog()
 {
     delete ui;
-//    Hcash::getInstance()->removeCurrentDialogVector(this);
 }
 
 void NameDialog::on_okBtn_clicked()

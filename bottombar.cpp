@@ -124,7 +124,4 @@ void BottomBar::refresh()
     GDW::getInstance()->postRPC( toJsonFormat( "id_info", "info", QStringList() << ""));
 
     GDW::getInstance()->postRPC( toJsonFormat( "id_blockchain_list_assets", "blockchain_list_assets", QStringList() << ""));
-
-//    Hcash::getInstance()->postRPC( toJsonFormat( "id_balance", "balance", QStringList() << ""));
-
 }

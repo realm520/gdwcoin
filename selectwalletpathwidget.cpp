@@ -58,7 +58,7 @@ void SelectWalletPathWidget::on_okBtn_clicked()
     GDW::getInstance()->startBlockChain(QStringList() << "--data-dir" << ui->pathLineEdit->text()
                                         << "--rpcuser" << "a" << "--rpcpassword" << "b" << "--rpcport" << QString::number(RPC_PORT) << "--server");
 #else
-    GDW::getInstance()->proc->start("./hcash",QStringList() << "--data-dir" << ui->pathLineEdit->text()
+    GDW::getInstance()->proc->start("./gdw",QStringList() << "--data-dir" << ui->pathLineEdit->text()
                                        << "--rpcuser" << "a" << "--rpcpassword" << "b" << "--rpcport" << QString::number( RPC_PORT) << "--server");
 #endif
     if( GDW::getInstance()->proc->waitForStarted())

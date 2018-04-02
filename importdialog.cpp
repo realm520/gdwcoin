@@ -19,16 +19,12 @@ ImportDialog::ImportDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//    Hcash::getInstance()->appendCurrentDialogVector(this);
-
     setParent(GDW::getInstance()->mainFrame);
-
     setAttribute(Qt::WA_TranslucentBackground, true);
     setWindowFlags(Qt::FramelessWindowHint);
 
     ui->widget->setObjectName("widget");
     ui->widget->setStyleSheet("#widget {background-color:rgba(10, 10, 10,100);}");
-
     ui->containerWidget->setObjectName("containerWidget");
     ui->containerWidget->setStyleSheet("#containerWidget{background-color: rgb(246, 246, 246);border:1px groove rgb(180,180,180);}");
 
@@ -48,17 +44,10 @@ ImportDialog::ImportDialog(QWidget *parent) :
 ImportDialog::~ImportDialog()
 {
     delete ui;
-//    Hcash::getInstance()->removeCurrentDialogVector(this);
 }
 
 void ImportDialog::pop()
 {
-//    QEventLoop loop;
-//    show();
-//    ui->privateKeyLineEdit->grabKeyboard();
-//    connect(this,SIGNAL(accepted()),&loop,SLOT(quit()));
-//    loop.exec();  //进入事件 循环处理，阻塞
-
     move(0,0);
     exec();
 }

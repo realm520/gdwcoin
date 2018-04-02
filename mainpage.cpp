@@ -21,7 +21,7 @@
 #include "control/rightclickmenudialog.h"
 #include "control/chooseaddaccountdialog.h"
 #include "dialog/renamedialog.h"
-#include "dialog/warningdialog.h"
+
 
 MainPage::MainPage(QWidget *parent) :
     QWidget(parent),
@@ -151,16 +151,6 @@ void MainPage::addAccount()
         }
         else
         {
-//            if(result.mid(0,3) == ASSET_NAME)   // 创建账号成功
-//            {
-//                mutexForConfigFile.lock();
-//                Hcash::getInstance()->configFile->setValue( QString("/accountInfo/") + QString::fromLocal8Bit("账户") + toThousandFigure(size+1),name);
-//                mutexForConfigFile.unlock();
-//                Hcash::getInstance()->balanceMapInsert( name, "0.00000 " + QString(ASSET_NAME));
-//                Hcash::getInstance()->registerMapInsert( name, "NO");
-//                Hcash::getInstance()->addressMapInsert( name, Hcash::getInstance()->getAddress(name));
-//            }
-
             if( result.mid(0,1) == "H")
             {
                 CommonDialog commonDialog(CommonDialog::OkOnly);
@@ -227,8 +217,6 @@ void MainPage::updateAccountList()
 
             AssetBalanceMap map = GDW::getInstance()->accountBalanceMap.value(accountName);
             ui->accountTableWidget->setItem(rowNum,2,new QTableWidgetItem(getBigNumberString(map.value(assetIndex),info.precision)));
-
-    //        ui->accountTableWidget->setItem(rowNum,2,new QTableWidgetItem(Hcash::getInstance()->balanceMapValue(accountName).remove(ASSET_NAME)));
             ui->accountTableWidget->item(rowNum,0)->setTextAlignment(Qt::AlignCenter);
             ui->accountTableWidget->item(rowNum,1)->setTextAlignment(Qt::AlignCenter);
             ui->accountTableWidget->item(rowNum,2)->setTextAlignment(Qt::AlignCenter);
@@ -267,7 +255,6 @@ void MainPage::updateAccountList()
 
             ContractBalanceMap map = GDW::getInstance()->accountContractBalanceMap.value(GDW::getInstance()->addressMap.value(accountName).ownerAddress);
             ui->accountTableWidget->setItem(rowNum,2,new QTableWidgetItem(getBigNumberString(map.value(contractAddress),info.precision)));
-    //        ui->accountTableWidget->setItem(rowNum,2,new QTableWidgetItem(Hcash::getInstance()->balanceMapValue(accountName).remove(ASSET_NAME)));
             ui->accountTableWidget->item(rowNum,0)->setTextAlignment(Qt::AlignCenter);
             ui->accountTableWidget->item(rowNum,1)->setTextAlignment(Qt::AlignCenter);
             ui->accountTableWidget->item(rowNum,2)->setTextAlignment(Qt::AlignCenter);
@@ -452,23 +439,6 @@ void MainPage::jsonDataUpdated(QString id)
 
 void MainPage::updateTotalBalance()
 {
-//    Hcash::getInstance()->postRPC( toJsonFormat( "id_balance", "balance", QStringList() << "" ));
-
-//    QString  result = Hcash::getInstance()->jsonDataValue("id_balance");
-
-//    double totalBalance = 0;
-//    int pos = result.indexOf("[[0,") + 4;
-//    while (pos != -1 + 4)
-//    {
-//        QString amount = result.mid( pos, result.indexOf("]", pos ) - pos ) ;
-//        amount.remove("\""); // 太大的数字可能会用字符串表示，加了引号
-//        totalBalance += amount.toDouble() / 100000;
-//        pos = result.indexOf("[[0,", pos) + 4;
-//    }
-//    ui->totalBalanceLabel->setText( "<body><font style=\"font-size:26px\" color=#ff0000>" + doubleTo2Decimals( totalBalance) + "</font><font style=\"font-size:12px\" color=#000000> " + QString(SHOW_NAME) +"</font></body>" );
-//    ui->totalBalanceLabel->adjustSize();
-
-
     unsigned long long totalBalance = 0;
     int assetIndex = ui->assetComboBox->currentIndex();
     if( assetIndex <= 0)
@@ -642,9 +612,6 @@ void MainPage::showWarningDialog()
     {
         GDW::getInstance()->firstUse = false;
         GDW::getInstance()->configFile->setValue("settings/firstUse",false);
-
-        WarningDialog warningDialog;
-        warningDialog.pop();
     }
 }
 
@@ -658,18 +625,6 @@ void MainPage::showExportDialog(QString name)
 
 void MainPage::withdrawSalary(QString name, QString salary)
 {
-//    double amount = salary.toDouble() - 0.01;
-//    if( amount > 0.000001)
-//    {
-//        CommonDialog commonDialog(CommonDialog::OkAndCancel);
-//        commonDialog.setText( tr("Sure to withdraw your salary?"));
-//        if( commonDialog.pop())
-//        {
-//            Hcash::getInstance()->postRPC( toJsonFormat( "id_wallet_delegate_withdraw_pay", "wallet_delegate_withdraw_pay",
-//                                                          QStringList() << name <<  name << QString::number(amount) ));
-//        }
-//    }
-
 }
 
 void MainPage::renameAccount(QString name)

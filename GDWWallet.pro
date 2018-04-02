@@ -83,7 +83,6 @@ SOURCES += main.cpp\
     AES/aes.cpp \
     AES/aesencryptor.cpp \
     dialog/importenterpwddialog.cpp \
-    dialog/warningdialog.cpp \
     blockchain.cpp
 
 HEADERS  += firstlogin.h \
@@ -141,7 +140,6 @@ HEADERS  += firstlogin.h \
     AES/aes.h \
     AES/aesencryptor.h \
     dialog/importenterpwddialog.h \
-    dialog/warningdialog.h \
     blockchain.h
 
 FORMS    += firstlogin.ui \
@@ -188,8 +186,7 @@ FORMS    += firstlogin.ui \
     multisigpage.ui \
     control/qrcodedialog.ui \
     dialog/exportsetpwddialog.ui \
-    dialog/importenterpwddialog.ui \
-    dialog/warningdialog.ui
+    dialog/importenterpwddialog.ui
 
 win32{
     DISTFILES += logo.rc

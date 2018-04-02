@@ -56,37 +56,6 @@ AssetPage::~AssetPage()
 
 void AssetPage::updateAssetInfo()
 {
-//    ui->assetInfoTableWidget->setRowCount(0);
-//    ui->assetInfoTableWidget->setRowCount(Hcash::getInstance()->assetInfoMap.size());
-//    foreach (int id, Hcash::getInstance()->assetInfoMap.keys())
-//    {
-//        ui->assetInfoTableWidget->setRowHeight(id,45);
-
-//        AssetInfo info = Hcash::getInstance()->assetInfoMap.value(id);
-
-//        ui->assetInfoTableWidget->setItem(id,0,new QTableWidgetItem(QString::number(id)));
-//        ui->assetInfoTableWidget->setItem(id,1,new QTableWidgetItem(info.symbol));
-
-//        if( id == 0)
-//        {
-//            ui->assetInfoTableWidget->setItem(id,2,new QTableWidgetItem(QString::fromLocal8Bit("系统")));
-//            ui->assetInfoTableWidget->setItem(id,4,new QTableWidgetItem("-"));
-//        }
-//        else
-//        {
-//            ui->assetInfoTableWidget->setItem(id,2,new QTableWidgetItem(info.owner));
-//            ui->assetInfoTableWidget->setItem(id,4,new QTableWidgetItem(QString::number(info.currentSupply * 100 / info.maxSupply,'g',16) + "%"));
-//        }
-
-//        ui->assetInfoTableWidget->setItem(id,3,new QTableWidgetItem(QString::number(info.maxSupply / info.precision,'g',16)));
-//        ui->assetInfoTableWidget->setItem(id,5,new QTableWidgetItem(info.description));
-
-//        for(int j = 0; j < 6; j++)
-//        {
-//            ui->assetInfoTableWidget->item(id,j)->setTextAlignment(Qt::AlignCenter);
-//        }
-
-//    }
 }
 
 void AssetPage::updateMyAsset()

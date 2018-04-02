@@ -12,7 +12,6 @@ AddContactDialog::AddContactDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//    Hcash::getInstance()->appendCurrentDialogVector(this);
     setParent(GDW::getInstance()->mainFrame);
 
     setAttribute(Qt::WA_TranslucentBackground, true);
@@ -54,7 +53,6 @@ AddContactDialog::AddContactDialog(QWidget *parent) :
 AddContactDialog::~AddContactDialog()
 {
     delete ui;
-//    Hcash::getInstance()->removeCurrentDialogVector(this);
 }
 
 void AddContactDialog::pop()
@@ -76,24 +74,6 @@ void AddContactDialog::on_cancelBtn_clicked()
 
 void AddContactDialog::jsonDataUpdated(QString id)
 {
-//    if( id != "id_blockchain_get_account")  return;
-
-//    QString result = Hcash::getInstance()->jsonDataValue( id);
-//    ui->gifLabel->hide();
-
-//    if( result == "\"result\":null")
-//    {
-//        ui->tipLabel->setText(tr("Invalid address"));
-//        ui->tipLabel2->setPixmap(QPixmap(":/pic/pic2/wrong.png"));
-//        ui->okBtn->setEnabled(false);
-//    }
-//    else
-//    {
-//        ui->tipLabel->setText(tr("<body><font color=green>Valid address</font></body>"));
-//        ui->tipLabel2->setPixmap(QPixmap(":/pic/pic2/correct.png"));
-//        ui->okBtn->setEnabled(true);
-//    }
-
 }
 
 void AddContactDialog::on_okBtn_clicked()

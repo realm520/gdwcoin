@@ -13,7 +13,6 @@ RenameDialog::RenameDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//    Hcash::getInstance()->appendCurrentDialogVector(this);
     setParent(GDW::getInstance()->mainFrame);
 
     connect( GDW::getInstance(), SIGNAL(jsonDataUpdated(QString)), this, SLOT(jsonDataUpdated(QString)));
@@ -25,17 +24,12 @@ RenameDialog::RenameDialog(QWidget *parent) :
     ui->widget->setStyleSheet("#widget {background-color:rgba(10, 10, 10,100);}");
     ui->containerWidget->setObjectName("containerwidget");
     ui->containerWidget->setStyleSheet("#containerwidget{background-color: rgb(246, 246, 246);border:1px groove rgb(180,180,180);}");
-
     ui->nameLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
     ui->nameLineEdit->setPlaceholderText( tr("Beginning with letter,letters or numbers"));
     ui->nameLineEdit->setTextMargins(8,0,0,0);
     ui->nameLineEdit->setAttribute(Qt::WA_InputMethodEnabled, false);
-
-
-
     ui->okBtn->setText(tr("Ok"));
     ui->okBtn->setEnabled(false);
-
     ui->cancelBtn->setText(tr("Cancel"));
 
     QRegExp regx("[a-z][a-z0-9]+$");
@@ -54,30 +48,22 @@ RenameDialog::RenameDialog(QWidget *parent) :
 RenameDialog::~RenameDialog()
 {
     delete ui;
-//    Hcash::getInstance()->removeCurrentDialogVector(this);
 }
 
 void RenameDialog::on_okBtn_clicked()
 {
     yesOrNO = true;
     close();
-//    emit accepted();
 }
 
 void RenameDialog::on_cancelBtn_clicked()
 {
     yesOrNO = false;
     close();
-//    emit accepted();
 }
 
 QString RenameDialog::pop()
 {
-//    QEventLoop loop;
-//    show();
-//    connect(this,SIGNAL(accepted()),&loop,SLOT(quit()));
-//    loop.exec();  //进入事件 循环处理，阻塞
-
     move(0,0);
     exec();
 
