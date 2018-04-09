@@ -59,8 +59,8 @@ string AesEncryptor::EncryptString(string strInfor) {
 #endif
     m_pEncryptor->Cipher(pBuffer, nLength + spaceLength);
     // 这里需要把得到的字符数组转换成十六进制字符串
-    char* pOut = new char[2 * (nLength + spaceLength)];
-    memset(pOut, '\0', 2 * (nLength + spaceLength));
+    char* pOut = new char[2 * (nLength + spaceLength) + 1];
+    memset(pOut, '\0', 2 * (nLength + spaceLength) + 1);
     Byte2Hex(pBuffer, nLength + spaceLength, pOut);
 
     string retValue(pOut);

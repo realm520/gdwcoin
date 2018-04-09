@@ -113,12 +113,9 @@ void ExportDialog::jsonDataUpdated(QString id)
             unsigned char key2[16] = {0};
             memcpy(key2,pwd.toLatin1().data(),pwd.toLatin1().size());
             AesEncryptor aes(key2);
-
             QString input = "privateKey=" + privateKey;
             QString output = QString::fromStdString( aes.EncryptString( input.toStdString()) );
-
             QFile file( ui->pathLineEdit->text());
-
             QString fName = file.fileName();
 #ifdef WIN32
             fName.replace("/","\\");
@@ -126,7 +123,6 @@ void ExportDialog::jsonDataUpdated(QString id)
 #else
             fName = fName.mid( fName.lastIndexOf("/") + 1 );
 #endif
-
             if( file.exists())
             {
                 CommonDialog tipDialog(CommonDialog::OkAndCancel);
