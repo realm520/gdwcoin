@@ -206,7 +206,7 @@ void ImportDialog::jsonDataUpdated(QString id)
                 mutexForConfigFile.lock();
                 GDW::getInstance()->configFile->setValue( QString("/accountInfo/") + QString::fromLocal8Bit("账户") + toThousandFigure(size+1),name);
                 mutexForConfigFile.unlock();
-                GDW::getInstance()->balanceMapInsert( name, "0.00000 " + QString(ASSET_NAME));
+                GDW::getInstance()->balanceMapInsert( name, "0.0000 " + QString(ASSET_NAME));
                 GDW::getInstance()->registerMapInsert( name, "UNKNOWN");
                 GDW::getInstance()->addressMapInsert( name, GDW::getInstance()->getAddress(name));
 
@@ -292,7 +292,7 @@ void ImportDialog::jsonDataUpdated(QString id)
             mutexForConfigFile.lock();
             GDW::getInstance()->configFile->setValue( QString("/accountInfo/") + QString::fromLocal8Bit("账户") + toThousandFigure(size+1),name);
             mutexForConfigFile.unlock();
-            GDW::getInstance()->balanceMapInsert( name, "0.00000 " + QString(ASSET_NAME));
+            GDW::getInstance()->balanceMapInsert( name, "0.0000 " + QString(ASSET_NAME));
             GDW::getInstance()->registerMapInsert( name, "NO");
             GDW::getInstance()->addressMapInsert( name, GDW::getInstance()->getAddress(name));
 

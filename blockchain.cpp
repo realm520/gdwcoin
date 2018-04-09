@@ -276,7 +276,7 @@ QString GDW::getBalance(QString name)
     }
 
     // balance中不存在
-    return "0.00000 " + QString(ASSET_NAME);
+    return "0.0000 " + QString(ASSET_NAME);
 }
 
 QString GDW::getRegisterTime(QString name)

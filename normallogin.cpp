@@ -25,7 +25,7 @@ NormalLogin::NormalLogin(QWidget *parent) :
 
     setAutoFillBackground(true);
     QPalette palette;
-    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/pic/cplpic/bg.jpg")));
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/pic/cplpic/bg.png")));
     setPalette(palette);
     ui->pwdLineEdit->setStyleSheet("color:white;background:transparent;border-width:0;border-style:outset;");
 #ifdef TARGET_OS_MAC

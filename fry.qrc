@@ -50,8 +50,8 @@
         <file>cplpic/refresh2.png</file>
         <file>pic2/qrcode.png</file>
         <file>cplpic/logo.png</file>
-        <file>cplpic/bg.jpg</file>
-        <file>cplpic/titleBg.jpg</file>
+        <file>cplpic/bg.png</file>
+        <file>cplpic/titleBg.png</file>
     </qresource>
     <qresource prefix="/language">
         <file>wallet_English.qm</file>

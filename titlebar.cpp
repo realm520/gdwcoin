@@ -21,7 +21,7 @@ TitleBar::TitleBar(QWidget *parent) :
 
     setAutoFillBackground(true);
     QPalette palette;
-    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/pic/cplpic/titleBg.jpg")));
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/pic/cplpic/titleBg.png")));
     setPalette(palette);
 
     ui->newsBtn->hide();

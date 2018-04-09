@@ -420,7 +420,7 @@ QToolButton:hover{background-color:rgb(185,150,85);}
         <enum>Qt::DefaultContextMenu</enum>
        </property>
        <property name="text">
-        <string>0.00001</string>
+        <string>1</string>
        </property>
        <property name="maxLength">
         <number>20</number>

@@ -37,7 +37,7 @@
 
 //  密码输入错误5次后 锁定一段时间 (秒)
 #define PWD_LOCK_TIME  7200
-#define RPC_PORT 53016
+#define RPC_PORT 50409
 
 
 class QTimer;

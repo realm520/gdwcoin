@@ -20,7 +20,7 @@ WaitingForSync::WaitingForSync(QWidget *parent) :
 
     setAutoFillBackground(true);
     QPalette palette;
-    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/pic/cplpic/bg.jpg")));
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/pic/cplpic/bg.png")));
     setPalette(palette);
 
     timer = new QTimer(this);    
