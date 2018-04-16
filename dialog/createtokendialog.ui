@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>556</height>
+    <width>960</width>
+    <height>580</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,8 +21,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>900</width>
-     <height>556</height>
+     <width>960</width>
+     <height>580</height>
     </rect>
    </property>
    <property name="font">
@@ -37,8 +37,8 @@
    <widget class="QWidget" name="containerWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>68</y>
+      <x>230</x>
+      <y>80</y>
       <width>500</width>
       <height>420</height>
      </rect>
@@ -432,6 +432,9 @@
          <width>40</width>
          <height>30</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="maximum">
         <number>8</number>

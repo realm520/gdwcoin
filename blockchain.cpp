@@ -66,6 +66,8 @@ GDW::GDW()
         configFile->setValue("settings/resyncNextTime",false);
         firstUse = true;
         configFile->setValue("settings/firstUse",true);
+        // For GDC contract
+        configFile->setValue("/AddedContractToken/cXTpaoH5hWatNuaK2PGAksTKr3tgyx76dZ", 1);
     }
     else
     {

@@ -37,7 +37,25 @@ CreateTokenDialog::CreateTokenDialog(QWidget *parent) :
 
     connect(GDW::getInstance(), SIGNAL(jsonDataUpdated(QString)), this, SLOT(jsonDataUpdated(QString)));
 
-    ui->accountComboBox->setView(new QListView());
+#ifdef WIN32
+    ui->accountComboBox->setStyleSheet("QComboBox {border: 1px solid gray;border-radius: 3px;padding: 1px 2px 1px 8px;}"
+                                           "QComboBox::drop-down {subcontrol-origin: padding;subcontrol-position: top right;width: 20px;"
+                                                                  "border-left-width: 1px;border-left-color: darkgray;border-left-style: solid;"
+                                                                  "border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"
+                                           "QComboBox::down-arrow {image: url(:/pic/pic2/comboBoxArrow.png);}"
+                                           );
+#endif
+
+    ui->contractNameLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
+    ui->contractDescriptionLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
+    ui->totalSupplyLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
+    ui->gasLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
+
+    ui->contractNameLineEdit->setTextMargins(8,0,0,0);
+    ui->contractDescriptionLineEdit->setTextMargins(8,0,0,0);
+    ui->totalSupplyLineEdit->setTextMargins(8,0,0,0);
+    ui->gasLineEdit->setTextMargins(8,0,0,0);
+
 
     QRegExp rx1("[a-zA-Z0-9]{0,20}");
     QRegExpValidator *pReg1 = new QRegExpValidator(rx1, this);

@@ -32,7 +32,7 @@
 #include <QDialog>
 
 #define ASSET_NAME "GDW"
-#define WALLET_VERSION "1.0.0"           // 版本号
+#define WALLET_VERSION "1.0.1"           // 版本号
 #define AUTO_REFRESH_TIME 1000           // 自动刷新时间(ms)
 
 //  密码输入错误5次后 锁定一段时间 (秒)

@@ -83,7 +83,7 @@ SetDialog::SetDialog(QWidget *parent) :
     ui->closeBtn->setStyleSheet("QToolButton{background-image:url(:/pic/pic2/close4.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
 
 #ifdef WIN32
-    ui->languageComboBox->setStyleSheet("QComboBox {border: 1px solid gray;border-radius: 3px;padding: 1px 2px 1px 8px;min-width: 5em;}"
+    ui->languageComboBox->setStyleSheet("QComboBox {border: 1px solid gray;border-radius: 3px;padding: 1px 2px 1px 8px;}"
                                     "QComboBox::drop-down {subcontrol-origin: padding;subcontrol-position: top right;width: 20px;"
                                                            "border-left-width: 1px;border-left-color: darkgray;border-left-style: solid;"
                                                            "border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"
