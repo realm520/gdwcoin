@@ -1249,25 +1249,46 @@ void Frame::jsonDataUpdated(QString id)
             QString contractAddress = id.mid(31);
             GDW::getInstance()->ERC20TokenInfoMap[contractAddress].contractAddress = contractAddress;
             GDW::getInstance()->configFile->setValue("/AddedContractToken/" + contractAddress,1);
-            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_+tokenName+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
-                                                       << GDW::getInstance()->addressMap.keys().at(0) << "tokenName" << ""
-                                                       ));
-
-            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_+precision+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
-                                                       << GDW::getInstance()->addressMap.keys().at(0) << "precision" << ""
-                                                       ));
-
-            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_+admin+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
-                                                       << GDW::getInstance()->addressMap.keys().at(0) << "admin" << ""
-                                                       ));
-
-            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_+tokenSymbol+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
-                                                       << GDW::getInstance()->addressMap.keys().at(0) << "tokenSymbol" << ""
-                                                       ));
-
-            GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_offline_+totalSupply+" + contractAddress, "contract_call_offline", QStringList() << contractAddress
-                                                       << GDW::getInstance()->addressMap.keys().at(0) << "totalSupply" << ""
-                                                       ));
+            GDW::getInstance()->postRPC(
+                        toJsonFormat("id_contract_call_offline_+tokenName+" + contractAddress,
+                                     "contract_call_offline",
+                                     QStringList() << contractAddress
+                                                   << GDW::getInstance()->addressMap.keys().at(0)
+                                                   << "tokenName"
+                                                   << ""
+                                     ));
+            GDW::getInstance()->postRPC(
+                        toJsonFormat("id_contract_call_offline_+precision+" + contractAddress,
+                                     "contract_call_offline",
+                                     QStringList() << contractAddress
+                                                   << GDW::getInstance()->addressMap.keys().at(0)
+                                                   << "precision"
+                                                   << ""
+                                     ));
+            GDW::getInstance()->postRPC(
+                        toJsonFormat("id_contract_call_offline_+admin+" + contractAddress,
+                                     "contract_call_offline",
+                                     QStringList() << contractAddress
+                                                   << GDW::getInstance()->addressMap.keys().at(0)
+                                                   << "admin"
+                                                   << ""
+                                     ));
+            GDW::getInstance()->postRPC(
+                        toJsonFormat("id_contract_call_offline_+tokenSymbol+" + contractAddress,
+                                     "contract_call_offline",
+                                     QStringList() << contractAddress
+                                                   << GDW::getInstance()->addressMap.keys().at(0)
+                                                   << "tokenSymbol"
+                                                   << ""
+                                     ));
+            GDW::getInstance()->postRPC(
+                        toJsonFormat("id_contract_call_offline_+totalSupply+" + contractAddress,
+                                     "contract_call_offline",
+                                     QStringList() << contractAddress
+                                                   << GDW::getInstance()->addressMap.keys().at(0)
+                                                   << "totalSupply"
+                                                   << ""
+                                     ));
         }
 
         return;
