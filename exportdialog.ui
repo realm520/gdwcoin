@@ -112,7 +112,8 @@ QPushButton::hover{color: rgb(153, 153, 153);}</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QToolButton{background-color:rgb(125,85,40);color:#ffffff;border:none;border-radius:3px;}
-QToolButton:hover{background-color:rgb(125,87,180);}</string>
+QToolButton:hover{background-color:rgb(185,150,85);}
+</string>
      </property>
      <property name="text">
       <string>导出</string>

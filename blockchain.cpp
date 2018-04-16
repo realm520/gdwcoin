@@ -714,7 +714,6 @@ void GDW::collectContractTransactions(QString contractAddress)
         int fromBlockHeight = ERC20TokenInfoMap.value(contractAddress).collectedBlockHeight + 1;
         int toBlockHeight = currentBlockHeight;
 
-        qDebug() << contractAddress << ", " << fromBlockHeight << ", " << toBlockHeight;
         if( fromBlockHeight > toBlockHeight)    return;
         postRPC( toJsonFormat( "id_blockchain_list_contract_transaction_history+" + contractAddress + "+" + QString::number(toBlockHeight),
                                "blockchain_list_contract_transaction_history",
@@ -735,8 +734,6 @@ void GDW::scan()
 {
     postRPC( toJsonFormat( "id_scan", "scan", QStringList() << "0"));
 }
-
-
 
 void GDW::quit()
 {

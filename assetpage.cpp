@@ -8,6 +8,7 @@
 #include "dialog/assetissuedialog.h"
 #include "commondialog.h"
 #include "dialog/addtokendialog.h"
+#include "dialog/createtokendialog.h"
 #include "showcontentdialog.h"
 
 #define ASSETPAGE_ALLASSETBTN_SELECTED_STYLE     "QToolButton{background-color:rgb(125,85,40);color:white;border:1px solid rgb(125,85,40);border-top-left-radius: 3px;border-bottom-left-radius: 3px;}"
@@ -161,4 +162,10 @@ void AssetPage::on_myAssetWidget_cellPressed(int row, int column)
 
         return;
     }
+}
+
+void AssetPage::on_issueTokenBtn_clicked()
+{
+    CreateTokenDialog createTokenDialog;
+    createTokenDialog.pop();
 }

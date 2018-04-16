@@ -79,9 +79,11 @@ struct AssetAmount
 struct ERC20TokenInfo
 {
     QString contractAddress;
+    QString level;
     QString symbol;
     QString name;
     QString admin;
+    QString state;
     unsigned long long precision = 1;
     unsigned long long totalSupply = 0;
     int collectedBlockHeight = 1;   // 该合约已经采集到的高度

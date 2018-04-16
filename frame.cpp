@@ -176,7 +176,7 @@ Frame::Frame(): timer(NULL),
             }
             GDW::getInstance()->configFile->setValue("settings/resyncNextTime",false);
 #ifdef WIN32
-            GDW::getInstance()->startBlockChain(strList );
+            GDW::getInstance()->startBlockChain(strList);
 
             if( GDW::getInstance()->proc->waitForStarted())
             {
@@ -973,7 +973,7 @@ void Frame::showWaittingForSyncWidget()
 
 void Frame::jsonDataUpdated(QString id)
 {
-    if( id == "id_open")
+    if(id == "id_open")
     {
         waitingForSync->close();
         waitingForSync = NULL;
@@ -1034,13 +1034,10 @@ void Frame::jsonDataUpdated(QString id)
 
         return;
     }
-
-    if( id == "id_wallet_list_my_addresses")
+    else if(id == "id_wallet_list_my_addresses")
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
-
         QStringList accountList;
-
         QStringList strList = result.split("},{");
 
         foreach (QString str, strList)
@@ -1055,7 +1052,6 @@ void Frame::jsonDataUpdated(QString id)
         GDW::getInstance()->configFile->beginGroup("/accountInfo");
         QStringList keys = GDW::getInstance()->configFile->childKeys();
         GDW::getInstance()->configFile->endGroup();
-
 
         foreach (QString key, keys)
         {
@@ -1107,9 +1103,7 @@ void Frame::jsonDataUpdated(QString id)
 
         return;
     }
-
-
-    if( id == "id_lock")
+    else if(id == "id_lock")
     {
         if( lockPage )
         {
@@ -1143,14 +1137,7 @@ void Frame::jsonDataUpdated(QString id)
         }
         return;
     }
-
-
-    if( id.mid(0,37) == "id_wallet_get_account_public_address-" )
-    {
-        return;
-    }
-
-    if( id == "id_blockchain_list_assets")
+    else if(id == "id_blockchain_list_assets")
     {
         GDW::getInstance()->parseAssetInfo();
 
@@ -1160,10 +1147,96 @@ void Frame::jsonDataUpdated(QString id)
 
         return;
     }
-
-    if( id == "id_balance")
+    else if(id == "id_balance")
     {
         GDW::getInstance()->parseBalance();
+        return;
+    }
+    else if(id == "id_wallet_get_transaction_fee" )
+    {
+        QString result = GDW::getInstance()->jsonDataValue(id);
+
+        if( result.startsWith("\"result\":"))
+        {
+            int pos = result.indexOf("\"amount\":") + 9;
+            QString amount = result.mid(pos, result.indexOf(",", pos) - pos);
+            amount.remove("\"");
+            qDebug() << "wallet_get_transaction_fee: " << amount;
+            GDW::getInstance()->transactionFee = amount.toLongLong();
+            if (GDW::getInstance()->transactionFee < GDW::getInstance()->assetInfoMap.value(0).precision)
+            {
+                GDW::getInstance()->transactionFee = GDW::getInstance()->assetInfoMap.value(0).precision;
+                GDW::getInstance()->postRPC(
+                            toJsonFormat(
+                                "id_wallet_set_transaction_fee",
+                                "wallet_set_transaction_fee",
+                                QStringList() << QString::number(GDW::getInstance()->assetInfoMap.value(0).precision, 10)));
+            }
+
+            if( currentPageNum == 3 && transferPage != NULL)
+            {
+                transferPage->updateTransactionFee();
+            }
+        }
+        return;
+    }
+
+    if(id.startsWith( "id_contract_get_info+"))
+    {
+        QString result = GDW::getInstance()->jsonDataValue(id);
+
+        if( result.startsWith("\"result\":"))
+        {
+            QString contract = id.mid(QString("id_contract_get_info+").size());
+
+            result.prepend("{");
+            result.append("}");
+
+            QTextCodec* utfCodec = QTextCodec::codecForName("UTF-8");
+            QByteArray ba = utfCodec->fromUnicode(result);
+
+            QJsonParseError json_error;
+            QJsonDocument parse_doucment = QJsonDocument::fromJson(ba, &json_error);
+            if(json_error.error == QJsonParseError::NoError && parse_doucment.isObject())
+            {
+                QJsonObject jsonObject = parse_doucment.object();
+                if(jsonObject.contains("result"))
+                {
+                    QJsonValue resultValue = jsonObject.take("result");
+                    if( resultValue.isObject())
+                    {
+                        QJsonObject resultObject = resultValue.toObject();
+                        QString contractName = resultObject.take("contract_name").toString();
+                        QString level = resultObject.take("level").toString();
+                        QString id = resultObject.take("id").toString();
+//                        QString description = resultObject.take("description").toString();
+                        if(level == "forever")
+                        {
+                            GDW::getInstance()->ERC20TokenInfoMap[id].contractAddress = id;
+                            GDW::getInstance()->ERC20TokenInfoMap[id].name = contractName;
+                            GDW::getInstance()->ERC20TokenInfoMap[id].level = level;
+//                            GDW::getInstance()->ERC20TokenInfoMap[id]. = description;
+
+                            GDW::getInstance()->postRPC(
+                                        toJsonFormat(
+                                            "id_contract_call_offline_state+" + id,
+                                            "contract_call_offline",
+                                            QStringList() << id
+                                                          << GDW::getInstance()->addressMap.keys().at(0)
+                                                          << "state"
+                                                          << ""
+                                            ));
+                        }
+
+                    }
+                }
+            }
+        }
+        return;
+    }
+
+    if( id.mid(0,37) == "id_wallet_get_account_public_address-" )
+    {
         return;
     }
 
