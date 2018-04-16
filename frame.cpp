@@ -147,7 +147,8 @@ Frame::Frame(): timer(NULL),
             GDW::getInstance()->configFile->setValue("/settings/minimizeToTray",false);
             GDW::getInstance()->closeToMinimize = false;
             GDW::getInstance()->configFile->setValue("/settings/closeToMinimize",false);
-
+            // For GDC contract
+            GDW::getInstance()->configFile->setValue("/AddedContractToken/cXTpaoH5hWatNuaK2PGAksTKr3tgyx76dZ", 1);
         }
         else
         {

@@ -85,7 +85,6 @@ void AssetPage::updateMyAsset()
         ui->myAssetWidget->setItem(myAssetCount,2,new QTableWidgetItem(info.contractAddress));
         ui->myAssetWidget->setItem(myAssetCount,3,new QTableWidgetItem(getBigNumberString(info.totalSupply,info.precision)));
         ui->myAssetWidget->setItem(myAssetCount,4,new QTableWidgetItem(getBigNumberString(info.precision,1)));
-//        ui->myAssetWidget->setItem(myAssetCount,5,new QTableWidgetItem(QString::fromLocal8Bit("取消关注")));
         ui->myAssetWidget->setItem(myAssetCount,5,new QTableWidgetItem(tr("unfollow")));
         ui->myAssetWidget->item(myAssetCount,5)->setTextColor(QColor(65,205,82));
 
