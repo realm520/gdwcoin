@@ -115,8 +115,8 @@ QToolButton:hover{color:rgb(125,85,40);}</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QToolButton{background-color:rgb(125,85,40);color:#ffffff;border:none;border-radius:3px;}
-QToolButton:hover{background-color:rgb(125,87,180);}
-QToolButton:disabled{background-color:#cecece;}</string>
+QToolButton:hover{background-color:rgb(185,150,85);}
+</string>
      </property>
      <property name="text">
       <string/>

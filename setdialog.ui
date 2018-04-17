@@ -401,7 +401,7 @@ QToolButton:hover{background-color:rgb(185,150,85);}
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>GDW</string>
+        <string>(1~10000)GDW</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="feeLineEdit">
@@ -492,9 +492,9 @@ QToolButton:hover{background-color:rgb(185,150,85);}
         <enum>Qt::NoFocus</enum>
        </property>
        <property name="styleSheet">
-        <string notr="true">QToolButton{background-color:rgb(105,67,155);color:#ffffff;border:none;border-radius:3px;}
-QToolButton:hover{background-color:rgb(125,87,180);}
-QToolButton:disabled{background-color:#cecece;}</string>
+        <string notr="true">QToolButton{background-color:rgb(125,85,40);color:#ffffff;border:none;border-radius:3px;}
+QToolButton:hover{background-color:rgb(185,150,85);}
+</string>
        </property>
        <property name="text">
         <string>保存</string>

@@ -217,7 +217,7 @@ background:transparent;</string>
 font: 12pt &quot;微软雅黑&quot;;</string>
    </property>
    <property name="text">
-    <string>GDW Wallet  v0.1.1</string>
+    <string>GWallet  v0.1.1</string>
    </property>
   </widget>
  </widget>

@@ -8,6 +8,7 @@
 #include "dialog/assetissuedialog.h"
 #include "commondialog.h"
 #include "dialog/addtokendialog.h"
+#include "dialog/createtokendialog.h"
 #include "showcontentdialog.h"
 
 #define ASSETPAGE_ALLASSETBTN_SELECTED_STYLE     "QToolButton{background-color:rgb(125,85,40);color:white;border:1px solid rgb(125,85,40);border-top-left-radius: 3px;border-bottom-left-radius: 3px;}"
@@ -84,7 +85,6 @@ void AssetPage::updateMyAsset()
         ui->myAssetWidget->setItem(myAssetCount,2,new QTableWidgetItem(info.contractAddress));
         ui->myAssetWidget->setItem(myAssetCount,3,new QTableWidgetItem(getBigNumberString(info.totalSupply,info.precision)));
         ui->myAssetWidget->setItem(myAssetCount,4,new QTableWidgetItem(getBigNumberString(info.precision,1)));
-//        ui->myAssetWidget->setItem(myAssetCount,5,new QTableWidgetItem(QString::fromLocal8Bit("取消关注")));
         ui->myAssetWidget->setItem(myAssetCount,5,new QTableWidgetItem(tr("unfollow")));
         ui->myAssetWidget->item(myAssetCount,5)->setTextColor(QColor(65,205,82));
 
@@ -161,4 +161,10 @@ void AssetPage::on_myAssetWidget_cellPressed(int row, int column)
 
         return;
     }
+}
+
+void AssetPage::on_issueTokenBtn_clicked()
+{
+    CreateTokenDialog createTokenDialog;
+    createTokenDialog.pop();
 }

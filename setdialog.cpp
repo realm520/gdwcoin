@@ -76,14 +76,14 @@ SetDialog::SetDialog(QWidget *parent) :
     qDebug() << "transactionFee: " << GDW::getInstance()->transactionFee;
     ui->feeLineEdit->setText(QString::number(double(GDW::getInstance()->transactionFee) / GDW::getInstance()->assetInfoMap.value(0).precision));
 
-    QRegExp rx("^([1-9]\\d*)(?:\\.\\d{0,0})?$|(^\\t?$)");
+    QRegExp rx("^(10000|[1-9]\\d{0,3})(?:\\.\\d{0,0})?$|(^\\t?$)");
     QRegExpValidator *pReg = new QRegExpValidator(rx, this);
     ui->feeLineEdit->setValidator(pReg);
 
     ui->closeBtn->setStyleSheet("QToolButton{background-image:url(:/pic/pic2/close4.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
 
 #ifdef WIN32
-    ui->languageComboBox->setStyleSheet("QComboBox {border: 1px solid gray;border-radius: 3px;padding: 1px 2px 1px 8px;min-width: 5em;}"
+    ui->languageComboBox->setStyleSheet("QComboBox {border: 1px solid gray;border-radius: 3px;padding: 1px 2px 1px 8px;}"
                                     "QComboBox::drop-down {subcontrol-origin: padding;subcontrol-position: top right;width: 20px;"
                                                            "border-left-width: 1px;border-left-color: darkgray;border-left-style: solid;"
                                                            "border-top-right-radius: 3px;border-bottom-right-radius: 3px;}"

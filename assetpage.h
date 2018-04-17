@@ -27,6 +27,8 @@ private slots:
 
     void on_myAssetWidget_cellPressed(int row, int column);
 
+    void on_issueTokenBtn_clicked();
+
 private:
     Ui::AssetPage *ui;
 
