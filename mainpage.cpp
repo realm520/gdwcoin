@@ -151,7 +151,7 @@ void MainPage::addAccount()
         }
         else
         {
-            if( result.mid(0,1) == "H")
+            if( result.mid(0,1) == "G")
             {
                 CommonDialog commonDialog(CommonDialog::OkOnly);
                 commonDialog.setText( tr("Please backup the private key of this account!!!") );
