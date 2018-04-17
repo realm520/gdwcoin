@@ -466,7 +466,7 @@ void TransferPage::getBalance()
 
 void TransferPage::updateTransactionFee()
 {
-    ui->feeLineEdit->setText(QString::number(float_t(GDW::getInstance()->transactionFee) / GDW::getInstance()->assetInfoMap.value(0).precision));
+    ui->feeLineEdit->setText(QString::number(double(GDW::getInstance()->transactionFee) / GDW::getInstance()->assetInfoMap.value(0).precision));
 }
 
 void TransferPage::jsonDataUpdated(QString id)

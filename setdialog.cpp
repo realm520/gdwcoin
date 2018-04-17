@@ -74,7 +74,7 @@ SetDialog::SetDialog(QWidget *parent) :
     ui->feeLineEdit->setTextMargins(8,0,0,0);
     ui->feeLineEdit->setAttribute(Qt::WA_InputMethodEnabled, false);
     qDebug() << "transactionFee: " << GDW::getInstance()->transactionFee;
-    ui->feeLineEdit->setText(QString::number(float_t(GDW::getInstance()->transactionFee) / GDW::getInstance()->assetInfoMap.value(0).precision));
+    ui->feeLineEdit->setText(QString::number(double(GDW::getInstance()->transactionFee) / GDW::getInstance()->assetInfoMap.value(0).precision));
 
     QRegExp rx("^([1-9]\\d*)(?:\\.\\d{0,0})?$|(^\\t?$)");
     QRegExpValidator *pReg = new QRegExpValidator(rx, this);
