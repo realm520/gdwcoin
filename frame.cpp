@@ -1164,12 +1164,12 @@ void Frame::jsonDataUpdated(QString id)
             GDW::getInstance()->transactionFee = amount.toLongLong();
             if (GDW::getInstance()->transactionFee < GDW::getInstance()->assetInfoMap.value(0).precision)
             {
-                GDW::getInstance()->transactionFee = GDW::getInstance()->assetInfoMap.value(0).precision;
+                GDW::getInstance()->transactionFee = 10000;
                 GDW::getInstance()->postRPC(
                             toJsonFormat(
                                 "id_wallet_set_transaction_fee",
                                 "wallet_set_transaction_fee",
-                                QStringList() << QString::number(GDW::getInstance()->assetInfoMap.value(0).precision, 10)));
+                                QStringList() << QString::number(1)));
             }
 
             if( currentPageNum == 3 && transferPage != NULL)
