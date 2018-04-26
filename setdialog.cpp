@@ -120,6 +120,10 @@ SetDialog::SetDialog(QWidget *parent) :
     ui->resyncCheckBox->setStyleSheet("QCheckBox::indicator{ image:url(:/pic/pic2/checkBox_unchecked.png); }"
                                     "QCheckBox::indicator:checked{ image:url(:/pic/cplpic/checkBox_checked.png); }");
 
+#ifdef TARGET_OS_MAC
+    ui->minimizeCheckBox->hide();
+    ui->closeCheckBox->hide();
+#endif
 
 
 }

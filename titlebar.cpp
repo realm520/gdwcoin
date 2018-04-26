@@ -57,8 +57,8 @@ TitleBar::~TitleBar()
 
 void TitleBar::on_minBtn_clicked()
 {
-	DLOG_QT_WALLET_FUNCTION_BEGIN;
 
+#ifdef WIN32
     if( GDW::getInstance()->minimizeToTray)
     {
         emit tray();
@@ -75,14 +75,18 @@ void TitleBar::on_minBtn_clicked()
             GDW::getInstance()->consoleWidget->showMinimized();
         }
     }
-
-	DLOG_QT_WALLET_FUNCTION_END;
+#else
+    emit minimum();
+    if( GDW::getInstance()->consoleWidget)
+    {
+        GDW::getInstance()->consoleWidget->showMinimized();
+    }
+#endif
 }
 
 void TitleBar::on_closeBtn_clicked()
 {
-	DLOG_QT_WALLET_FUNCTION_BEGIN;
-
+#ifdef WIN32
     if( GDW::getInstance()->closeToMinimize)
     {
         emit tray();
@@ -104,7 +108,21 @@ void TitleBar::on_closeBtn_clicked()
 
     }
 
-	DLOG_QT_WALLET_FUNCTION_END;
+#else
+    CommonDialog commonDialog(CommonDialog::OkAndCancel);
+    commonDialog.setText( tr( "Sure to close GDW Wallet?"));
+    bool choice = commonDialog.pop();
+
+    if( choice)
+    {
+        emit closeWallet();
+    }
+    else
+    {
+        return;
+    }
+#endif
+
 }
 
 void TitleBar::on_menuBtn_clicked()
