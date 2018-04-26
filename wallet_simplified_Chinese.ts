@@ -199,8 +199,8 @@
     </message>
     <message>
         <location filename="accountpage.ui" line="448"/>
-        <source>手续费/HSR</source>
-        <oldsource>手续费/HYP</oldsource>
+        <source>手续费/GDW</source>
+        <oldsource>手续费/HSR</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -237,27 +237,27 @@
         <translation type="obsolete">出块/不出块</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="96"/>
+        <location filename="accountpage.cpp" line="97"/>
         <source>copy to clipboard</source>
         <translation type="unfinished">复制到剪贴板</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="362"/>
+        <location filename="accountpage.cpp" line="352"/>
         <source>unconfirmed</source>
         <translation type="unfinished">未确认</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="445"/>
+        <location filename="accountpage.cpp" line="435"/>
         <source>call contract</source>
         <translation type="unfinished">调用合约</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="478"/>
+        <location filename="accountpage.cpp" line="468"/>
         <source>POW mining reward</source>
         <translation type="unfinished">POW挖矿奖励</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="483"/>
+        <location filename="accountpage.cpp" line="473"/>
         <source>POS mining reward</source>
         <translation type="unfinished">POS挖矿奖励</translation>
     </message>
@@ -278,8 +278,8 @@
         <translation type="obsolete">确定打开出块功能么?</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="335"/>
-        <location filename="accountpage.cpp" line="573"/>
+        <location filename="accountpage.cpp" line="325"/>
+        <location filename="accountpage.cpp" line="563"/>
         <source> ,</source>
         <translation type="unfinished">条,</translation>
     </message>
@@ -322,14 +322,14 @@
         <translation type="obsolete">已领取过，请等待到账</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="335"/>
-        <location filename="accountpage.cpp" line="573"/>
+        <location filename="accountpage.cpp" line="325"/>
+        <location filename="accountpage.cpp" line="563"/>
         <source>total </source>
         <oldsource>total</oldsource>
         <translation type="unfinished">共</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="255"/>
+        <location filename="accountpage.cpp" line="246"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished">复制到剪贴板</translation>
     </message>
@@ -380,13 +380,13 @@
         <translation type="unfinished">取消</translation>
     </message>
     <message>
-        <location filename="addcontactdialog.cpp" line="36"/>
+        <location filename="addcontactdialog.cpp" line="35"/>
         <source>Please enter an account address.</source>
         <oldsource>Please enter an account address or a registered account name.</oldsource>
         <translation type="unfinished">请输入账户地址</translation>
     </message>
     <message>
-        <location filename="addcontactdialog.cpp" line="213"/>
+        <location filename="addcontactdialog.cpp" line="193"/>
         <source>Invalid address</source>
         <translation type="unfinished">无效地址</translation>
     </message>
@@ -395,13 +395,13 @@
         <translation type="obsolete">&lt;body&gt;&lt;font color=green&gt;有效地址&lt;/font&gt;&lt;/body&gt;</translation>
     </message>
     <message>
-        <location filename="addcontactdialog.cpp" line="103"/>
+        <location filename="addcontactdialog.cpp" line="83"/>
         <source>can not be empty</source>
         <translation type="unfinished">地址不能为空</translation>
     </message>
     <message>
-        <location filename="addcontactdialog.cpp" line="126"/>
-        <location filename="addcontactdialog.cpp" line="136"/>
+        <location filename="addcontactdialog.cpp" line="106"/>
+        <location filename="addcontactdialog.cpp" line="116"/>
         <source>Already existed</source>
         <translation type="unfinished">该联系人已经存在了</translation>
     </message>
@@ -462,17 +462,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog/addtokendialog.cpp" line="74"/>
+        <location filename="dialog/addtokendialog.cpp" line="68"/>
         <source>Wrong contract address!</source>
         <translation type="unfinished">错误的合约地址!</translation>
     </message>
     <message>
-        <location filename="dialog/addtokendialog.cpp" line="81"/>
+        <location filename="dialog/addtokendialog.cpp" line="74"/>
         <source>Contract uninitialized!</source>
         <translation type="unfinished">合约未初始化!</translation>
     </message>
     <message>
-        <location filename="dialog/addtokendialog.cpp" line="115"/>
+        <location filename="dialog/addtokendialog.cpp" line="117"/>
         <source>Token added!</source>
         <translation type="unfinished">合约资产添加成功!</translation>
     </message>
@@ -635,12 +635,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="assetpage.cpp" line="119"/>
+        <location filename="assetpage.ui" line="246"/>
+        <source>发行资产</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="assetpage.cpp" line="88"/>
         <source>unfollow</source>
         <translation type="unfinished">取消关注</translation>
     </message>
     <message>
-        <location filename="assetpage.cpp" line="146"/>
+        <location filename="assetpage.cpp" line="115"/>
         <source>Sure to unfollow </source>
         <translation type="unfinished">是否取消关注 </translation>
     </message>
@@ -807,12 +812,12 @@ better not transfer or upgrade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="consoledialog.ui" line="153"/>
+        <location filename="consoledialog.ui" line="154"/>
         <source>清空</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="consoledialog.ui" line="188"/>
+        <location filename="consoledialog.ui" line="189"/>
         <source>在此输入命令并回车</source>
         <translation type="unfinished"></translation>
     </message>
@@ -844,12 +849,12 @@ better not transfer or upgrade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="consolewidget.ui" line="114"/>
+        <location filename="consolewidget.ui" line="115"/>
         <source>清空</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="consolewidget.ui" line="139"/>
+        <location filename="consolewidget.ui" line="140"/>
         <source>控制台</source>
         <translation type="unfinished"></translation>
     </message>
@@ -929,6 +934,192 @@ better not transfer or upgrade</source>
     </message>
 </context>
 <context>
+    <name>CreateTokenDialog</name>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">确定</translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="112"/>
+        <source>资产精度</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="149"/>
+        <source>返回</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="165"/>
+        <source>选择创建者</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="187"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="206"/>
+        <source>合约名</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="228"/>
+        <source>账户余额</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="250"/>
+        <source>合约描述</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="300"/>
+        <source>确认创建</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="339"/>
+        <source>资产总量</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="361"/>
+        <source>允许花费</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="383"/>
+        <source>10000000</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="408"/>
+        <source>GDW (创建合约流程的执行花费，固定1000,0000GDW)</source>
+        <oldsource>GDW (创建合约流程的执行花费，固定10000000GDW)</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="424"/>
+        <source>(0-8位小数)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="455"/>
+        <source>正在创建合约，请勿关闭钱包</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="474"/>
+        <source>正在注册合约...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="514"/>
+        <source>确定</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.ui" line="541"/>
+        <source>创建合约</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="96"/>
+        <location filename="dialog/createtokendialog.cpp" line="118"/>
+        <source>This contract name has been used! Please use another name.</source>
+        <translation type="unfinished">该合约名已被使用!请使用其他名字.</translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="105"/>
+        <location filename="dialog/createtokendialog.cpp" line="124"/>
+        <source>Contract registering ...</source>
+        <translation type="unfinished">正在注册合约...</translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="147"/>
+        <source>register failed: </source>
+        <translation type="unfinished">注册失败: </translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="167"/>
+        <source>upgrade failed: </source>
+        <translation type="unfinished">升级失败: </translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="187"/>
+        <source>init_token failed: </source>
+        <translation type="unfinished">init_token 失败: </translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="207"/>
+        <source>Contract registering ...
+Contract already registered.
+Registered address: %1
+Upgrading contract...</source>
+        <translation type="unfinished">正在注册合约...
+合约已注册.
+已注册合约地址: %1
+正在升级合约...</translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="309"/>
+        <source>Contract name can not be empty!</source>
+        <translation type="unfinished">合约名不能为空!</translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="317"/>
+        <source>Contract description can not be empty!</source>
+        <translation type="unfinished">合约描述不能为空!</translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="325"/>
+        <source>Total supply can not be empty!</source>
+        <translation type="unfinished">资产总量不能为空!</translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="334"/>
+        <source>You don&apos;t have enough %1s!</source>
+        <translation type="unfinished">你没有足够的 %1 !</translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="376"/>
+        <source>Contract registering ...
+Contract already registered.
+Registered address: %1
+Upgrading contract...
+Contract upgraded.
+Initing contract...</source>
+        <translation type="unfinished">正在注册合约...
+合约已注册.
+已注册合约地址: %1
+正在升级合约...
+合约已升级.
+正在初始化合约...</translation>
+    </message>
+    <message>
+        <location filename="dialog/createtokendialog.cpp" line="402"/>
+        <source>Contract registering ...
+Contract already registered.
+Registered address: %1
+Upgrading contract...
+Contract upgraded.
+Initing contract...
+Contract inited
+Contract created successfully!</source>
+        <translation type="unfinished">正在注册合约...
+合约已注册.
+已注册合约地址: %1
+正在升级合约...
+合约已升级.
+正在初始化合约...
+合约已初始化.
+创建合约成功!</translation>
+    </message>
+</context>
+<context>
     <name>DelegatePage</name>
     <message>
         <source>Upgraded address</source>
@@ -988,37 +1179,37 @@ better not transfer or upgrade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="deleteaccountdialog.cpp" line="34"/>
+        <location filename="deleteaccountdialog.cpp" line="33"/>
         <source>Login password</source>
         <translation type="unfinished">请输入钱包密码</translation>
     </message>
     <message>
-        <location filename="deleteaccountdialog.cpp" line="40"/>
+        <location filename="deleteaccountdialog.cpp" line="39"/>
         <source>Ok</source>
         <translation type="unfinished">确定</translation>
     </message>
     <message>
-        <location filename="deleteaccountdialog.cpp" line="42"/>
+        <location filename="deleteaccountdialog.cpp" line="41"/>
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
     <message>
-        <location filename="deleteaccountdialog.cpp" line="59"/>
+        <location filename="deleteaccountdialog.cpp" line="58"/>
         <source>Please enter the password!</source>
         <translation type="unfinished">请输入密码!</translation>
     </message>
     <message>
-        <location filename="deleteaccountdialog.cpp" line="156"/>
+        <location filename="deleteaccountdialog.cpp" line="111"/>
         <source>Wrong password!</source>
         <translation type="unfinished">错误的密码！</translation>
     </message>
     <message>
-        <location filename="deleteaccountdialog.cpp" line="190"/>
+        <location filename="deleteaccountdialog.cpp" line="145"/>
         <source>Account deleted.</source>
         <translation type="unfinished">删除账户成功</translation>
     </message>
     <message>
-        <location filename="deleteaccountdialog.cpp" line="199"/>
+        <location filename="deleteaccountdialog.cpp" line="154"/>
         <source>Delete account failed: </source>
         <translation type="unfinished">删除账户失败: </translation>
     </message>
@@ -1027,7 +1218,7 @@ better not transfer or upgrade</source>
         <translation type="obsolete">错误的密码!</translation>
     </message>
     <message>
-        <location filename="deleteaccountdialog.cpp" line="165"/>
+        <location filename="deleteaccountdialog.cpp" line="120"/>
         <source>At least 8 letters!</source>
         <translation type="unfinished">密码至少为8位!</translation>
     </message>
@@ -1040,12 +1231,12 @@ better not transfer or upgrade</source>
         <translation type="unfinished">确定</translation>
     </message>
     <message>
-        <location filename="editremarkdialog.ui" line="56"/>
+        <location filename="editremarkdialog.ui" line="57"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="editremarkdialog.ui" line="87"/>
+        <location filename="editremarkdialog.ui" line="88"/>
         <source>备注名：</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1068,32 +1259,32 @@ better not transfer or upgrade</source>
         <translation type="unfinished">取消</translation>
     </message>
     <message>
-        <location filename="exportdialog.ui" line="118"/>
+        <location filename="exportdialog.ui" line="119"/>
         <source>导出</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="exportdialog.cpp" line="36"/>
+        <location filename="exportdialog.cpp" line="35"/>
         <source>Export </source>
         <translation type="unfinished">导出账户 </translation>
     </message>
     <message>
-        <location filename="exportdialog.cpp" line="36"/>
+        <location filename="exportdialog.cpp" line="35"/>
         <source> &apos;s private key to:</source>
         <translation type="unfinished"> 的私钥至:</translation>
     </message>
     <message>
-        <location filename="exportdialog.cpp" line="70"/>
+        <location filename="exportdialog.cpp" line="63"/>
         <source>Select the path</source>
         <translation type="unfinished">选择路径</translation>
     </message>
     <message>
-        <location filename="exportdialog.cpp" line="86"/>
+        <location filename="exportdialog.cpp" line="79"/>
         <source>You have not backup this private key.If your wallet data is lost or corrupted, you will have no way to get your account back.Sure to cancel?</source>
         <translation type="unfinished">您还没有备份私钥，如果数据丢失/损坏 您将没有任何途径找回您的账户。是否确定取消备份?</translation>
     </message>
     <message>
-        <location filename="exportdialog.cpp" line="140"/>
+        <location filename="exportdialog.cpp" line="129"/>
         <source> already exists!
 Cover it or not?</source>
         <oldsource> already exists! Cover it or not?</oldsource>
@@ -1101,22 +1292,22 @@ Cover it or not?</source>
 是否覆盖？</translation>
     </message>
     <message>
-        <location filename="exportdialog.cpp" line="149"/>
+        <location filename="exportdialog.cpp" line="138"/>
         <source>Wrong path!</source>
         <translation type="unfinished">错误的路径！</translation>
     </message>
     <message>
-        <location filename="exportdialog.cpp" line="164"/>
+        <location filename="exportdialog.cpp" line="153"/>
         <source>Export to </source>
         <translation type="unfinished">导出至</translation>
     </message>
     <message>
-        <location filename="exportdialog.cpp" line="164"/>
+        <location filename="exportdialog.cpp" line="153"/>
         <source> succeeded!</source>
         <translation type="unfinished"> 成功！</translation>
     </message>
     <message>
-        <location filename="exportdialog.cpp" line="164"/>
+        <location filename="exportdialog.cpp" line="153"/>
         <source>Please keep your private key properly.Never lose or leak it to anyone!</source>
         <translation type="unfinished">请妥善保管您的私钥，绝对不要丢失或泄露给任何人!</translation>
     </message>
@@ -1125,7 +1316,7 @@ Cover it or not?</source>
         <translation type="obsolete">.gkey 成功!</translation>
     </message>
     <message>
-        <location filename="exportdialog.cpp" line="189"/>
+        <location filename="exportdialog.cpp" line="178"/>
         <source>Wrong file format!</source>
         <oldsource>Wrong file format.</oldsource>
         <translation type="unfinished">文件格式错误！</translation>
@@ -1189,12 +1380,12 @@ Cover it or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="firstlogin.ui" line="130"/>
+        <location filename="firstlogin.ui" line="131"/>
         <source>创建新钱包</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="firstlogin.ui" line="170"/>
+        <location filename="firstlogin.ui" line="171"/>
         <source>8-14位英文、数字或特殊字符
 请务必记住您的密码，没有任何找回途径</source>
         <translation type="unfinished"></translation>
@@ -1226,8 +1417,8 @@ Cover it or not?</source>
     </message>
     <message>
         <location filename="firstlogin.cpp" line="161"/>
-        <source>Sure to close Hcash Wallet?</source>
-        <oldsource>Sure to close Fry Wallet?</oldsource>
+        <source>Sure to close GDW Wallet?</source>
+        <oldsource>Sure to close Hcash Wallet?</oldsource>
         <translation type="unfinished">确定关闭钱包?</translation>
     </message>
     <message>
@@ -1243,22 +1434,22 @@ Cover it or not?</source>
 <context>
     <name>Frame</name>
     <message>
-        <location filename="frame.cpp" line="1031"/>
+        <location filename="frame.cpp" line="1028"/>
         <source>Wallet data error: </source>
         <translation type="unfinished">钱包数据损坏，请重新启动: </translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="1459"/>
+        <location filename="frame.cpp" line="1538"/>
         <source>Minimize</source>
         <translation type="unfinished">最小化</translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="1462"/>
+        <location filename="frame.cpp" line="1541"/>
         <source>Restore</source>
         <translation type="unfinished">恢复</translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="1465"/>
+        <location filename="frame.cpp" line="1544"/>
         <source>Quit</source>
         <translation type="unfinished">退出</translation>
     </message>
@@ -1367,37 +1558,37 @@ add an account first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="75"/>
+        <location filename="importdialog.cpp" line="64"/>
         <source>Choose your private key file.</source>
         <oldsource>Choose you private key file.</oldsource>
         <translation type="unfinished">选择你的私钥文件</translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="105"/>
-        <location filename="importdialog.cpp" line="154"/>
+        <location filename="importdialog.cpp" line="94"/>
+        <location filename="importdialog.cpp" line="143"/>
         <source>Wrong file path.</source>
         <translation type="unfinished">错误的文件路径</translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="145"/>
+        <location filename="importdialog.cpp" line="134"/>
         <source>Wrong password!</source>
         <translation type="unfinished">错误的密码！</translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="207"/>
+        <location filename="importdialog.cpp" line="196"/>
         <source> already existed</source>
         <translation type="unfinished">已经存在</translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="227"/>
-        <location filename="importdialog.cpp" line="313"/>
+        <location filename="importdialog.cpp" line="216"/>
+        <location filename="importdialog.cpp" line="302"/>
         <source> has been imported!</source>
         <translation type="unfinished">已经被导入!</translation>
     </message>
     <message>
-        <location filename="importdialog.cpp" line="180"/>
-        <location filename="importdialog.cpp" line="254"/>
-        <location filename="importdialog.cpp" line="326"/>
+        <location filename="importdialog.cpp" line="169"/>
+        <location filename="importdialog.cpp" line="243"/>
+        <location filename="importdialog.cpp" line="315"/>
         <source>Illegal private key!</source>
         <translation type="unfinished">错误的私钥！</translation>
     </message>
@@ -1530,8 +1721,8 @@ add an account first</source>
     </message>
     <message>
         <location filename="lockpage.cpp" line="123"/>
-        <source>Sure to close Hcash Wallet?</source>
-        <oldsource>Sure to close Fry Wallet?</oldsource>
+        <source>Sure to close GDW Wallet?</source>
+        <oldsource>Sure to close Hcash Wallet?</oldsource>
         <translation type="unfinished">确定关闭钱包?</translation>
     </message>
     <message>
@@ -1594,39 +1785,38 @@ add an account first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="232"/>
-        <source>余额/HSR</source>
-        <oldsource>余额/HYP</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainpage.ui" line="47"/>
-        <location filename="mainpage.ui" line="206"/>
+        <location filename="mainpage.ui" line="207"/>
         <source>账户</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="126"/>
+        <location filename="mainpage.ui" line="127"/>
         <source>创建账户</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="276"/>
+        <location filename="mainpage.ui" line="233"/>
+        <source>余额/GDW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainpage.ui" line="277"/>
         <source>请稍等...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="302"/>
+        <location filename="mainpage.ui" line="303"/>
         <source>您当前还没有账户，请添加</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="360"/>
+        <location filename="mainpage.ui" line="361"/>
         <source>当前资产</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="219"/>
+        <location filename="mainpage.ui" line="220"/>
         <source>地址</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1681,28 +1871,28 @@ add an account first</source>
         <translation type="unfinished">如果出现余额不正确或交易记录不正确的现象，尝试重新扫描区块，即可恢复</translation>
     </message>
     <message>
-        <location filename="mainpage.cpp" line="151"/>
+        <location filename="mainpage.cpp" line="148"/>
         <source>Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.cpp" line="170"/>
+        <location filename="mainpage.cpp" line="157"/>
         <source>Please backup the private key of this account!!!</source>
         <translation type="unfinished">新建账户成功,请备份私钥!!!</translation>
     </message>
     <message>
-        <location filename="mainpage.cpp" line="221"/>
-        <location filename="mainpage.cpp" line="262"/>
+        <location filename="mainpage.cpp" line="204"/>
+        <location filename="mainpage.cpp" line="243"/>
         <source>Balance/</source>
         <translation type="unfinished">余额/</translation>
     </message>
     <message>
-        <location filename="mainpage.cpp" line="448"/>
+        <location filename="mainpage.cpp" line="423"/>
         <source>Withdraw succeeded!</source>
         <translation type="unfinished">领取成功!</translation>
     </message>
     <message>
-        <location filename="mainpage.cpp" line="456"/>
+        <location filename="mainpage.cpp" line="431"/>
         <source>Withdraw failed!</source>
         <translation type="unfinished">领取失败!</translation>
     </message>
@@ -1788,34 +1978,34 @@ add an account first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="33"/>
+        <location filename="namedialog.cpp" line="31"/>
         <source>Beginning with letter,letters or numbers</source>
         <translation type="unfinished">小写字母开头的小写字母、数字的组合</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="38"/>
+        <location filename="namedialog.cpp" line="36"/>
         <source>Ok</source>
         <translation type="unfinished">确定</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="41"/>
+        <location filename="namedialog.cpp" line="39"/>
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="119"/>
+        <location filename="namedialog.cpp" line="115"/>
         <source>More than 63 characters!</source>
         <oldsource>More than 36 characters!</oldsource>
         <translation type="unfinished">账户名超过63位！</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="130"/>
-        <location filename="namedialog.cpp" line="170"/>
+        <location filename="namedialog.cpp" line="126"/>
+        <location filename="namedialog.cpp" line="166"/>
         <source>This name has been used</source>
         <translation type="unfinished">该账户名已有人使用，请换一个</translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="164"/>
+        <location filename="namedialog.cpp" line="160"/>
         <source>You can use this name</source>
         <translation type="unfinished">该账户名可用</translation>
     </message>
@@ -1873,8 +2063,8 @@ add an account first</source>
     </message>
     <message>
         <location filename="normallogin.cpp" line="124"/>
-        <source>Sure to close Hcash Wallet?</source>
-        <oldsource>Sure to close Fry Wallet?</oldsource>
+        <source>Sure to close GDW Wallet?</source>
+        <oldsource>Sure to close Hcash Wallet?</oldsource>
         <translation type="unfinished">确定关闭钱包?</translation>
     </message>
     <message>
@@ -1983,12 +2173,12 @@ add an account first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="remarkdialog.cpp" line="29"/>
+        <location filename="remarkdialog.cpp" line="28"/>
         <source>Ok</source>
         <translation type="unfinished">确定</translation>
     </message>
     <message>
-        <location filename="remarkdialog.cpp" line="30"/>
+        <location filename="remarkdialog.cpp" line="29"/>
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
@@ -2011,33 +2201,33 @@ add an account first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog/renamedialog.cpp" line="30"/>
+        <location filename="dialog/renamedialog.cpp" line="28"/>
         <source>Beginning with letter,letters or numbers</source>
         <translation type="unfinished">小写字母开头的小写字母、数字的组合</translation>
     </message>
     <message>
-        <location filename="dialog/renamedialog.cpp" line="36"/>
+        <location filename="dialog/renamedialog.cpp" line="31"/>
         <source>Ok</source>
         <translation type="unfinished">确定</translation>
     </message>
     <message>
-        <location filename="dialog/renamedialog.cpp" line="39"/>
+        <location filename="dialog/renamedialog.cpp" line="33"/>
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
     <message>
-        <location filename="dialog/renamedialog.cpp" line="113"/>
+        <location filename="dialog/renamedialog.cpp" line="98"/>
         <source>More than 63 characters!</source>
         <translation type="unfinished">账户名超过63位！</translation>
     </message>
     <message>
-        <location filename="dialog/renamedialog.cpp" line="124"/>
-        <location filename="dialog/renamedialog.cpp" line="158"/>
+        <location filename="dialog/renamedialog.cpp" line="109"/>
+        <location filename="dialog/renamedialog.cpp" line="143"/>
         <source>This name has been used</source>
         <translation type="unfinished">该账户名已有人使用，请换一个</translation>
     </message>
     <message>
-        <location filename="dialog/renamedialog.cpp" line="152"/>
+        <location filename="dialog/renamedialog.cpp" line="137"/>
         <source>You can use this name</source>
         <translation type="unfinished">该账户名可用</translation>
     </message>
@@ -2177,73 +2367,73 @@ update or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="133"/>
-        <location filename="setdialog.ui" line="499"/>
+        <location filename="setdialog.ui" line="134"/>
+        <location filename="setdialog.ui" line="500"/>
         <source>保存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="152"/>
+        <location filename="setdialog.ui" line="153"/>
         <source>钱包自动锁定时间</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="185"/>
+        <location filename="setdialog.ui" line="186"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="360"/>
+        <location filename="setdialog.ui" line="361"/>
         <source>下次启动时以修复模式启动</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="379"/>
+        <location filename="setdialog.ui" line="380"/>
         <source>转账手续费</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="403"/>
-        <source>HSR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="setdialog.ui" line="422"/>
-        <source>0.00001</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="setdialog.ui" line="556"/>
+        <location filename="setdialog.ui" line="557"/>
         <source>旧密码：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="594"/>
+        <location filename="setdialog.ui" line="595"/>
         <source>新密码：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="680"/>
+        <location filename="setdialog.ui" line="681"/>
         <source>密码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="285"/>
+        <location filename="setdialog.ui" line="286"/>
         <source>min</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="310"/>
+        <location filename="setdialog.ui" line="311"/>
         <source>最小化托盘</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="335"/>
+        <location filename="setdialog.ui" line="336"/>
         <source>点击关闭按钮最小化</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="518"/>
+        <location filename="setdialog.ui" line="404"/>
+        <source>(1~10000)GDW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="setdialog.ui" line="423"/>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="setdialog.ui" line="519"/>
         <source>再次输入：</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2253,17 +2443,17 @@ update or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="211"/>
+        <location filename="setdialog.ui" line="212"/>
         <source>不锁定</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="263"/>
+        <location filename="setdialog.ui" line="264"/>
         <source>界面语言</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="180"/>
+        <location filename="setdialog.ui" line="181"/>
         <source>中文</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2276,30 +2466,30 @@ update or not?</source>
         <translation type="obsolete">修改</translation>
     </message>
     <message>
-        <location filename="setdialog.cpp" line="315"/>
-        <location filename="setdialog.cpp" line="374"/>
+        <location filename="setdialog.cpp" line="277"/>
+        <location filename="setdialog.cpp" line="334"/>
         <source>at least 8 letters</source>
         <translation type="unfinished">密码至少为8位</translation>
     </message>
     <message>
-        <location filename="setdialog.cpp" line="323"/>
+        <location filename="setdialog.cpp" line="284"/>
         <source>same password</source>
         <oldsource>the same as the old password</oldsource>
         <translation type="unfinished">不能和旧密码相同</translation>
     </message>
     <message>
-        <location filename="setdialog.cpp" line="350"/>
-        <location filename="setdialog.cpp" line="403"/>
+        <location filename="setdialog.cpp" line="310"/>
+        <location filename="setdialog.cpp" line="359"/>
         <source>not consistent</source>
         <translation type="unfinished">两次密码不一致</translation>
     </message>
     <message>
-        <location filename="setdialog.cpp" line="433"/>
+        <location filename="setdialog.cpp" line="388"/>
         <source>wrong password</source>
         <translation type="unfinished">密码错误</translation>
     </message>
     <message>
-        <location filename="setdialog.cpp" line="479"/>
+        <location filename="setdialog.cpp" line="432"/>
         <source>The fee should not be 0!</source>
         <translation type="unfinished">手续费不能为0!</translation>
     </message>
@@ -2401,7 +2591,8 @@ update or not?</source>
     </message>
     <message>
         <location filename="titlebar.ui" line="220"/>
-        <source>Hcash Wallet  v0.1.1</source>
+        <source>GWallet  v0.1.1</source>
+        <oldsource>Hcash Wallet  v0.1.1</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2425,14 +2616,19 @@ update or not?</source>
         <translation type="obsolete">确定关闭 Goopal 钱包</translation>
     </message>
     <message>
-        <location filename="titlebar.cpp" line="103"/>
         <source>Sure to close Hcash Wallet?</source>
         <oldsource>Sure to close Fry Wallet?</oldsource>
-        <translation type="unfinished">确定关闭钱包?</translation>
+        <translation type="obsolete">确定关闭钱包?</translation>
     </message>
     <message>
         <source>No news!</source>
         <translation type="obsolete">还没有消息!</translation>
+    </message>
+    <message>
+        <location filename="titlebar.cpp" line="97"/>
+        <location filename="titlebar.cpp" line="113"/>
+        <source>Sure to close GDW Wallet?</source>
+        <translation type="unfinished">确定关闭钱包?</translation>
     </message>
 </context>
 <context>
@@ -2473,32 +2669,32 @@ update or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferconfirmdialog.cpp" line="41"/>
+        <location filename="transferconfirmdialog.cpp" line="37"/>
         <source>Ok</source>
         <translation type="unfinished">确定</translation>
     </message>
     <message>
-        <location filename="transferconfirmdialog.cpp" line="42"/>
+        <location filename="transferconfirmdialog.cpp" line="38"/>
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
     <message>
-        <location filename="transferconfirmdialog.cpp" line="45"/>
+        <location filename="transferconfirmdialog.cpp" line="40"/>
         <source>Enter login password</source>
         <translation type="unfinished">请输入钱包密码</translation>
     </message>
     <message>
-        <location filename="transferconfirmdialog.cpp" line="84"/>
+        <location filename="transferconfirmdialog.cpp" line="72"/>
         <source>Wrong password!</source>
         <translation type="unfinished">错误的密码！</translation>
     </message>
     <message>
-        <location filename="transferconfirmdialog.cpp" line="93"/>
+        <location filename="transferconfirmdialog.cpp" line="80"/>
         <source>At least 8 letters!</source>
         <translation type="unfinished">密码至少为8位！</translation>
     </message>
     <message>
-        <location filename="transferconfirmdialog.cpp" line="109"/>
+        <location filename="transferconfirmdialog.cpp" line="96"/>
         <source>Please enter the password!</source>
         <translation type="unfinished">请输入密码!</translation>
     </message>
@@ -2541,6 +2737,17 @@ update or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="transferpage.ui" line="270"/>
+        <location filename="transferpage.ui" line="335"/>
+        <source>GDW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="transferpage.ui" line="308"/>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="transferpage.ui" line="492"/>
         <source>选择资产</source>
         <translation type="unfinished"></translation>
@@ -2553,12 +2760,6 @@ update or not?</source>
     <message>
         <location filename="transferpage.ui" line="289"/>
         <source>手续费</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="transferpage.ui" line="308"/>
-        <source>0.0001</source>
-        <oldsource>0.01</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2578,13 +2779,6 @@ update or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.ui" line="270"/>
-        <location filename="transferpage.ui" line="335"/>
-        <source>HSR</source>
-        <oldsource>HYP</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="transferpage.ui" line="473"/>
         <source>长度超过40个字节</source>
         <translation type="unfinished"></translation>
@@ -2594,52 +2788,56 @@ update or not?</source>
         <translation type="obsolete">发送</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="212"/>
+        <location filename="transferpage.cpp" line="170"/>
         <source>Please enter the amount and address.</source>
         <oldsource>Please enter the amount and Add.</oldsource>
         <translation type="unfinished">请输入转账金额和地址</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="221"/>
+        <location filename="transferpage.cpp" line="178"/>
         <source>The amount can not be 0</source>
         <translation type="unfinished">金额不能为0</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="229"/>
         <source>The fee can not be 0</source>
-        <translation type="unfinished">手续费不能为0</translation>
+        <translation type="obsolete">手续费不能为0</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="247"/>
+        <location filename="transferpage.cpp" line="186"/>
+        <source>The fee can not be 1</source>
+        <translation type="unfinished">手续费不能为1</translation>
+    </message>
+    <message>
+        <location filename="transferpage.cpp" line="202"/>
         <source>Message length more than 40 bytes!</source>
         <translation type="unfinished">消息长度超过40个字节!</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="594"/>
+        <location filename="transferpage.cpp" line="534"/>
         <source>This name has been registered, please rename this account!</source>
         <translation type="unfinished">账户名已被注册，请修改账户名！</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="600"/>
-        <location filename="transferpage.cpp" line="628"/>
-        <location filename="transferpage.cpp" line="634"/>
-        <location filename="transferpage.cpp" line="705"/>
+        <location filename="transferpage.cpp" line="540"/>
+        <location filename="transferpage.cpp" line="568"/>
+        <location filename="transferpage.cpp" line="574"/>
+        <location filename="transferpage.cpp" line="645"/>
         <source>Wrong address!</source>
         <translation type="unfinished">错误的地址！</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="609"/>
+        <location filename="transferpage.cpp" line="549"/>
         <source>Message too long!</source>
         <translation type="unfinished">消息太长了！</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="616"/>
+        <location filename="transferpage.cpp" line="556"/>
         <source>Failed: You need to wait for synchronization to complete</source>
         <translation type="unfinished">当前不可交易，需等待数据同步完成</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="622"/>
-        <location filename="transferpage.cpp" line="709"/>
+        <location filename="transferpage.cpp" line="562"/>
+        <location filename="transferpage.cpp" line="649"/>
         <source>Not enough balance!</source>
         <translation type="unfinished">余额不足!</translation>
     </message>
@@ -2652,14 +2850,14 @@ update or not?</source>
         <translation type="obsolete">一个账户不能给自己转账!</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="567"/>
-        <location filename="transferpage.cpp" line="675"/>
+        <location filename="transferpage.cpp" line="507"/>
+        <location filename="transferpage.cpp" line="615"/>
         <source>Transaction has been sent,please wait for confirmation</source>
         <translation type="unfinished">交易信息已发出，请等待确认</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="573"/>
-        <location filename="transferpage.cpp" line="681"/>
+        <location filename="transferpage.cpp" line="513"/>
+        <location filename="transferpage.cpp" line="621"/>
         <source>Add this address to contacts?</source>
         <translation type="unfinished">是否将该地址添加到联系人？</translation>
     </message>
@@ -2677,23 +2875,23 @@ update or not?</source>
         <translation type="obsolete">错误的地址格式</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="640"/>
+        <location filename="transferpage.cpp" line="580"/>
         <source>Transaction sent failed</source>
         <translation type="unfinished">交易发送失败</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="656"/>
+        <location filename="transferpage.cpp" line="596"/>
         <source>&lt;body&gt;&lt;font color=green&gt;Valid add.&lt;/font&gt;&lt;/body&gt;</source>
         <oldsource>&lt;body&gt;&lt;font color=green&gt;Valid address&lt;/font&gt;&lt;/body&gt;</oldsource>
         <translation type="unfinished">&lt;body&gt;&lt;font color=green&gt;有效地址&lt;/font&gt;&lt;/body&gt;</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="661"/>
+        <location filename="transferpage.cpp" line="601"/>
         <source>Invalid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="791"/>
+        <location filename="transferpage.cpp" line="723"/>
         <source>Invalid add.</source>
         <oldsource>Invalid address</oldsource>
         <translation type="unfinished">无效地址</translation>
@@ -2814,8 +3012,8 @@ update or not?</source>
     </message>
     <message>
         <location filename="waitingforsync.cpp" line="88"/>
-        <source>Sure to close Hcash Wallet?</source>
-        <oldsource>Sure to close Fry Wallet?</oldsource>
+        <source>Sure to close GDW Wallet?</source>
+        <oldsource>Sure to close Hcash Wallet?</oldsource>
         <translation type="unfinished">确定关闭钱包?</translation>
     </message>
     <message>
@@ -2833,32 +3031,25 @@ update or not?</source>
 <context>
     <name>WarningDialog</name>
     <message>
-        <location filename="dialog/warningdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">确定</translation>
+        <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="dialog/warningdialog.ui" line="63"/>
-        <location filename="dialog/warningdialog.cpp" line="33"/>
-        <location filename="dialog/warningdialog.cpp" line="59"/>
-        <location filename="dialog/warningdialog.cpp" line="64"/>
         <source>I have known</source>
-        <translation type="unfinished">我知道了</translation>
+        <translation type="obsolete">我知道了</translation>
     </message>
     <message>
-        <location filename="dialog/warningdialog.ui" line="79"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hcash  beta description&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hcash公测版说明&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hcash公测版说明&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="dialog/warningdialog.ui" line="98"/>
         <source>    The software data is only used for public testing, and there is no practical value.
     The number of tokens in the public beta does not have any value. Do not accept any personal transactions conducted in this test.
     In the process of experience, any Bug or improvements can be found, and users can send mail to support@h.cash for submission. Once adopted, the Hcash foundation will reward the developers and users of the feedback problem.</source>
         <oldsource>    The software data is only used for public testing, and there is no practical value.
       The number of tokens in the public beta does not have any value. Do not accept any personal transactions conducted in this test.
      In the process of experience, any Bug or improvements can be found, and users can send mail to support@h.cash for submission. Once adopted, the Hcash foundation will reward the developers and users of the feedback problem.</oldsource>
-        <translation type="unfinished">    该软件数据仅为公测使用，不存在任何实际价值。
+        <translation type="obsolete">    该软件数据仅为公测使用，不存在任何实际价值。
     公测版中的代币数量不具有任何价值。请勿接受任何在此测试版上进行的个人交易行为。
     在体验过程中，发现任何Bug或可改善之处，用户可发送邮件至 support@h.cash进行提交。一经采纳，Hcash基金会将会对反馈问题的开发者与用户进行奖励。</translation>
     </message>

@@ -101,6 +101,7 @@ void AssetPage::updateMyAsset()
 
 void AssetPage::jsonDataUpdated(QString id)
 {
+
 }
 
 void AssetPage::on_myAssetWidget_cellClicked(int row, int column)

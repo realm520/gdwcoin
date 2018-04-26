@@ -211,12 +211,15 @@ QToolButton:hover{color:rgb(185,150,85);}</string>
     <rect>
      <x>40</x>
      <y>100</y>
-     <width>601</width>
-     <height>21</height>
+     <width>500</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="text">
     <string>我关注的资产(符合标准的资产可以添加到钱包,钱包会去检索账户的相应资产)</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QToolButton" name="issueTokenBtn">

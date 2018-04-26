@@ -405,7 +405,7 @@
         <string notr="true">font: 9pt &quot;微软雅黑&quot;;</string>
        </property>
        <property name="text">
-        <string>GDW (创建合约流程的执行花费，建议值 10000000GDW)</string>
+        <string>GDW (创建合约流程的执行花费，固定1000,0000GDW)</string>
        </property>
        <property name="wordWrap">
         <bool>true</bool>
