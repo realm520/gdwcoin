@@ -180,10 +180,10 @@ void TransferPage::on_sendBtn_clicked()
         return;
     }
 
-    if( ui->feeLineEdit->text().toDouble() <= 1)
+    if( ui->feeLineEdit->text().toDouble() < 1)
     {
         CommonDialog tipDialog(CommonDialog::OkOnly);
-        tipDialog.setText( tr("The fee can not be 1"));
+        tipDialog.setText( tr("The fee can not be less than 1"));
         tipDialog.pop();
         return;
     }
