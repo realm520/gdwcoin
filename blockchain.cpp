@@ -73,8 +73,13 @@ GDW::GDW()
     {
         lockMinutes     = configFile->value("/settings/lockMinutes").toInt();
         notProduce      = !configFile->value("/settings/notAutoLock").toBool();
+#ifdef WIN32
         minimizeToTray  = configFile->value("/settings/minimizeToTray").toBool();
         closeToMinimize = configFile->value("/settings/closeToMinimize").toBool();
+#else
+        minimizeToTray  = false;
+        closeToMinimize = false;
+#endif
         language        = configFile->value("/settings/language").toString();
         resyncNextTime  = configFile->value("/settings/resyncNextTime",false).toBool();
         firstUse        = configFile->value("/settings/firstUse",true).toBool();

@@ -155,7 +155,11 @@ Frame::Frame(): timer(NULL),
             waitingForSync->move(0,0);
             connect( waitingForSync,SIGNAL(sync()), this, SLOT(syncFinished()));
             connect( waitingForSync,SIGNAL(minimum()),this,SLOT(showMinimized()));
+#ifdef WIN32
             connect( waitingForSync,SIGNAL(tray()),this,SLOT(hide()));
+#else
+            connect( waitingForSync,SIGNAL(tray()),this,SLOT(showMinimized()));
+#endif
             connect( waitingForSync,SIGNAL(closeWallet()),qApp,SLOT(quit()));
             connect( waitingForSync,SIGNAL(showShadowWidget()),this,SLOT(shadowWidgetShow()));
             connect( waitingForSync,SIGNAL(hideShadowWidget()),this,SLOT(shadowWidgetHide()));
@@ -285,7 +289,11 @@ void Frame::alreadyLogin()
     titleBar->setGeometry(0,0,960,53);
     connect(titleBar,SIGNAL(minimum()),this,SLOT(showMinimized()));
     connect(titleBar,SIGNAL(closeWallet()),qApp,SLOT(quit()));
-    connect(titleBar,SIGNAL(tray()),this,SLOT(hide()));
+#ifdef WIN32
+    connect( titleBar,SIGNAL(tray()),this,SLOT(hide()));
+#else
+    connect( titleBar,SIGNAL(tray()),this,SLOT(showMinimized()));
+#endif
     connect(titleBar,SIGNAL(settingSaved()),this,SLOT(settingSaved()));
     connect(titleBar,SIGNAL(showShadowWidget()),this,SLOT(shadowWidgetShow()));
     connect(titleBar,SIGNAL(hideShadowWidget()),this,SLOT(shadowWidgetHide()));
@@ -522,6 +530,8 @@ void Frame::privateKeyImported()
     mainPage->updateAccountList();
     DLOG_QT_WALLET_FUNCTION_END;
 }
+
+
 
 void Frame::mousePressEvent(QMouseEvent *event)
 {
@@ -960,7 +970,11 @@ void Frame::showWaittingForSyncWidget()
     waitingForSync->move(0,0);
     connect( waitingForSync,SIGNAL(sync()), this, SLOT(syncFinished()));
     connect( waitingForSync,SIGNAL(minimum()),this,SLOT(showMinimized()));
+#ifdef WIN32
     connect( waitingForSync,SIGNAL(tray()),this,SLOT(hide()));
+#else
+    connect( waitingForSync,SIGNAL(tray()),this,SLOT(showMinimized()));
+#endif
     connect( waitingForSync,SIGNAL(closeWallet()), qApp,SLOT(quit()));
     connect( waitingForSync,SIGNAL(showShadowWidget()),this,SLOT(shadowWidgetShow()));
     connect( waitingForSync,SIGNAL(hideShadowWidget()),this,SLOT(shadowWidgetHide()));
@@ -989,7 +1003,11 @@ void Frame::jsonDataUpdated(QString id)
             connect( normalLogin,SIGNAL(login()), this, SLOT(alreadyLogin()));
             connect( normalLogin,SIGNAL(minimum()),this,SLOT(showMinimized()));
             connect( normalLogin,SIGNAL(closeWallet()), qApp,SLOT(quit()));
-            connect( normalLogin,SIGNAL(tray()),this,SLOT(hide()));
+#ifdef WIN32
+    connect( normalLogin,SIGNAL(tray()),this,SLOT(hide()));
+#else
+    connect( normalLogin,SIGNAL(tray()),this,SLOT(showMinimized()));
+#endif
             connect( normalLogin,SIGNAL(showShadowWidget()), this, SLOT(shadowWidgetShow()));
             connect( normalLogin,SIGNAL(hideShadowWidget()), this,SLOT(shadowWidgetHide()));
         }
@@ -1002,7 +1020,11 @@ void Frame::jsonDataUpdated(QString id)
             connect( firstLogin,SIGNAL(login()), this, SLOT(alreadyLogin()));
             connect( firstLogin,SIGNAL(minimum()),this,SLOT(showMinimized()));
             connect( firstLogin,SIGNAL(closeWallet()), qApp,SLOT(quit()));
+#ifdef WIN32
             connect( firstLogin,SIGNAL(tray()),this,SLOT(hide()));
+#else
+            connect( firstLogin,SIGNAL(tray()),this,SLOT(showMinimized()));
+#endif
             connect( firstLogin,SIGNAL(showShadowWidget()), this, SLOT(shadowWidgetShow()));
             connect( firstLogin,SIGNAL(hideShadowWidget()), this,SLOT(shadowWidgetHide()));
         }
@@ -1121,7 +1143,11 @@ void Frame::jsonDataUpdated(QString id)
             connect( lockPage,SIGNAL(unlock()),this,SLOT(unlock()));
             connect( lockPage,SIGNAL(minimum()),this,SLOT(showMinimized()));
             connect( lockPage,SIGNAL(closeWallet()), qApp,SLOT(quit()));
+#ifdef WIN32
             connect( lockPage,SIGNAL(tray()),this,SLOT(hide()));
+#else
+            connect( lockPage,SIGNAL(tray()),this,SLOT(showMinimized()));
+#endif
             connect( lockPage,SIGNAL(showShadowWidget()),this,SLOT(shadowWidgetShow()));
             connect( lockPage,SIGNAL(hideShadowWidget()),this,SLOT(shadowWidgetHide()));
             lockPage->show();
