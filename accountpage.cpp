@@ -169,7 +169,11 @@ void AccountPage::updateTransactionsList()
 
     if( ui->assetComboBox->currentIndex() == 0)
     {
-        GDW::getInstance()->postRPC( toJsonFormat( "id_history_" + accountName + "_" + ui->assetComboBox->currentText(), "history", QStringList() << accountName << ui->assetComboBox->currentText() << "9999999" ));
+        GDW::getInstance()->postRPC(
+                    toJsonFormat(
+                        "id_history_" + accountName + "_" + ui->assetComboBox->currentText(),
+                        "history",
+                        QStringList() << accountName << ui->assetComboBox->currentText() << "9999999" ));
     }
 
     DLOG_QT_WALLET_FUNCTION_END;
@@ -278,8 +282,6 @@ void AccountPage::jsonDataUpdated(QString id)
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
         GDW::getInstance()->parseTransactions(result,accountName + "_" + ui->assetComboBox->currentText());
-
-        return;
     }
 }
 
@@ -390,18 +392,14 @@ void AccountPage::showNormalTransactions()
             ui->accountTransactionsTableWidget->setItem(i,4,new QTableWidgetItem( getBigNumberString(amount,assetInfo.precision) + " "
                                                                                   + assetInfo.symbol));
         }
-
         if( transactionInfo.isConfirmed == false)
         {
             ui->accountTransactionsTableWidget->item(i,4)->setTextColor(QColor(200,200,200));
         }
-
         // 手续费
         ui->accountTransactionsTableWidget->setItem(i, 5, new QTableWidgetItem(getBigNumberString(transactionInfo.fee, assetInfo.precision)));
-
         // 备注
         ui->accountTransactionsTableWidget->setItem(i,6,new QTableWidgetItem( detail.memo));
-
         for(int j = 0; j < 7; j++)
         {
             ui->accountTransactionsTableWidget->item(i,j)->setTextAlignment(Qt::AlignCenter);
@@ -481,66 +479,18 @@ AccountPage::TransactionDetail AccountPage::getDetail(TransactionInfo info)
         }
 
     }
-    else
-    {
-//        if( info.isMarketCancel)
-//        {
-//            Entry entry = info.entries.at(0);
-//            result.opposite = QString::fromLocal8Bit("市场撤单");
-//            result.type     = 6;
-//            result.assetAmount = entry.amount;
-//            result.memo     = entry.memo;
-//        }
-//        else
-//        {
-//            if( info.entries.size() > 1)        // entry为2个 则为市场成交
-//            {
-//                Entry entry = info.entries.at(1);
-//                result.opposite = QString::fromLocal8Bit("市场成交");
-//                result.type     = 5;
-//                result.assetAmount = entry.amount;
-//                result.memo     = entry.memo;
-//            }
-//            else                                // entry为1个 则为市场挂单
-//            {
-//                Entry entry = info.entries.at(0);
-//                if( entry.fromAccount == accountName)
-//                {
-//                    if( entry.toAccount.startsWith("ASK-"))
-//                    {
-//                        result.opposite = QString::fromLocal8Bit("市场挂卖单");
-//                        result.type     = 4;
-//                        result.assetAmount = entry.amount;
-//                        result.memo     = entry.memo;
-//                    }
-//                    else if( entry.toAccount.startsWith("BID-"))
-//                    {
-//                        result.opposite = QString::fromLocal8Bit("市场挂买单");
-//                        result.type     = 3;
-//                        result.assetAmount = entry.amount;
-//                        result.memo     = entry.memo;
-//                    }
-//                }
-//            }
-//        }
-    }
-
 
     return result;
 }
 
 void AccountPage::showContractTransactions()
 {
-    ui->accountTransactionsTableWidget->setColumnHidden(6,true);
-
+//    ui->accountTransactionsTableWidget->setColumnHidden(6,true);
     QStringList contracts = GDW::getInstance()->ERC20TokenInfoMap.keys();
     QString contractAddress = contracts.at(ui->assetComboBox->currentIndex() - 1);
     QString accountAddress = GDW::getInstance()->addressMap.value(accountName).ownerAddress;
-
     ERC20TokenInfo info = GDW::getInstance()->ERC20TokenInfoMap.value(contractAddress);
-
     ContractTransactionVector vector = GDW::getInstance()->accountContractTransactionMap.value(accountAddress + "-" + contractAddress);
-
     ui->accountTransactionsTableWidget->setRowCount(0);
     if( vector.size() < 1)
     {
@@ -579,13 +529,10 @@ void AccountPage::showContractTransactions()
         time = time.addSecs(28800);       // 时间加8小时
         QString currentDateTime = time.toString("yyyy-MM-dd\r\nhh:mm:ss");
         ui->accountTransactionsTableWidget->setItem(i,0,new QTableWidgetItem(currentDateTime));
-
         // 区块高度
         ui->accountTransactionsTableWidget->setItem(i,1,new QTableWidgetItem( QString::number(transaction.blockNum) ));
-
         // 交易ID
         ui->accountTransactionsTableWidget->setItem(i,2,new QTableWidgetItem( transaction.trxId));
-
         // 对方账户
         QString opposite;
         int type = 0;   // 发送 0    接收 1  自己转自己 2
@@ -606,9 +553,7 @@ void AccountPage::showContractTransactions()
             opposite = transaction.fromAddress;
             type = 1;
         }
-
         ui->accountTransactionsTableWidget->setItem(i,3,new QTableWidgetItem(GDW::getInstance()->addressToName(opposite)));
-
         // 金额
         if( type == 0)
         {
@@ -627,8 +572,6 @@ void AccountPage::showContractTransactions()
             ui->accountTransactionsTableWidget->setItem(i,4,new QTableWidgetItem(getBigNumberString(transaction.amount, info.precision) + " "
                                                                                   + info.symbol));
         }
-
-
         // 手续费
         if( type == 1)
         {
@@ -638,44 +581,13 @@ void AccountPage::showContractTransactions()
         {
             ui->accountTransactionsTableWidget->setItem(i,5,new QTableWidgetItem(getBigNumberString(transaction.fee, info.precision)));
         }
-
-
-        for(int j = 0; j < 6; j++)
+        ui->accountTransactionsTableWidget->setItem(i,6,new QTableWidgetItem(transaction.memo));
+        for(int j = 0; j < 7; j++)
         {
             ui->accountTransactionsTableWidget->item(i,j)->setTextAlignment(Qt::AlignCenter);
         }
-
     }
-
-
 }
-
-//void AccountPage::on_accountTransactionsTableWidget_cellClicked(int row, int column)
-//{
-//    if( column == 1 )
-//    {
-//        ShowContentDialog showContentDialog( ui->accountTransactionsTableWidget->item(row, column)->text(),this);
-//        int scrollBarValue = ui->accountTransactionsTableWidget->verticalScrollBar()->sliderPosition();
-//        showContentDialog.move( ui->accountTransactionsTableWidget->mapToGlobal( QPoint(120, 57 * (row - scrollBarValue) + 42)));
-//        showContentDialog.exec();
-
-//        return;
-//    }
-
-//    if( column == 5)
-//    {
-
-//        QString remark = ui->accountTransactionsTableWidget->item(row, column)->text();
-//        remark.remove(' ');
-//        if( remark.isEmpty() )  return;
-//        ShowContentDialog showContentDialog( ui->accountTransactionsTableWidget->item(row, column)->text(),this);
-//        int scrollBarValue = ui->accountTransactionsTableWidget->verticalScrollBar()->sliderPosition();
-//        showContentDialog.move( ui->accountTransactionsTableWidget->mapToGlobal( QPoint(640, 57 * (row - scrollBarValue) + 42)));
-//        showContentDialog.exec();
-//        return;
-//    }
-//}
-
 
 void AccountPage::on_prePageBtn_clicked()
 {
@@ -756,39 +668,7 @@ void AccountPage::on_accountTransactionsTableWidget_cellPressed(int row, int col
 
         showContentDialog.move( ui->accountTransactionsTableWidget->mapToGlobal( QPoint(x, y)));
         showContentDialog.exec();
-
-        return;
     }
-
-//    if( column == 3 )
-//    {
-//        ShowContentDialog showContentDialog( ui->accountTransactionsTableWidget->item(row, column)->text(),this);
-
-//        int x = ui->accountTransactionsTableWidget->columnViewportPosition(column) + ui->accountTransactionsTableWidget->columnWidth(column) / 2
-//                - showContentDialog.width() / 2;
-//        int y = ui->accountTransactionsTableWidget->rowViewportPosition(row) - 10 + ui->accountTransactionsTableWidget->horizontalHeader()->height();
-
-//        showContentDialog.move( ui->accountTransactionsTableWidget->mapToGlobal( QPoint(x, y)));
-//        showContentDialog.exec();
-
-//        return;
-//    }
-
-//    if( column == 6 )
-//    {
-//        ShowContentDialog showContentDialog( ui->accountTransactionsTableWidget->item(row, column)->text(),this);
-
-//        int x = ui->accountTransactionsTableWidget->columnViewportPosition(column) + ui->accountTransactionsTableWidget->columnWidth(column) / 2
-//                - showContentDialog.width() / 2;
-//        int y = ui->accountTransactionsTableWidget->rowViewportPosition(row) - 10 + ui->accountTransactionsTableWidget->horizontalHeader()->height();
-
-//        showContentDialog.move( ui->accountTransactionsTableWidget->mapToGlobal( QPoint(x, y)));
-//        showContentDialog.exec();
-
-
-
-//        return;
-//    }
 }
 
 void AccountPage::on_qrcodeBtn_clicked()

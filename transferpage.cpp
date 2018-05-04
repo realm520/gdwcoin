@@ -188,14 +188,9 @@ void TransferPage::on_sendBtn_clicked()
         return;
     }
 
-    QString remark = ui->messageLineEdit->text();
-    if( remark.size() == 0)    // 转地址如果没有备注 会自动添加 TO ...   所以添加空格
-    {
-        remark = " ";
-    }
-
+    this->localMemo = ui->messageLineEdit->text();
     QTextCodec* utfCodec = QTextCodec::codecForName("UTF-8");
-    QByteArray ba = utfCodec->fromUnicode(remark);
+    QByteArray ba = utfCodec->fromUnicode(this->localMemo);
     if( ba.size() > 40)
     {
         CommonDialog tipDialog(CommonDialog::OkOnly);
@@ -206,42 +201,45 @@ void TransferPage::on_sendBtn_clicked()
 
     if( !checkAddress(ui->sendtoLineEdit->text()))   return;
 
-    TransferConfirmDialog transferConfirmDialog( ui->sendtoLineEdit->text(), ui->amountLineEdit->text(), ui->feeLineEdit->text(), remark, ui->assetComboBox->currentText());
+    TransferConfirmDialog transferConfirmDialog(
+                ui->sendtoLineEdit->text(), ui->amountLineEdit->text(),
+                ui->feeLineEdit->text(), this->localMemo,
+                ui->assetComboBox->currentText());
     bool yOrN = transferConfirmDialog.pop();
-    if( yOrN)
+    if(yOrN && !ui->sendtoLineEdit->text().isEmpty())
     {
-        if( !ui->sendtoLineEdit->text().isEmpty())
+        int assetIndex = ui->assetComboBox->currentIndex();
+        if( assetIndex <= 0)
         {
-            int assetIndex = ui->assetComboBox->currentIndex();
-            if( assetIndex <= 0)
-            {
-                assetIndex = 0;
-                AssetInfo info = GDW::getInstance()->assetInfoMap.value(assetIndex);
-
-                GDW::getInstance()->postRPC( toJsonFormat( "id_wallet_transfer_to_address_" + accountName, "wallet_transfer_to_address",
-                                                             QStringList() << ui->amountLineEdit->text() << info.symbol << accountName
-                                                             << ui->sendtoLineEdit->text() << remark ));
-            }
-            else
-            {
-                // 如果是合约资产
-                QStringList contracts = GDW::getInstance()->ERC20TokenInfoMap.keys();
-                QString contractAddress = contracts.at(assetIndex - 1);
-
-                ERC20TokenInfo info = GDW::getInstance()->ERC20TokenInfoMap.value(contractAddress);
-                QString accountAddress = ui->sendtoLineEdit->text();
-
-                GDW::getInstance()->postRPC( toJsonFormat( "id_contract_call_transfer+" + contractAddress + "+" + accountAddress, "contract_call",
-                                                             QStringList() << contractAddress << ui->accountComboBox->currentText()<< "transfer" << accountAddress + "," + QString::number( ui->amountLineEdit->text().toDouble() * info.precision,'f',0)
-                                                             << ASSET_NAME << "0.001"
-                                                             ));
-            }
+            assetIndex = 0;
+            AssetInfo info = GDW::getInstance()->assetInfoMap.value(assetIndex);
+            GDW::getInstance()->postRPC(
+                        toJsonFormat(
+                            "id_wallet_transfer_to_address_" + accountName,
+                            "wallet_transfer_to_address",
+                            QStringList() << ui->amountLineEdit->text()
+                                          << info.symbol << accountName
+                                          << ui->sendtoLineEdit->text() << " " ));
         }
-
-
+        else
+        {
+            // 如果是合约资产
+            QStringList contracts = GDW::getInstance()->ERC20TokenInfoMap.keys();
+            QString contractAddress = contracts.at(assetIndex - 1);
+            ERC20TokenInfo info = GDW::getInstance()->ERC20TokenInfoMap.value(contractAddress);
+            QString accountAddress = ui->sendtoLineEdit->text();
+            double amount = ui->amountLineEdit->text().toDouble() * info.precision;
+            GDW::getInstance()->postRPC(
+                        toJsonFormat(
+                            "id_contract_call_transfer+" + contractAddress + "+" + accountAddress,
+                            "contract_call",
+                            QStringList() << contractAddress
+                                          << ui->accountComboBox->currentText()
+                                          << "transfer"
+                                          << accountAddress + "," + QString::number(amount, 'f', 0)
+                                          << ASSET_NAME << "0.001"));
+        }
     }
-
-
 }
 
 
@@ -288,11 +286,8 @@ void TransferPage::on_amountLineEdit_textChanged(const QString &arg1)
     {
         // 如果是合约资产
         QStringList contracts = GDW::getInstance()->ERC20TokenInfoMap.keys();
-
         QString contractAddress = contracts.at(ui->assetComboBox->currentIndex() - 1);
-
         ERC20TokenInfo info = GDW::getInstance()->ERC20TokenInfoMap.value(contractAddress);
-
         QString accountAddress = GDW::getInstance()->addressMap.value(ui->accountComboBox->currentText()).ownerAddress;
         double balance;
         balance = GDW::getInstance()->accountContractBalanceMap.value(accountAddress).value(contractAddress);
@@ -466,7 +461,9 @@ void TransferPage::getBalance()
 
 void TransferPage::updateTransactionFee()
 {
-    ui->feeLineEdit->setText(QString::number(double(GDW::getInstance()->transactionFee) / GDW::getInstance()->assetInfoMap.value(0).precision));
+    ui->feeLineEdit->setText(
+                QString::number(double(GDW::getInstance()->transactionFee) /
+                        GDW::getInstance()->assetInfoMap.value(0).precision));
 }
 
 void TransferPage::jsonDataUpdated(QString id)
@@ -475,34 +472,30 @@ void TransferPage::jsonDataUpdated(QString id)
         || id == "id_wallet_transfer_to_public_account_" + accountName)
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
-qDebug() << id << result;
         if( result.mid(0,18) == "\"result\":{\"index\":")             // 成功
         {
-            QString recordId = result.mid( result.indexOf("\"entry_id\"") + 12, 40);
-
+            QString recordId = result.mid(result.indexOf("\"entry_id\"") + 12, 40);
             mutexForPendingFile.lock();
-
             mutexForConfigFile.lock();
-            GDW::getInstance()->configFile->setValue("/recordId/" + recordId , 0);
+            GDW::getInstance()->configFile->setValue("/recordId/" + recordId, 0);
+            GDW::getInstance()->configFile->setValue("/txMemoId/" + recordId, this->localMemo);
             mutexForConfigFile.unlock();
-
             if( !GDW::getInstance()->pendingFile->open(QIODevice::ReadWrite))
             {
                 qDebug() << "pending.dat open fail";
                 return;
             }
 
-            QByteArray ba = QByteArray::fromBase64( GDW::getInstance()->pendingFile->readAll());
-            ba += QString( recordId + "," + accountName + "," + ui->sendtoLineEdit->text() + "," + ui->amountLineEdit->text() + "," + ui->feeLineEdit->text() + ";").toUtf8();
+            QByteArray ba = QByteArray::fromBase64(GDW::getInstance()->pendingFile->readAll());
+            ba += QString(
+                        recordId + "," + accountName + "," + ui->sendtoLineEdit->text() + "," +
+                        ui->amountLineEdit->text() + "," + ui->feeLineEdit->text() + ";").toUtf8();
             ba = ba.toBase64();
             GDW::getInstance()->pendingFile->resize(0);
             QTextStream ts(GDW::getInstance()->pendingFile);
             ts << ba;
-
             GDW::getInstance()->pendingFile->close();
-
             mutexForPendingFile.unlock();
-
             CommonDialog tipDialog(CommonDialog::OkOnly);
             tipDialog.setText( tr("Transaction has been sent,please wait for confirmation"));
             tipDialog.pop();
@@ -580,7 +573,6 @@ qDebug() << id << result;
                 tipDialog.setText( tr("Transaction sent failed"));
                 tipDialog.pop();
             }
-
         }
         return;
     }
@@ -605,16 +597,19 @@ qDebug() << id << result;
         return;
     }
 
-    if( id.startsWith("id_contract_call_transfer+"))
+    if(id.startsWith("id_contract_call_transfer+"))
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
-
         if( result.startsWith("\"result\":"))
         {
+            QString recordId = result.mid(result.indexOf("\"entry_id\"") + 12, 40);
+            mutexForConfigFile.lock();
+//            GDW::getInstance()->configFile->setValue("/recordId/" + recordId, 0);
+            GDW::getInstance()->configFile->setValue("/txMemoId/" + recordId, this->localMemo);
+            mutexForConfigFile.unlock();
             CommonDialog tipDialog(CommonDialog::OkOnly);
-            tipDialog.setText( tr("Transaction has been sent,please wait for confirmation"));
+            tipDialog.setText(tr("Transaction has been sent,please wait for confirmation"));
             tipDialog.pop();
-
             if( !contactsList.contains( ui->sendtoLineEdit->text()))
             {
                 CommonDialog addContactDialog(CommonDialog::OkAndCancel);
@@ -626,9 +621,7 @@ qDebug() << id << result;
                     getContactsList();
                 }
             }
-
             emit showAccountPage(accountName);
-
         }
         else if( result.startsWith("\"error\":"))
         {
@@ -691,16 +684,16 @@ void TransferPage::on_assetComboBox_currentIndexChanged(int index)
 
     getBalance();
 
-    if( index == 0)
-    {
-        ui->messageLabel->show();
-        ui->messageLineEdit->show();
-    }
-    else
-    {
-        ui->messageLabel->hide();
-        ui->messageLineEdit->hide();
-    }
+//    if( index == 0)
+//    {
+//        ui->messageLabel->show();
+//        ui->messageLineEdit->show();
+//    }
+//    else
+//    {
+//        ui->messageLabel->hide();
+//        ui->messageLineEdit->hide();
+//    }
 
     setAmountPrecision();
 
