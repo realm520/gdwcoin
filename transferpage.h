@@ -66,9 +66,8 @@ private:
     QString delegateLabelString;
     QString registeredLabelString;
     bool assetUpdating;
-
+    QString localMemo;
     void paintEvent(QPaintEvent*);
-//    void addContact(QString,QString);
     void getContactsList();
     void setAmountPrecision();
 };

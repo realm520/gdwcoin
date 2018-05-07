@@ -574,96 +574,88 @@ void GDW::parseTransactions(QString result, QString accountName)
 
     QJsonParseError json_error;
     QJsonDocument parse_doucment = QJsonDocument::fromJson(ba, &json_error);
-    if(json_error.error == QJsonParseError::NoError)
+    if(json_error.error == QJsonParseError::NoError && parse_doucment.isObject())
     {
-        if( parse_doucment.isObject())
+        QJsonObject jsonObject = parse_doucment.object();
+        if( jsonObject.contains("result"))
         {
-            QJsonObject jsonObject = parse_doucment.object();
-            if( jsonObject.contains("result"))
+            QJsonValue resultValue = jsonObject.take("result");
+            if( resultValue.isArray())
             {
-                QJsonValue resultValue = jsonObject.take("result");
-                if( resultValue.isArray())
+                TransactionsInfoVector transactionsInfoVector;
+                QJsonArray resultArray = resultValue.toArray();
+                for( int i = 0; i < resultArray.size(); i++)
                 {
-                    TransactionsInfoVector transactionsInfoVector;
-                    QJsonArray resultArray = resultValue.toArray();
-                    for( int i = 0; i < resultArray.size(); i++)
+                    TransactionInfo transactionInfo;
+                    QJsonObject object          = resultArray.at(i).toObject();
+                    transactionInfo.isConfirmed = object.take("is_confirmed").toBool();
+                    if (!transactionInfo.isConfirmed && object.contains("error"))
                     {
-                        TransactionInfo transactionInfo;
-
-                        QJsonObject object          = resultArray.at(i).toObject();
-                        transactionInfo.isConfirmed = object.take("is_confirmed").toBool();
-                        if ( !transactionInfo.isConfirmed)
+                        continue; // 包含error  则为失效交易
+                    }
+                    transactionInfo.trxId       = object.take("trx_id").toString();
+                    transactionInfo.isMarket    = object.take("is_market").toBool();
+                    transactionInfo.isMarketCancel = object.take("is_market_cancel").toBool();
+                    transactionInfo.blockNum    = object.take("block_num").toInt();
+                    transactionInfo.timeStamp   = object.take("timestamp").toString();
+                    QJsonArray entriesArray       = object.take("ledger_entries").toArray();
+                    for( int j = 0; j < entriesArray.size(); j++)
+                    {
+                        QJsonObject entryObject = entriesArray.at(j).toObject();
+                        Entry   entry;
+                        entry.fromAccount       = entryObject.take("from_account").toString();
+                        entry.toAccount         = entryObject.take("to_account").toString();
+                        mutexForConfigFile.lock();
+                        entry.memo              = GDW::getInstance()->configFile->
+                                value("/txMemoId/" + transactionInfo.trxId, "").toString();
+                        mutexForConfigFile.unlock();
+                        QJsonObject amountObject = entryObject.take("amount").toObject();
+                        entry.amount.assetId     = amountObject.take("asset_id").toInt();
+                        QJsonValue amountValue   = amountObject.take("amount");
+                        if( amountValue.isString())
                         {
-                            // 包含error  则为失效交易
-                            if( object.contains("error"))   continue;
-                        }
-
-                        transactionInfo.trxId       = object.take("trx_id").toString();
-                        transactionInfo.isMarket    = object.take("is_market").toBool();
-                        transactionInfo.isMarketCancel = object.take("is_market_cancel").toBool();
-                        transactionInfo.blockNum    = object.take("block_num").toInt();
-                        transactionInfo.timeStamp   = object.take("timestamp").toString();
-
-                        QJsonArray entriesArray       = object.take("ledger_entries").toArray();
-                        for( int j = 0; j < entriesArray.size(); j++)
-                        {
-                            QJsonObject entryObject = entriesArray.at(j).toObject();
-                            Entry   entry;
-                            entry.fromAccount       = entryObject.take("from_account").toString();
-                            entry.toAccount         = entryObject.take("to_account").toString();
-                            QJsonValue v = entryObject.take("memo");
-                            entry.memo              = v.toString();
-
-                            QJsonObject amountObject = entryObject.take("amount").toObject();
-                            entry.amount.assetId     = amountObject.take("asset_id").toInt();
-                            QJsonValue amountValue   = amountObject.take("amount");
-                            if( amountValue.isString())
-                            {
-                                entry.amount.amount  = amountValue.toString().toULongLong();
-                            }
-                            else
-                            {
-                                entry.amount.amount  = QString::number(amountValue.toDouble(),'g',10).toULongLong();
-                            }
-
-                            QJsonArray runningBalanceArray  = entryObject.take("running_balances").toArray().at(0).toArray().at(1).toArray();
-                            for( int k = 0; k < runningBalanceArray.size(); k++)
-                            {
-                                QJsonObject amountObject2    = runningBalanceArray.at(k).toArray().at(1).toObject();
-                                AssetAmount assetAmount;
-                                assetAmount.assetId = amountObject2.take("asset_id").toInt();
-                                QJsonValue amountValue2   = amountObject2.take("amount");
-                                if( amountValue2.isString())
-                                {
-                                    assetAmount.amount  = amountValue2.toString().toULongLong();
-                                }
-                                else
-                                {
-                                    assetAmount.amount  = QString::number(amountValue2.toDouble(),'g',10).toULongLong();
-                                }
-                                entry.runningBalances.append(assetAmount);
-                            }
-
-                            transactionInfo.entries.append(entry);
-                        }
-
-                        QJsonObject object5         = object.take("fee").toObject();
-                        QJsonValue amountValue3     = object5.take("amount");
-                        if( amountValue3.isString())
-                        {
-                            transactionInfo.fee     = amountValue3.toString().toULongLong();
+                            entry.amount.amount  = amountValue.toString().toULongLong();
                         }
                         else
                         {
-                            transactionInfo.fee     = QString::number(amountValue3.toDouble(),'g',10).toULongLong();
+                            entry.amount.amount  = QString::number(amountValue.toDouble(),'g',10).toULongLong();
                         }
-                        transactionInfo.feeId       = object5.take("asset_id").toInt();
 
-                        transactionsInfoVector.append(transactionInfo);
+                        QJsonArray runningBalanceArray  = entryObject.take("running_balances").toArray().at(0).toArray().at(1).toArray();
+                        for( int k = 0; k < runningBalanceArray.size(); k++)
+                        {
+                            QJsonObject amountObject2    = runningBalanceArray.at(k).toArray().at(1).toObject();
+                            AssetAmount assetAmount;
+                            assetAmount.assetId = amountObject2.take("asset_id").toInt();
+                            QJsonValue amountValue2   = amountObject2.take("amount");
+                            if( amountValue2.isString())
+                            {
+                                assetAmount.amount  = amountValue2.toString().toULongLong();
+                            }
+                            else
+                            {
+                                assetAmount.amount  = QString::number(amountValue2.toDouble(),'g',10).toULongLong();
+                            }
+                            entry.runningBalances.append(assetAmount);
+                        }
+
+                        transactionInfo.entries.append(entry);
                     }
 
-                    transactionsMap.insert(accountName,transactionsInfoVector);
+                    QJsonObject object5         = object.take("fee").toObject();
+                    QJsonValue amountValue3     = object5.take("amount");
+                    if( amountValue3.isString())
+                    {
+                        transactionInfo.fee     = amountValue3.toString().toULongLong();
+                    }
+                    else
+                    {
+                        transactionInfo.fee     = QString::number(amountValue3.toDouble(),'g',10).toULongLong();
+                    }
+                    transactionInfo.feeId       = object5.take("asset_id").toInt();
+                    transactionsInfoVector.append(transactionInfo);
                 }
+                transactionsMap.insert(accountName,transactionsInfoVector);
             }
         }
     }

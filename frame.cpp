@@ -1393,7 +1393,6 @@ void Frame::jsonDataUpdated(QString id)
     if( id.startsWith( "id_blockchain_list_contract_transaction_history+") )
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
-
         if( result.startsWith("\"result\":"))
         {
             int pos = QString("id_blockchain_list_contract_transaction_history+").size();
@@ -1404,35 +1403,31 @@ void Frame::jsonDataUpdated(QString id)
 
             result.prepend("{");
             result.append("}");
-
             QTextCodec* utfCodec = QTextCodec::codecForName("UTF-8");
             QByteArray ba = utfCodec->fromUnicode(result);
-
             QJsonParseError json_error;
             QJsonDocument parse_doucment = QJsonDocument::fromJson(ba, &json_error);
-            if(json_error.error == QJsonParseError::NoError)
+            if(json_error.error == QJsonParseError::NoError && parse_doucment.isObject())
             {
-                if( parse_doucment.isObject())
+                QJsonObject jsonObject = parse_doucment.object();
+                if( jsonObject.contains("result"))
                 {
-                    QJsonObject jsonObject = parse_doucment.object();
-                    if( jsonObject.contains("result"))
+                    QJsonValue resultValue = jsonObject.take("result");
+                    if( resultValue.isArray())
                     {
-                        QJsonValue resultValue = jsonObject.take("result");
-                        if( resultValue.isArray())
+                        QJsonArray resultArray = resultValue.toArray();
+                        for( int i = 0; i < resultArray.size(); i++)
                         {
-                            QJsonArray resultArray = resultValue.toArray();
-                            for( int i = 0; i < resultArray.size(); i++)
-                            {
-                                QJsonObject object          = resultArray.at(i).toObject();
-                                QString trxId               = object.take("result_trx_id").toString();
-                                GDW::getInstance()->postRPC( toJsonFormat( "id_blockchain_get_pretty_contract_transaction" + trxId, "blockchain_get_pretty_contract_transaction",
-                                                                             QStringList() << trxId
-                                                                             ));
-                            }
+                            QJsonObject object          = resultArray.at(i).toObject();
+                            QString trxId               = object.take("result_trx_id").toString();
+                            GDW::getInstance()->postRPC(
+                                        toJsonFormat(
+                                            "id_blockchain_get_pretty_contract_transaction" + trxId,
+                                            "blockchain_get_pretty_contract_transaction",
+                                            QStringList() << trxId));
                         }
                     }
                 }
-
             }
         }
         return;
@@ -1441,15 +1436,12 @@ void Frame::jsonDataUpdated(QString id)
     if( id.startsWith( "id_blockchain_get_pretty_contract_transaction") )
     {
         QString result = GDW::getInstance()->jsonDataValue(id);
-
         if( result.startsWith("\"result\":"))
         {
             result.prepend("{");
             result.append("}");
-
             QTextCodec* utfCodec = QTextCodec::codecForName("UTF-8");
             QByteArray ba = utfCodec->fromUnicode(result);
-
             QJsonParseError json_error;
             QJsonDocument parse_doucment = QJsonDocument::fromJson(ba, &json_error);
             if(json_error.error == QJsonParseError::NoError)
@@ -1462,9 +1454,13 @@ void Frame::jsonDataUpdated(QString id)
                         ContractTransaction contractTransaction;
                         QJsonObject object = jsonObject.take("result").toObject();
                         contractTransaction.trxId = object.take("result_trx_id").toString();
+                        QString org_txid = object.take("orig_trx_id").toString();
+                        mutexForConfigFile.lock();
+                        contractTransaction.memo = GDW::getInstance()->configFile->
+                                value("/txMemoId/" + org_txid, "").toString();
+                        mutexForConfigFile.unlock();
                         contractTransaction.blockNum = object.take("block_num").toInt();
                         contractTransaction.timeStamp   = object.take("timestamp").toString();
-
                         QJsonObject object2 = object.take("to_contract_ledger_entry").toObject();
                         contractTransaction.fromAddress = object2.take("from_account").toString();
                         contractTransaction.contractAddress = object2.take("to_account").toString();
@@ -1477,7 +1473,6 @@ void Frame::jsonDataUpdated(QString id)
                         {
                             contractTransaction.fee = QString::number(feeValue.toDouble(),'g',10).toULongLong();
                         }
-
                         QJsonArray array = object.take("reserved").toArray();
                         QStringList params = array.at(1).toString().split(",");
                         if(params.size() != 2)  return;

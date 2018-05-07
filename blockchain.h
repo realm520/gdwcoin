@@ -126,6 +126,7 @@ struct ContractTransaction
     QString toAddress;
     unsigned long long amount;
     QString timeStamp;
+    QString memo;
     unsigned long long fee;
 };
 typedef QVector<ContractTransaction>  ContractTransactionVector;
