@@ -197,6 +197,7 @@ void AccountPage::updateBalance()
         if( !GDW::getInstance()->accountBalanceMap.contains(accountName))
         {
             ui->balanceLabel->setText( "<body><font style=\"font-size:18px\" color=#000000>0</font><font style=\"font-size:12px\" color=#000000> " + ui->assetComboBox->currentText() + "</font></body>" );
+            ui->balanceLabel->adjustSize();
             return;
         }
 

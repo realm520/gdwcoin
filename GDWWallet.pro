@@ -17,14 +17,22 @@ win32{
     LIBS += -lDbgHelp
     LIBS += User32.Lib
     LIBS += -limm32
+
+contains(DEFINES, WIN64) {
+        LIBS += -L$$PWD -lqrencode64
+    }
+    else {
+        LIBS += -L$$PWD -lqrencode32
+    }
 }
 
 macx{
     ICON = logo.icns
-QMAKE_MAC_SDK = macosx10.12
+    QMAKE_MAC_SDK = macosx10.12
+    LIBS += -L$$PWD -lqrencode
 }
 
-LIBS += -L$$PWD -lqrencode
+
 
 
 SOURCES += main.cpp\
