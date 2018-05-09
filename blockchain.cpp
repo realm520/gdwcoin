@@ -67,7 +67,7 @@ GDW::GDW()
         firstUse = true;
         configFile->setValue("settings/firstUse",true);
         // For GDC contract
-        configFile->setValue("/AddedContractToken/cXTpaoH5hWatNuaK2PGAksTKr3tgyx76dZ", 1);
+        configFile->setValue("/AddedContractToken/ce1kkR1xfqrURsjvSx2BQikRFj7hGRCcD5", 1);
     }
     else
     {
