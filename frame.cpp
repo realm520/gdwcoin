@@ -1190,7 +1190,7 @@ void Frame::jsonDataUpdated(QString id)
             GDW::getInstance()->transactionFee = amount.toLongLong();
             if (GDW::getInstance()->transactionFee < GDW::getInstance()->assetInfoMap.value(0).precision)
             {
-                GDW::getInstance()->transactionFee = 10000;
+                GDW::getInstance()->transactionFee = 100000;
                 GDW::getInstance()->postRPC(
                             toJsonFormat(
                                 "id_wallet_set_transaction_fee",
@@ -1511,9 +1511,9 @@ void Frame::jsonDataUpdated(QString id)
             amount.remove("\"");
             qDebug() << "wallet_get_transaction_fee: " << amount;
             GDW::getInstance()->transactionFee = amount.toLongLong();
-            if (GDW::getInstance()->transactionFee < 10000)
+            if (GDW::getInstance()->transactionFee < 100000)
             {
-                GDW::getInstance()->transactionFee = 10000;
+                GDW::getInstance()->transactionFee = 100000;
                 GDW::getInstance()->postRPC(
                             toJsonFormat(
                                 "id_wallet_set_transaction_fee",

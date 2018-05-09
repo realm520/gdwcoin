@@ -409,7 +409,7 @@ void MainPage::jsonDataUpdated(QString id)
         int pos = result.indexOf("\"pay_balance\":") + 14;
         QString payBal = result.mid( pos, result.indexOf("}", pos) - pos );
         payBal.remove("\"");
-        GDW::getInstance()->delegateSalaryMap.insert(id.mid(37), payBal.toInt() / 10000.0);
+        GDW::getInstance()->delegateSalaryMap.insert(id.mid(37), payBal.toInt() / 100000.0);
         return;
     }
 
