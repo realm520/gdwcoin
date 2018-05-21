@@ -367,7 +367,7 @@ void AccountPage::showNormalTransactions()
         // 金额
         AssetInfo assetInfo = GDW::getInstance()->assetInfoMap.value(detail.assetAmount.assetId);
         unsigned long long amount = 0;
-        if( detail.bothMyAccount || transactionInfo.isConfirmed == false)
+        if( detail.bothMyAccount || transactionInfo.isConfirmed == false || detail.assetAmount.amount == 0)
         {
             amount = detail.assetAmount.amount;
         }
