@@ -52,7 +52,7 @@ GDW::GDW()
     if(!versionFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         qDebug()<<"Can't open the file!"<<endl;
-        this->version = "1.0.2";
+        this->version = WALLET_VERSION;
     }
     else
     {
