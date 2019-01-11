@@ -32,7 +32,7 @@
 #include <QDialog>
 
 #define ASSET_NAME "GDW"
-#define WALLET_VERSION "1.0.2"           // 版本号
+#define WALLET_VERSION "1.0.3"           // 版本号
 #define AUTO_REFRESH_TIME 1000           // 自动刷新时间(ms)
 
 //  密码输入错误5次后 锁定一段时间 (秒)
@@ -147,6 +147,7 @@ public:
     void quit();
     void startBlockChain(QStringList &params);
     QString read();
+    QString getVersion();
     QProcess* proc;
     int lockMinutes;   // 自动锁定时间
     bool notProduce;   // 是否产块/记账
@@ -159,6 +160,7 @@ public:
     QString currentAccount; // 保存当前账户  切换页面的时候默认选择当前账户
     unsigned long long transactionFee;
     ConsoleWidget* consoleWidget;
+    QString version;
 
     bool stopping;      // 正在关闭exe  停止处理rpc
 

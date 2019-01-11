@@ -48,6 +48,18 @@ GDW::GDW()
     currentTokenAddress = "";
     transactionFee = 0;
 
+    QFile versionFile("VERSION");
+    if(!versionFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug()<<"Can't open the file!"<<endl;
+        this->version = "1.0.2";
+    }
+    else
+    {
+        QByteArray line = versionFile.readLine();
+        this->version = QString(line);
+    }
+    versionFile.close();
     qDebug() << "wallet config path: " << walletConfigPath;
     configFile = new QSettings( walletConfigPath + "/config.ini", QSettings::IniFormat);
     if( configFile->value("/settings/lockMinutes").toInt() == 0)   // 如果第一次，没有config.ini
@@ -170,6 +182,11 @@ QString GDW::read()
     QApplication::restoreOverrideCursor();
     return result;
 
+}
+
+QString GDW::getVersion()
+{
+    return this->version;
 }
 
 void GDW::deleteAccountInConfigFile(QString accountName)

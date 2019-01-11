@@ -40,7 +40,7 @@ TitleBar::TitleBar(QWidget *parent) :
     timer->setInterval(10000);
     timer->start();
 
-    ui->versionLabel->setText( QString("GDW Wallet  v") + WALLET_VERSION);
+    ui->versionLabel->setText( QString("GDW Wallet  v") + GDW::getInstance()->getVersion());
 
     onTimeOut();
 	DLOG_QT_WALLET_FUNCTION_END;
