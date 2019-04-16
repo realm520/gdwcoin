@@ -564,6 +564,56 @@ background:transparent;</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="collectedHeightLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>90</y>
+     <width>200</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(40, 40, 40);
+background:transparent;</string>
+   </property>
+   <property name="text">
+    <string>合约资产交易数据已采集高度</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="collectedHeightLabel">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>90</y>
+     <width>95</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(40, 40, 40);
+background:transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
   <zorder>addressLabel2</zorder>
   <zorder>addressLabel</zorder>
   <zorder>accountComboBox</zorder>
@@ -582,6 +632,8 @@ background:transparent;</string>
   <zorder>assetComboBox</zorder>
   <zorder>copyBtn</zorder>
   <zorder>qrcodeBtn</zorder>
+  <zorder>collectedHeightLabel_2</zorder>
+  <zorder>collectedHeightLabel</zorder>
  </widget>
  <resources/>
  <connections/>

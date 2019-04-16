@@ -123,6 +123,9 @@ AccountPage::AccountPage(QString name, QWidget *parent) :
     init();
     updateTransactionsList();
 
+    ui->collectedHeightLabel->hide();
+    ui->collectedHeightLabel_2->hide();
+
     inited = true;
 
     DLOG_QT_WALLET_FUNCTION_END;
@@ -198,6 +201,10 @@ void AccountPage::updateBalance()
 {
     if( ui->assetComboBox->currentIndex() == 0)
     {
+
+        ui->collectedHeightLabel->hide();
+        ui->collectedHeightLabel_2->hide();
+
         if( !GDW::getInstance()->accountBalanceMap.contains(accountName))
         {
             ui->balanceLabel->setText( "<body><font style=\"font-size:18px\" color=#000000>0</font><font style=\"font-size:12px\" color=#000000> " + ui->assetComboBox->currentText() + "</font></body>" );
@@ -225,6 +232,11 @@ void AccountPage::updateBalance()
         unsigned long long amount = GDW::getInstance()->accountContractBalanceMap.value(accountAddress).value(contractAddress);
         ui->balanceLabel->setText( "<body><font style=\"font-size:18px\" color=#000000>" + getBigNumberString(amount,info.precision) + "</font><font style=\"font-size:12px\" color=#000000> " + ui->assetComboBox->currentText() + "</font></body>" );
         ui->balanceLabel->adjustSize();
+
+        ui->collectedHeightLabel->show();
+        ui->collectedHeightLabel_2->show();
+        ui->collectedHeightLabel->setText( QString::number( info.collectedBlockHeight));
+
     }
 
 }

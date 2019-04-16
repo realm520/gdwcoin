@@ -89,51 +89,51 @@ void AddTokenDialog::jsonDataUpdated(QString id)
         }
         return;
     }
-    else if( id.startsWith( "id_contract_call_offline_addtokendialog+") )
-    {
-        QString result = GDW::getInstance()->jsonDataValue(id);
+//    else if( id.startsWith( "id_contract_call_offline_addtokendialog+") )
+//    {
+//        QString result = GDW::getInstance()->jsonDataValue(id);
 
-        if( result.startsWith("\"result\":"))
-        {
-            int pos = 40;
-            QString func = id.mid( pos, id.indexOf("+" , pos) - pos);
-            QString contractAddress = id.mid(id.indexOf("+" , pos) + 1);
+//        if( result.startsWith("\"result\":"))
+//        {
+//            int pos = 40;
+//            QString func = id.mid( pos, id.indexOf("+" , pos) - pos);
+//            QString contractAddress = id.mid(id.indexOf("+" , pos) + 1);
 
-            if( func == "tokenName")
-            {
-                QString tokenName = result.mid(9);
-                tokenName.remove('\"');
-                GDW::getInstance()->ERC20TokenInfoMap[contractAddress].name = tokenName;
-            }
-            else if( func == "precision")
-            {
-                QString precision = result.mid(9);
-                precision.remove('\"');
-                GDW::getInstance()->ERC20TokenInfoMap[contractAddress].precision = precision.toULongLong();
-            }
-            else if( func == "admin")
-            {
-                QString admin = result.mid(9);
-                admin.remove('\"');
-                GDW::getInstance()->ERC20TokenInfoMap[contractAddress].admin = admin;
-            }
-            else if( func == "tokenSymbol")
-            {
-                QString tokenSymbol = result.mid(9);
-                tokenSymbol.remove('\"');
-                GDW::getInstance()->ERC20TokenInfoMap[contractAddress].symbol = tokenSymbol;
-            }
-            else if( func == "totalSupply")
-            {
-                QString totalSupply = result.mid(9);
-                totalSupply.remove('\"');
-                GDW::getInstance()->ERC20TokenInfoMap[contractAddress].totalSupply = totalSupply.toULongLong();
-            }
+//            if( func == "tokenName")
+//            {
+//                QString tokenName = result.mid(9);
+//                tokenName.remove('\"');
+//                GDW::getInstance()->ERC20TokenInfoMap[contractAddress].name = tokenName;
+//            }
+//            else if( func == "precision")
+//            {
+//                QString precision = result.mid(9);
+//                precision.remove('\"');
+//                GDW::getInstance()->ERC20TokenInfoMap[contractAddress].precision = precision.toULongLong();
+//            }
+//            else if( func == "admin")
+//            {
+//                QString admin = result.mid(9);
+//                admin.remove('\"');
+//                GDW::getInstance()->ERC20TokenInfoMap[contractAddress].admin = admin;
+//            }
+//            else if( func == "tokenSymbol")
+//            {
+//                QString tokenSymbol = result.mid(9);
+//                tokenSymbol.remove('\"');
+//                GDW::getInstance()->ERC20TokenInfoMap[contractAddress].symbol = tokenSymbol;
+//            }
+//            else if( func == "totalSupply")
+//            {
+//                QString totalSupply = result.mid(9);
+//                totalSupply.remove('\"');
+//                GDW::getInstance()->ERC20TokenInfoMap[contractAddress].totalSupply = totalSupply.toULongLong();
+//            }
 
-        }
+//        }
 
-        return;
-    }
+//        return;
+//    }
 
 }
 

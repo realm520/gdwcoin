@@ -731,13 +731,18 @@ void GDW::collectContractTransactions(QString contractAddress)
         int toBlockHeight = currentBlockHeight;
 
         if( fromBlockHeight > toBlockHeight)    return;
-        if(toBlockHeight > fromBlockHeight + 100)   toBlockHeight = fromBlockHeight + 1000;
-        if(toBlockHeight == lastQueryBlockHeight)   return;
+        if(toBlockHeight > fromBlockHeight + 100)   toBlockHeight = fromBlockHeight + 2000;
+        if(toBlockHeight == ERC20TokenInfoMap.value(contractAddress).lastQueryBlockHeight)   return;
         postRPC( toJsonFormat( "id_blockchain_list_contract_transaction_history+" + contractAddress + "+" + QString::number(toBlockHeight),
                                "blockchain_list_contract_transaction_history",
                                QStringList() << QString::number(fromBlockHeight) << QString::number(toBlockHeight)
                                << contractAddress << "14"));
-        lastQueryBlockHeight = toBlockHeight;
+        ERC20TokenInfoMap[contractAddress].lastQueryBlockHeight = toBlockHeight;
+
+        qDebug() << "jjjjjjjjj " << toJsonFormat( "id_blockchain_list_contract_transaction_history+" + contractAddress + "+" + QString::number(toBlockHeight),
+                                                  "blockchain_list_contract_transaction_history",
+                                                  QStringList() << QString::number(fromBlockHeight) << QString::number(toBlockHeight)
+                                                  << contractAddress << "14");
     }
 }
 

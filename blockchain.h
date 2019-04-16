@@ -33,7 +33,7 @@
 
 #define ASSET_NAME "GDW"
 #define WALLET_VERSION "1.0.5"           // 版本号
-#define AUTO_REFRESH_TIME 1000           // 自动刷新时间(ms)
+#define AUTO_REFRESH_TIME 5000           // 自动刷新时间(ms)
 
 //  密码输入错误5次后 锁定一段时间 (秒)
 #define PWD_LOCK_TIME  7200
@@ -87,6 +87,7 @@ struct ERC20TokenInfo
     unsigned long long precision = 1;
     unsigned long long totalSupply = 0;
     int collectedBlockHeight = 1;   // 该合约已经采集到的高度
+    int lastQueryBlockHeight = 0;
 };
 
 struct Entry
@@ -261,7 +262,6 @@ public:
     QMap<QString,ContractTransactionVector> accountContractTransactionMap;  // key是 "账户地址-合约地址" 形式
     void collectContractTransactions(QString contractAddress);
     void collectContracts();
-    int lastQueryBlockHeight = 0;
 
 private slots:
     void scan();
