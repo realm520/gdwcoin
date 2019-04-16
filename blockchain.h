@@ -261,6 +261,7 @@ public:
     QMap<QString,ContractTransactionVector> accountContractTransactionMap;  // key是 "账户地址-合约地址" 形式
     void collectContractTransactions(QString contractAddress);
     void collectContracts();
+    int lastQueryBlockHeight = 0;
 
 private slots:
     void scan();
