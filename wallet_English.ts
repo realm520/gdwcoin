@@ -139,6 +139,11 @@
         <translation type="unfinished">Token</translation>
     </message>
     <message>
+        <location filename="accountpage.ui" line="586"/>
+        <source>合约资产交易数据已采集高度</source>
+        <translation type="unfinished">Trxs collected height:</translation>
+    </message>
+    <message>
         <source>交易金额/GOP</source>
         <translation type="obsolete">Amount/GOP</translation>
     </message>
@@ -274,34 +279,34 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="325"/>
-        <location filename="accountpage.cpp" line="563"/>
+        <location filename="accountpage.cpp" line="340"/>
+        <location filename="accountpage.cpp" line="526"/>
         <source>total </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="325"/>
-        <location filename="accountpage.cpp" line="563"/>
+        <location filename="accountpage.cpp" line="340"/>
+        <location filename="accountpage.cpp" line="526"/>
         <source> ,</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="352"/>
+        <location filename="accountpage.cpp" line="367"/>
         <source>unconfirmed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="435"/>
+        <location filename="accountpage.cpp" line="446"/>
         <source>call contract</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="468"/>
+        <location filename="accountpage.cpp" line="479"/>
         <source>POW mining reward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="473"/>
+        <location filename="accountpage.cpp" line="484"/>
         <source>POS mining reward</source>
         <translation type="unfinished"></translation>
     </message>
@@ -310,7 +315,7 @@
         <translation type="obsolete">Withdraw</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="246"/>
+        <location filename="accountpage.cpp" line="263"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
@@ -436,17 +441,12 @@
         <translation type="unfinished">Ok</translation>
     </message>
     <message>
-        <location filename="dialog/addtokendialog.cpp" line="68"/>
+        <location filename="dialog/addtokendialog.cpp" line="80"/>
         <source>Wrong contract address!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog/addtokendialog.cpp" line="74"/>
-        <source>Contract uninitialized!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialog/addtokendialog.cpp" line="117"/>
+        <location filename="dialog/addtokendialog.cpp" line="86"/>
         <source>Token added!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -651,7 +651,7 @@ This name will be registered in the Goopal blockchain,permanently and immutably.
         <translation type="unfinished">Concerned Tokens(The standard tokens can be added to the wallet,then the wallet will load them)</translation>
     </message>
     <message>
-        <location filename="assetpage.ui" line="246"/>
+        <location filename="assetpage.ui" line="249"/>
         <source>发行资产</source>
         <translation type="unfinished">Create a token</translation>
     </message>
@@ -661,7 +661,7 @@ This name will be registered in the Goopal blockchain,permanently and immutably.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="assetpage.cpp" line="115"/>
+        <location filename="assetpage.cpp" line="116"/>
         <source>Sure to unfollow </source>
         <translation type="unfinished"></translation>
     </message>
@@ -1393,22 +1393,22 @@ Cover it or not?</source>
 <context>
     <name>Frame</name>
     <message>
-        <location filename="frame.cpp" line="1028"/>
+        <location filename="frame.cpp" line="1050"/>
         <source>Wallet data error: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="1538"/>
+        <location filename="frame.cpp" line="1559"/>
         <source>Minimize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="1541"/>
+        <location filename="frame.cpp" line="1562"/>
         <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="1544"/>
+        <location filename="frame.cpp" line="1565"/>
         <source>Quit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2715,73 +2715,74 @@ update or not?</source>
     </message>
     <message>
         <location filename="transferpage.cpp" line="186"/>
-        <source>The fee can not be 1</source>
+        <source>The fee can not be less than 1</source>
+        <oldsource>The fee can not be 1</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="202"/>
+        <location filename="transferpage.cpp" line="197"/>
         <source>Message length more than 40 bytes!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="507"/>
-        <location filename="transferpage.cpp" line="615"/>
+        <location filename="transferpage.cpp" line="500"/>
+        <location filename="transferpage.cpp" line="611"/>
         <source>Transaction has been sent,please wait for confirmation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="513"/>
-        <location filename="transferpage.cpp" line="621"/>
+        <location filename="transferpage.cpp" line="506"/>
+        <location filename="transferpage.cpp" line="616"/>
         <source>Add this address to contacts?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="534"/>
+        <location filename="transferpage.cpp" line="527"/>
         <source>This name has been registered, please rename this account!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="540"/>
-        <location filename="transferpage.cpp" line="568"/>
-        <location filename="transferpage.cpp" line="574"/>
-        <location filename="transferpage.cpp" line="645"/>
+        <location filename="transferpage.cpp" line="533"/>
+        <location filename="transferpage.cpp" line="561"/>
+        <location filename="transferpage.cpp" line="567"/>
+        <location filename="transferpage.cpp" line="638"/>
         <source>Wrong address!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="549"/>
+        <location filename="transferpage.cpp" line="542"/>
         <source>Message too long!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="556"/>
+        <location filename="transferpage.cpp" line="549"/>
         <source>Failed: You need to wait for synchronization to complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="562"/>
-        <location filename="transferpage.cpp" line="649"/>
+        <location filename="transferpage.cpp" line="555"/>
+        <location filename="transferpage.cpp" line="642"/>
         <source>Not enough balance!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="580"/>
+        <location filename="transferpage.cpp" line="573"/>
         <source>Transaction sent failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="596"/>
+        <location filename="transferpage.cpp" line="588"/>
         <source>&lt;body&gt;&lt;font color=green&gt;Valid add.&lt;/font&gt;&lt;/body&gt;</source>
         <oldsource>&lt;body&gt;&lt;font color=green&gt;Valid address&lt;/font&gt;&lt;/body&gt;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="601"/>
+        <location filename="transferpage.cpp" line="593"/>
         <source>Invalid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="723"/>
+        <location filename="transferpage.cpp" line="716"/>
         <source>Invalid add.</source>
         <oldsource>Invalid address</oldsource>
         <translation type="unfinished"></translation>
